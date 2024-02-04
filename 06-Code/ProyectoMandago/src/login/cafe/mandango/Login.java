@@ -4,18 +4,52 @@
  */
 package login.cafe.mandango;
 
+import cafeteria.cafe.mandago.Conexion;
+import com.mongodb.DB;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import empleados.cafe.mandango.FormularioEmpleado;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author DELL
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormularioEmplea
-     */
+Conexion conn = new Conexion();
+    MongoDatabase database;
+    DB db;
+    String usu,contra;
+//    String usu,contra;
     public Login() {
+        if (conn != null) {
+            conn = conn.crearConexion();
+            database = conn.getDataB();
+
+        }
         initComponents();
+
     }
+      public void DatosLogin() {
+         MongoCollection<Document> collection = database.getCollection("UsuariosContrasenias");
+        FindIterable<Document> documents = collection.find();
+        
+        for (Document document :documents){
+            Object id = document.get("_id");
+            usu = document.getString("usuario");
+            contra = document.getString("contrasenia");
+           
+    
+        }
+    
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +82,11 @@ public class Login extends javax.swing.JFrame {
         txtContrasenia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btEntrar.setText("ENTRAR");
+        btEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEntrarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Logo.png"))); // NOI18N
 
@@ -70,7 +109,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(179, 179, 179))
+                        .addGap(172, 172, 172))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btEntrar)
                         .addGap(248, 248, 248))))
@@ -95,6 +134,38 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
+        
+       MongoCollection<Document> collection = database.getCollection("UsuariosContrasenias");
+        FindIterable<Document> documents = collection.find();
+        
+        for (Document document :documents){
+            Object id = document.get("_id");
+            usu = document.getString("usuario");
+            contra = document.getString("contrasenia");
+            if(txtUsuario.getText().equals(usu) && txtContrasenia.getText().equals(contra)){
+            
+            this.setVisible(false);
+            FormularioEmpleado c = new FormularioEmpleado();
+            c.setVisible(true);
+            c.setDato(txtUsuario.getText());
+            
+        }else{
+              
+              JOptionPane.showMessageDialog(null, "Contrasenia o usuario erroneo");
+           }
+    
+        }
+        
+           
+    
+        
+    
+        
+         
+        
+    }//GEN-LAST:event_btEntrarActionPerformed
 
     /**
      * @param args the command line arguments
