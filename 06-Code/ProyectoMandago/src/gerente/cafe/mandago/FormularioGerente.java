@@ -4,215 +4,292 @@
  */
 package gerente.cafe.mandago;
 
-import cafeteria.cafe.mandago.Conexion;
-import com.mongodb.DB;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
+import conexion.ConexionBD;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author DELL
  */
 public class FormularioGerente extends javax.swing.JFrame {
-Conexion conn = new Conexion();
-    MongoDatabase database;
-    DB db;
-    private String dato;
-    public FormularioGerente() {
-          if (conn != null) {
-            conn = conn.crearConexion();
-            database = conn.getDataB();
 
+    /**
+     * Creates new form FormularioGerente
+     */
+    ConexionBD conn= new ConexionBD();
+    MongoDatabase database;
+    //DB db;
+    Date fecha = new Date();
+    int filaSeleccionada;
+    
+    public FormularioGerente() {
+        if(conn != null){
+            conn=conn.crearConexion();
+            database=conn.getDataB();
         }
+        
         initComponents();
-        this.setLocale(null);
+        
+        txtId.setEnabled(false);
+        mostrarDatosTabla();
+        this.setLocationRelativeTo(null);
         getContentPane().setBackground(Color.WHITE);
     }
-    public void setDatoGerente(String dato) {
-         
-        MongoCollection<Document> collection= database.getCollection("Empleados");
-        FindIterable<Document> documents = collection.find();
-        this.dato=dato;
-        for (Document document :documents){
-          String cedula= document.getString("Cedula");
-            String nombre= document.getString("Nombre");
-            String Fecha = document.getString("FechaNacimiento");
-          SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-            if(dato.equals(cedula)){
-                this.setVisible(true);
-//                lbnombre.setText("Nombre:"+nombre);
-//                lbfechana.setText("Fecha De Nacimiento: "+Fecha);
-//                lbrol.setText("Rol: "+Rol);
-//                lbhorario.setText("Horario: "+Horario);
-            }
-           
     
+    
+    public void limpiar(){
+        txtId.setText("");
+        txtCedula.setText("");
+        txtEmpleado.setText("");
+        txtContraseña.setText("");
+        txtEdad.setText("");
+        txtSalario.setText("");
+        calFNacimiento.setDate(null);
+        cmbSexo.setSelectedIndex(0);
+        cmbRol.setSelectedIndex(0);
+    }
+    
+   public void mostrarDatosTabla(){
+        DefaultTableModel modeloTabla=  (DefaultTableModel) tblDatos.getModel();
+        modeloTabla.setRowCount(0);
+        
+        MongoCollection<Document> collection = database.getCollection("empleados");
+        FindIterable<Document> documents = collection.find();
+        
+        for(Document document : documents){
+            Object id=document.get("_id");
+            String cedula=document.getString("cedula");
+            String empleado=document.getString("empleado");
+            fecha = document.getDate("FechaNacimiento");
+            SimpleDateFormat fechaNac = new SimpleDateFormat("yyyy/MM/dd");
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy");
+            String fechaAnio = formato.format(fecha);
+            int anioNac = Integer.parseInt(fechaAnio), edad;
+            int anioActual = Calendar.getInstance().get(Calendar.YEAR);
+            edad = (anioActual - anioNac);
+            String contraseña=document.getString("contraseña");
+            String genero=document.getString("sexo");
+            String rol = document.getString("rol");
+            String salario = document.getString("salario");
+
+            modeloTabla.addRow(new Object[]{id,cedula,empleado,contraseña,edad,genero,fechaNac.format(fecha),rol,salario});
         }
+        TableColumnModel columnModel = tblDatos.getColumnModel();
+        TableColumn columna= columnModel.getColumn(0);
+        columna.setMinWidth(0);
+        columna.setMaxWidth(0);
+    }
+   
+   private void mostrarDatosCampos(){
+       filaSeleccionada = tblDatos.getSelectedRow();
+        if (filaSeleccionada == -1){
+            return;
+        }
+        DefaultTableModel modelTabla = (DefaultTableModel) tblDatos.getModel();
+        txtId.setText(modelTabla.getValueAt(filaSeleccionada,0).toString());
+        txtCedula.setText(modelTabla.getValueAt(filaSeleccionada,1).toString());
+        txtEmpleado.setText(modelTabla.getValueAt(filaSeleccionada,2).toString());
+        txtContraseña.setText(modelTabla.getValueAt(filaSeleccionada,3).toString());
+        txtEdad.setText(modelTabla.getValueAt(filaSeleccionada,4).toString());
+        cmbSexo.setSelectedItem(modelTabla.getValueAt(filaSeleccionada, 5).toString());
+        String fechaString = modelTabla.getValueAt(filaSeleccionada, 6).toString();
+        Date fechaNac = new Date();
+        SimpleDateFormat fechaComp = new SimpleDateFormat("yyyy/MM/dd");
+        fechaNac = fechaComp.parse(fechaString, new ParsePosition(0));
+        calFNacimiento.setDate(fechaNac);
+        cmbRol.setSelectedItem(modelTabla.getValueAt(filaSeleccionada, 7).toString());
+        txtSalario.setText(modelTabla.getValueAt(filaSeleccionada,8).toString());
 
     }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         bgSexo = new javax.swing.ButtonGroup();
         bgDiscapacidad = new javax.swing.ButtonGroup();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtEmpleado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jPanel2 = new javax.swing.JPanel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDatos = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         calFNacimiento = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        cmbRol = new javax.swing.JComboBox<>();
+        cmbSexo = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Formulario");
+        jLabel2.setText("Formulario para Registro");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 6, -1, -1));
 
         jLabel3.setText("Empleado:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 84, -1, -1));
 
-        txtEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmpleadoActionPerformed(evt);
+        txtEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmpleadoKeyPressed(evt);
             }
         });
+        getContentPane().add(txtEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 79, 391, -1));
 
         jLabel1.setText("Contraseña:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 128, 70, -1));
+        getContentPane().add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 123, 391, -1));
 
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setBackground(new java.awt.Color(153, 255, 153));
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 105, 125, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sexo"));
-
-        bgSexo.add(jRadioButton1);
-        jRadioButton1.setText("Masculino");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(255, 51, 51));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 150, 125, -1));
 
-        bgSexo.add(jRadioButton2);
-        jRadioButton2.setText("Femenino");
+        btnActualizar.setBackground(new java.awt.Color(102, 102, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(564, 195, 125, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRadioButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 153, 153), java.awt.Color.red));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Discapacidad"));
-
-        jRadioButton3.setText("Si");
-
-        jRadioButton4.setText("No");
-
-        jLabel4.setText("Especificar:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jRadioButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton4)))
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
-
-        jButton1.setText("Guardar");
-
-        jButton2.setText("Eliminar");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Sexo", "Edad", "Discapasidad"
+                "Id", "Cedula", "Nombre", "Contraseña", "Edad", "Sexo", "F. Nacimiento", "Rol", "Sueldo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tblDatos.setToolTipText("");
+        tblDatos.setSelectionBackground(new java.awt.Color(255, 102, 102));
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDatos);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 334, 628, 200));
 
         jLabel5.setText("Fecha de Nacimiento:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 176, -1, -1));
+
+        calFNacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                calFNacimientoPropertyChange(evt);
+            }
+        });
+        getContentPane().add(calFNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 176, 141, -1));
 
         jLabel6.setText("Edad:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 181, 37, -1));
+
+        txtEdad.setEditable(false);
+        getContentPane().add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 176, 142, -1));
+
+        jLabel7.setText("Salario:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 225, -1, -1));
+
+        txtSalario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSalarioFocusLost(evt);
+            }
+        });
+        txtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSalarioKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 220, 156, -1));
+
+        jLabel8.setText("Cedula:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 40, 57, -1));
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 35, 328, -1));
+        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 278, 628, -1));
+
+        cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el rol...", "Mesero", "Cajero", "Cocinero" }));
+        getContentPane().add(cmbRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 220, 151, -1));
+
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar el sexo...", "Masculino", "Femenino" }));
+        getContentPane().add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 35, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Logo.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 200, 210));
 
         jMenu1.setText("Productos ");
         jMenuBar1.add(jMenu1);
@@ -220,133 +297,212 @@ Conexion conn = new Conexion();
         jMenu2.setText("Economia ");
 
         jMenuItem3.setText("Ingresos Diarios");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Gastos Diarios");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
 
-        jMenu4.setText("Cambiar Contraseña");
-        jMenuBar1.add(jMenu4);
-
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(27, 27, 27)
-                                .addComponent(calFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addGap(78, 78, 78))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(txtContraseña))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtEmpleado)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(51, 51, 51))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(479, 479, 479)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel2)
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jLabel6)
-                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5)
-                    .addComponent(calFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void calFNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calFNacimientoPropertyChange
+        if ("date".equals(evt.getPropertyName()) && calFNacimiento.getDate() != null) {
+            int año = calFNacimiento.getCalendar().get(Calendar.YEAR);
+            Date dato = new Date();
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy");
+            String fechaSistema = formato.format(dato);
+            int anio = Integer.parseInt(fechaSistema), resta;
+            resta = (anio - año);
+            String edad = Integer.toString(resta);
+            txtEdad.setText(edad);
+        }
+    }//GEN-LAST:event_calFNacimientoPropertyChange
 
-    private void txtEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmpleadoActionPerformed
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        mostrarDatosCampos();
+        btnGuardar.setVisible(false);
+    }//GEN-LAST:event_tblDatosMouseClicked
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+  
+        if (txtEmpleado.getText().isEmpty() || txtCedula.getText().isEmpty() || txtContraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay datos a ingresar. Complete los campos.");
+        } else if (cmbRol.getSelectedItem().equals("Seleccione el rol...")) {
+            JOptionPane.showMessageDialog(null, "Ingrese el rol del trabajador.");
+        }else if (txtCedula.getText().length() > 10||txtCedula.getText().length() < 10) {
+            JOptionPane.showMessageDialog(null, "Verificar numeros de cedula.");
+        } else if (cmbSexo.getSelectedItem().equals("Seleccionar el sexo...")) {
+            JOptionPane.showMessageDialog(null, "Ingrese el sexo del empleado.");
+        } else {
+            try {
+                int edad = Integer.parseInt(txtEdad.getText());
+                if (edad < 18) {
+                    JOptionPane.showMessageDialog(null, "La edad debe ser mayor a 18");
+                } else {
+                    
+                    Document documento = new Document("empleado", txtEmpleado.getText())
+                            .append("cedula", txtCedula.getText())
+                            .append("contraseña", txtContraseña.getText())
+                            .append("FechaNacimiento", calFNacimiento.getDate())
+                            .append("sexo", cmbSexo.getSelectedItem())
+                            .append("rol", cmbRol.getSelectedItem())
+                            .append("salario", txtSalario.getText());
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+                    MongoCollection<Document> coleccion = database.getCollection("empleados");
+                    coleccion.insertOne(documento);
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+                   
+                    mostrarDatosTabla();
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese una edad válida o un salario válido");
+            }
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+       char teclaPresionada = evt.getKeyChar();
+        if (Character.isLetter(teclaPresionada)) {
+                JOptionPane.showMessageDialog(null, "No se permiten letras", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                String textoActual = txtCedula.getText();
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtCedula.setText(nuevoTexto);
+            }
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
+
+    private void txtEmpleadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpleadoKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        String textoActual = txtEmpleado.getText();
+
+        if (Character.isDigit(teclaPresionada)) {
+            JOptionPane.showMessageDialog(null, "No se permiten números en el Nombre", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtEmpleado.setText(nuevoTexto);
+            }
+        } else {
+            if (!textoActual.isEmpty()) {
+                String primeraLetra = textoActual.substring(0, 1).toUpperCase();
+                String restoDelTexto = textoActual.substring(1);
+                txtEmpleado.setText(primeraLetra + restoDelTexto);
+            }
+        }
+    }//GEN-LAST:event_txtEmpleadoKeyPressed
+
+    private void txtSalarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSalarioKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        if (Character.isLetter(teclaPresionada)) {
+                JOptionPane.showMessageDialog(null, "No se permiten letras", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                String textoActual = txtSalario.getText();
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtSalario.setText(nuevoTexto);
+            }
+        }
+    }//GEN-LAST:event_txtSalarioKeyPressed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        if (txtEmpleado.getText().isEmpty() || txtCedula.getText().isEmpty() || txtContraseña.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "No hay datos a ingresar. Complete los campos.");
+                } else if (cmbRol.getSelectedItem().equals("Seleccione el rol...")) {
+                    JOptionPane.showMessageDialog(null, "Ingrese el rol del trabajador.");
+                }else if (txtCedula.getText().length() > 10||txtCedula.getText().length() < 10) {
+                    JOptionPane.showMessageDialog(null, "Verificar numeros de cedula.");
+                }else if (cmbSexo.getSelectedItem().equals("Seleccionar el sexo...")) {
+                    JOptionPane.showMessageDialog(null, "Ingrese el sexo del empleado.");
+                } else {
+                    try {
+                        int edad = Integer.parseInt(txtEdad.getText());
+                        if (edad < 18) {
+                            JOptionPane.showMessageDialog(null, "La edad debe ser mayor a 18");
+                        } else {
+                            
+                             if (filaSeleccionada >= 0) {
+                                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Seguro deseas actualizar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+                                if (confirmacion == JOptionPane.YES_OPTION) {              
+                                    DefaultTableModel modeloTabla = (DefaultTableModel) tblDatos.getModel();
+                                    MongoCollection coleccion = database.getCollection("empleados");
+                                    Document filtro = new Document("_id", new ObjectId(txtId.getText()));
+                                    Document documento;
+                                    documento = new Document("$set",new Document()
+                                            .append("empleado",txtEmpleado.getText())
+                                            .append("cedula", txtCedula.getText())
+                                            .append("contraseña", txtContraseña.getText())
+                                            .append("FechaNacimiento", calFNacimiento.getDate())
+                                            .append("sexo",cmbSexo.getSelectedItem())
+                                            .append("rol",cmbRol.getSelectedItem())
+                                            .append("salario", txtSalario.getText()));
+                                    
+                                    UpdateResult result = coleccion.updateOne(filtro,documento);
+                                    mostrarDatosTabla();
+                                    if (result.getModifiedCount() > 0) {
+                                        
+                                        JOptionPane.showMessageDialog(null, "El empleado se actualizo correctamente.");                    
+                           
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "No se encontró el registro para actualizar.");
+                                    }
+                                } else {
+                    
+                                    ListSelectionModel seleccionModel = tblDatos.getSelectionModel();
+                                    seleccionModel.clearSelection();
+                                    filaSeleccionada = -1;
+                                }
+                                limpiar();
+                                btnGuardar.setVisible(true);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Seleccione el registro a actualizar");
+                            }
+                        }
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Ingrese una edad válida o un salario válido");
+                    }
+                }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (filaSeleccionada >= 0) {
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Seguro deseas eliminar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+            if (confirmacion == JOptionPane.YES_OPTION) {
+
+                DefaultTableModel modeloTabla = (DefaultTableModel) tblDatos.getModel();
+                MongoCollection coleccion = database.getCollection("empleados");
+                Document filtro = new Document("_id", new ObjectId(txtId.getText()));
+                DeleteResult result = coleccion.deleteOne(filtro);
+
+                if (result.getDeletedCount() > 0) {
+                    
+                    JOptionPane.showMessageDialog(null, "El registro eliminado correctamente");                    
+                    modeloTabla.removeRow(filaSeleccionada);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró el registro para eliminar");
+                }
+            } else {
+
+                ListSelectionModel seleccionModel = tblDatos.getSelectionModel();
+                seleccionModel.clearSelection();
+                filaSeleccionada = -1;
+            }
+            limpiar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione el registro a eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtSalarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalarioFocusLost
+        String salario=txtSalario.getText().trim();
+        if (salario.isEmpty() || !salario.matches("^[0-9]{3,4}+.[0-9]{0,2}$")) {
+            JOptionPane.showMessageDialog(this, "Verificar el salario", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            txtSalario.requestFocus();
+        }
+    }//GEN-LAST:event_txtSalarioFocusLost
 
     /**
      * @param args the command line arguments
@@ -389,32 +545,33 @@ Conexion conn = new Conexion();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgDiscapacidad;
     private javax.swing.ButtonGroup bgSexo;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
     private com.toedter.calendar.JDateChooser calFNacimiento;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> cmbRol;
+    private javax.swing.JComboBox<String> cmbSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tblDatos;
+    private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtEmpleado;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
