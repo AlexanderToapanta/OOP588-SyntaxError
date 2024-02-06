@@ -10,10 +10,9 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import empleados.cafe.mandango.FormularioEmpleado;
-import java.util.Date;
+
 import javax.swing.JOptionPane;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
 /**
  *
@@ -24,28 +23,21 @@ public class Login extends javax.swing.JFrame {
 Conexion conn = new Conexion();
     MongoDatabase database;
     DB db;
-    String usu,contra;
-//    String usu,contra;
+//    private String user,pasword;
+
+    
     public Login() {
         if (conn != null) {
             conn = conn.crearConexion();
             database = conn.getDataB();
 
         }
-        initComponents();
-
-    }
-      public void DatosLogin() {
-         MongoCollection<Document> collection = database.getCollection("UsuariosContrasenias");
-        FindIterable<Document> documents = collection.find();
         
-        for (Document document :documents){
-            Object id = document.get("_id");
-            usu = document.getString("usuario");
-            contra = document.getString("contrasenia");
-           
+        initComponents();
+        
+
     
-        }
+      
     
     }
     
@@ -60,22 +52,27 @@ Conexion conn = new Conexion();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        lblContrasenia = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         txtContrasenia = new javax.swing.JPasswordField();
         btEntrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblContrasenia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblUsuario.setText("Usuario");
+        jPanel1.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel1.setForeground(new java.awt.Color(204, 0, 0));
+        jPanel1.setToolTipText("");
 
-        lblContrasenia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblContrasenia.setText("Contraseña");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Logo.png"))); // NOI18N
+
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("Usuario");
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -88,48 +85,67 @@ Conexion conn = new Conexion();
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Logo.png"))); // NOI18N
+        lblContrasenia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblContrasenia.setForeground(new java.awt.Color(255, 255, 255));
+        lblContrasenia.setText("Contraseña");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblContrasenia)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(108, 108, 108))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btEntrar)
+                        .addGap(200, 200, 200))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblContrasenia))
+                .addGap(52, 52, 52)
+                .addComponent(btEntrar)
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblContrasenia)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUsuario)
-                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(199, 199, 199))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btEntrar)
-                        .addGap(248, 248, 248))))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuario)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblContrasenia)
-                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(btEntrar)
-                .addGap(113, 113, 113))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,25 +155,30 @@ Conexion conn = new Conexion();
         
        MongoCollection<Document> collection = database.getCollection("UsuariosContrasenias");
         FindIterable<Document> documents = collection.find();
-        
+         boolean usuarioEncontrado = false;
+         String usuario ;
+          String contrasenia;
         for (Document document :documents){
-            Object id = document.get("_id");
-            usu = document.getString("usuario");
-            contra = document.getString("contrasenia");
-            if(txtUsuario.getText().equals(usu) && txtContrasenia.getText().equals(contra)){
             
+            usuario = document.getString("usuario");
+            contrasenia = document.getString("contrasenia");
+            if(txtUsuario.getText().equals(usuario) && txtContrasenia.getText().equals(contrasenia)){
+           usuarioEncontrado = true;   
             this.setVisible(false);
             FormularioEmpleado c = new FormularioEmpleado();
             c.setVisible(true);
             c.setDato(txtUsuario.getText());
             
-        }else{
-              
-              JOptionPane.showMessageDialog(null, "Contrasenia o usuario erroneo");
-           }
+          
+           
     
         }
+            
+        }
         
+          if (!usuarioEncontrado) {
+        JOptionPane.showMessageDialog(null, "Contrasenia o usuario erroneo");
+    }
            
     
         
@@ -206,6 +227,7 @@ Conexion conn = new Conexion();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEntrar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblContrasenia;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPasswordField txtContrasenia;
