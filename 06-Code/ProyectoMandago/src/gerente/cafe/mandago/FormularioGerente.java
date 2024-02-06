@@ -10,6 +10,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import org.bson.Document;
 
 /**
@@ -31,7 +32,7 @@ Conexion conn = new Conexion();
         this.setLocale(null);
         getContentPane().setBackground(Color.WHITE);
     }
-    public void setDato(String dato) {
+    public void setDatoGerente(String dato) {
          
         MongoCollection<Document> collection= database.getCollection("Empleados");
         FindIterable<Document> documents = collection.find();
@@ -40,8 +41,7 @@ Conexion conn = new Conexion();
           String cedula= document.getString("Cedula");
             String nombre= document.getString("Nombre");
             String Fecha = document.getString("FechaNacimiento");
-            String Rol= document.getString("Rol");
-            String Horario = document.getString("Horario");
+          SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
             if(dato.equals(cedula)){
                 this.setVisible(true);
 //                lbnombre.setText("Nombre:"+nombre);

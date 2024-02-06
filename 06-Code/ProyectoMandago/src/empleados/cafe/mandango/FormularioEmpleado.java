@@ -11,6 +11,8 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.bson.Document;
 
@@ -20,6 +22,9 @@ public class FormularioEmpleado extends javax.swing.JFrame {
     MongoDatabase database;
     DB db;
     private String dato;
+    private int anio,mes,dia,edad;
+    private Date dt = new Date();
+    String edad_s= null;
     
     public FormularioEmpleado() {
          if (conn != null) {
@@ -34,26 +39,42 @@ panel_de_Cafeteria.setBackground(Color.BLUE);
     
 public void setDato(String dato) {
          
-        MongoCollection<Document> collection= database.getCollection("Empleados");
+       MongoCollection<Document> collection= database.getCollection("Empleados");
         FindIterable<Document> documents = collection.find();
         this.dato=dato;
         for (Document document :documents){
           String cedula= document.getString("Cedula");
             String nombre= document.getString("Nombre");
-            String Fecha = document.getString("FechaNacimiento");
+            Date Fecha = document.getDate("FechaNacimiento");
+            SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+            calcularEdad(Fecha);
             String Rol= document.getString("Rol");
             String Horario = document.getString("Horario");
             if(dato.equals(cedula)){
                 
                 lbnombre.setText("Nombre:"+nombre);
-                lbfechana.setText("Fecha De Nacimiento: "+Fecha);
+                lbfechana.setText("Fecha De Nacimiento: "+data.format(Fecha));
                 lbrol.setText("Rol: "+Rol);
                 lbhorario.setText("Horario: "+Horario);
+                lbEdad.setText("Edad:"+edad_s);
             }
            
     
         }
-    
+}
+    public void calcularEdad(Date fecha){
+         try{
+             anio = fecha.getYear();
+             if(fecha!=null){
+                 
+                 if(this.dt!=null){
+                     edad = dt.getYear()-anio;
+                     edad_s=Integer.toString(edad);
+                 }
+             }
+         }catch (Exception e){
+             e.printStackTrace();
+         }
     
         
         
@@ -69,6 +90,7 @@ public void setDato(String dato) {
         lbrol = new javax.swing.JLabel();
         lbhorario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbEdad = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -99,11 +121,16 @@ public void setDato(String dato) {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-02-05_185807055 (1).png"))); // NOI18N
 
+        lbEdad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbEdad.setForeground(new java.awt.Color(255, 255, 255));
+        lbEdad.setText("jLabel2");
+
         panel_de_Cafeteria.setLayer(lbnombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel_de_Cafeteria.setLayer(lbfechana, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel_de_Cafeteria.setLayer(lbrol, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel_de_Cafeteria.setLayer(lbhorario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel_de_Cafeteria.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panel_de_Cafeteria.setLayer(lbEdad, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout panel_de_CafeteriaLayout = new javax.swing.GroupLayout(panel_de_Cafeteria);
         panel_de_Cafeteria.setLayout(panel_de_CafeteriaLayout);
@@ -112,30 +139,34 @@ public void setDato(String dato) {
             .addGroup(panel_de_CafeteriaLayout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addGroup(panel_de_CafeteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbhorario)
                     .addComponent(lbrol)
                     .addComponent(lbnombre)
-                    .addComponent(lbfechana))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                    .addComponent(lbfechana)
+                    .addComponent(lbhorario)
+                    .addComponent(lbEdad))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(108, 108, 108))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         panel_de_CafeteriaLayout.setVerticalGroup(
             panel_de_CafeteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_de_CafeteriaLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(lbnombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbfechana)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbrol)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbhorario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel_de_CafeteriaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(panel_de_CafeteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_de_CafeteriaLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(lbnombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbfechana)
+                        .addGap(8, 8, 8)
+                        .addComponent(lbEdad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbrol)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbhorario))
+                    .addGroup(panel_de_CafeteriaLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Cafeteria");
@@ -217,6 +248,7 @@ public void setDato(String dato) {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JLabel lbEdad;
     private javax.swing.JLabel lbfechana;
     private javax.swing.JLabel lbhorario;
     private javax.swing.JLabel lbnombre;
