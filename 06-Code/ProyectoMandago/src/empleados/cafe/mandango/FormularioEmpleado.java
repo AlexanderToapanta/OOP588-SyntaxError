@@ -10,6 +10,7 @@ import com.mongodb.DB;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.awt.Color;
 
 import org.bson.Document;
 
@@ -27,6 +28,8 @@ public class FormularioEmpleado extends javax.swing.JFrame {
 
         }
         initComponents();
+        
+panel_de_Cafeteria.setBackground(Color.BLUE);
     }
     
 public void setDato(String dato) {
@@ -35,12 +38,13 @@ public void setDato(String dato) {
         FindIterable<Document> documents = collection.find();
         this.dato=dato;
         for (Document document :documents){
-//            Object id = document.get("_id");
+          String cedula= document.getString("Cedula");
             String nombre= document.getString("Nombre");
             String Fecha = document.getString("FechaNacimiento");
             String Rol= document.getString("Rol");
             String Horario = document.getString("Horario");
-            if(dato.equals(nombre)){
+            if(dato.equals(cedula)){
+                
                 lbnombre.setText("Nombre:"+nombre);
                 lbfechana.setText("Fecha De Nacimiento: "+Fecha);
                 lbrol.setText("Rol: "+Rol);
@@ -64,6 +68,7 @@ public void setDato(String dato) {
         lbfechana = new javax.swing.JLabel();
         lbrol = new javax.swing.JLabel();
         lbhorario = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -71,24 +76,34 @@ public void setDato(String dato) {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panel_de_Cafeteria.setBackground(new java.awt.Color(102, 0, 0));
         panel_de_Cafeteria.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panel_de_Cafeteria.setForeground(new java.awt.Color(102, 0, 0));
+        panel_de_Cafeteria.setToolTipText("");
 
         lbnombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbnombre.setForeground(new java.awt.Color(255, 255, 255));
         lbnombre.setText("jLabel1");
 
         lbfechana.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbfechana.setForeground(new java.awt.Color(255, 255, 255));
         lbfechana.setText("jLabel2");
 
         lbrol.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbrol.setForeground(new java.awt.Color(255, 255, 255));
         lbrol.setText("jLabel3");
 
         lbhorario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lbhorario.setForeground(new java.awt.Color(255, 255, 255));
         lbhorario.setText("jLabel4");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-02-05_185807055 (1).png"))); // NOI18N
 
         panel_de_Cafeteria.setLayer(lbnombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel_de_Cafeteria.setLayer(lbfechana, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel_de_Cafeteria.setLayer(lbrol, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panel_de_Cafeteria.setLayer(lbhorario, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panel_de_Cafeteria.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout panel_de_CafeteriaLayout = new javax.swing.GroupLayout(panel_de_Cafeteria);
         panel_de_Cafeteria.setLayout(panel_de_CafeteriaLayout);
@@ -98,10 +113,12 @@ public void setDato(String dato) {
                 .addGap(83, 83, 83)
                 .addGroup(panel_de_CafeteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbhorario)
-                    .addComponent(lbfechana)
+                    .addComponent(lbrol)
                     .addComponent(lbnombre)
-                    .addComponent(lbrol))
-                .addContainerGap(495, Short.MAX_VALUE))
+                    .addComponent(lbfechana))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(108, 108, 108))
         );
         panel_de_CafeteriaLayout.setVerticalGroup(
             panel_de_CafeteriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +131,11 @@ public void setDato(String dato) {
                 .addComponent(lbrol)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbhorario)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panel_de_CafeteriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jMenu1.setText("Cafeteria");
@@ -191,6 +212,7 @@ public void setDato(String dato) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
