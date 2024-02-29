@@ -5,7 +5,14 @@
 package mandango.vista;
 
 import com.mongodb.client.MongoDatabase;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
 import mandango.dao.Conexion;
+import mandango.modelo.EmpleadosSuperClase;
+import mandango.servicio.LoginServicio;
+import static mandango.servicio.LoginServicio.AutenticarLogin;
+
 
 /**
  *
@@ -13,21 +20,21 @@ import mandango.dao.Conexion;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    Conexion conn = new Conexion();
-    MongoDatabase database;
+    List<EmpleadosSuperClase> ListaUsuarios =null;
+   
     
     public Login() {
-        if (conn != null) {
-            conn = conn.crearConexion();
-            database = conn.getDataB();
-
-        }
+       
         initComponents();
+        ListaUsuarios = LoginServicio.ListaUsuarios();
+        
+        
         
     }
+
+   
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +79,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         btEntrar.setText("ENTRAR");
+        btEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEntrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,6 +148,29 @@ public class Login extends javax.swing.JFrame {
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
+        String usuario= txtUsuario.getText(),contrasenia = txtContrasenia.getText();
+        if(LoginServicio.AutenticarLogin(usuario, contrasenia)){
+            for (EmpleadosSuperClase buscar :ListaUsuarios){
+            String cedula = buscar.getCedula();
+            String nombre = buscar.getNombre();
+            String apellido = buscar.getApellido();
+            String rol = buscar.getRol();
+            Date fechaNacimiento = buscar.getFechaNacimiento(); 
+            if(cedula.equals(usuario)&&rol.equals("Gerente")){
+               GerenteFormulario Gerente = new GerenteFormulario();
+            Gerente.setVisible(true);
+            setVisible(false);
+            } else if(cedula.equals(usuario)){
+                
+            EmpleadosFormulario Empleados = new EmpleadosFormulario();
+            Empleados.setVisible(true);
+            setVisible(false);
+            }
+        }
+        }
+    }//GEN-LAST:event_btEntrarActionPerformed
 
     /**
      * @param args the command line arguments

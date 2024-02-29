@@ -83,5 +83,24 @@ public class EmpleadosSuperClase {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
+
+    public EmpleadosSuperClase(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rol = rol;
+        this.fechaNacimiento = fechaNacimiento;
+        this.cedula = cedula;
+    }
+
+    public EmpleadosSuperClase(String rol, String usuario) {
+        this.rol = rol;
+        this.usuario = usuario;
+    }
+    
+
+    @Override
+    public String toString() {
+        return "EmpleadosSuperClase{" + "nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + ", fechaNacimiento=" + fechaNacimiento + ", cedula=" + cedula + ", usuario=" + usuario + ", contrasenia=" + contrasenia + '}';
+    }
     
 }

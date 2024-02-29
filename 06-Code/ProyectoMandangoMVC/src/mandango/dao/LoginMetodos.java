@@ -5,9 +5,14 @@
 package mandango.dao;
 
 import com.mongodb.MongoException;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
+import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Usuarios;
 import org.bson.Document;
 
@@ -38,33 +43,45 @@ public class LoginMetodos implements ILogin {
     }
 
 
-    @Override
-    public boolean AutenticarLogin(String usuarios, String contrasenia) {
-  boolean encontrado=false;
-        Document filtro=null,filtro2=null;
-        Document resultado = null,resultado2=null;
-        try{
-             filtro = new Document ("usuario",usuarios);
-             resultado = (Document)coleccionUsuarios.find(filtro).first();
-             filtro2 = new Document ("contrasenia",contrasenia);
-             resultado2 = (Document)coleccionUsuarios.find(filtro2).first();
-             if ((resultado!= null)&&(resultado2!=null)){
-                 encontrado=true;
-             }
-        }catch(MongoException ex){
-            JOptionPane.showMessageDialog(null,"Error al consultar datos segun id';" +ex.toString());
-                     }finally{
-                             
-                             }
-             
-        
-        return encontrado;  
-
-    }
+  
 
     @Override
     public boolean MostrarVentana(String usuario) {
-       
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public boolean AutenticarLogin(String usuarios, String contrasenia) {
+        boolean verificado=false;
+      Document query = new Document ("usuario",usuarios).append("contrasenia",contrasenia);
+        FindIterable<Document> result = coleccionUsuarios.find(query);
+        if(result.iterator().hasNext()){
+            verificado = true;
+        }
+        return verificado;
+    }
+
+    @Override
+    public List<EmpleadosSuperClase> ListaUsuarios() {
+        FindIterable<Document> documento;
+        List<EmpleadosSuperClase> ListaUsuarios = new ArrayList<>();
+        try{
+            documento=coleccionUsuarios.find();
+        for (Document buscar : documento){
+            String cedula = buscar.getString("cedula");
+            String nombre = buscar.getString("nombre");
+            String apellido = buscar.getString("apellido");
+            String rol = buscar.getString("rol");
+            Date fechaNacimiento = buscar.getDate("fechaNacimiento");
+            EmpleadosSuperClase usuarios= new EmpleadosSuperClase(nombre, apellido, rol, fechaNacimiento, cedula);
+            ListaUsuarios.add(usuarios);
+        }
+        }catch (MongoException ex){
+            JOptionPane.showMessageDialog(null,"Error al consultar datos"+ex.getMessage());
+        }finally{
+           
+        }
+        return ListaUsuarios;
+    
+    }
 }
