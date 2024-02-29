@@ -5,37 +5,26 @@
 package mandango.pruebas;
 
 import mandango.dao.LoginMetodos;
-import mandango.modelo.Usuarios;
+import mandango.vista.Login;
 
 /**
  *
- * @author DELL
+ * @author Usuario
  */
 public class TestLogin {
-
     LoginMetodos repositorio = new LoginMetodos();
-
-    public void testBuscarID() {
-
-        Usuarios cedu = new Usuarios();
-        String cedula = cedu.getCedula();
-        Usuarios resultado = repositorio.BuscarUsuario(cedula);
-
-        if (resultado != null) {
-            String cedulaResultado = resultado.getCedula();
-            if (cedulaResultado != null && cedulaResultado.equals(cedula)) {
-                System.out.println("La contrasenia es: " + resultado.getContrasenia());
-            } else {
-                System.out.println("Error: La cédula del usuario no coincide.");
-            }
-        } else {
-            System.out.println("Error: No se encontró ningún usuario con la cédula especificada.");
+    public void TestAutenticarLogin(){
+        String cedula="1900767508", contrasenia="221204";
+          boolean resultado = repositorio.AutenticarLogin(cedula, contrasenia);
+//          System.out.println(resultado);
+          if(resultado)
+              System.out.println("Encontrado");
+          else
+          System.out.println("Error al verificar");
+        
+    }
+    public static void main(String[] args){
+            TestLogin test = new TestLogin();
+            test.TestAutenticarLogin();
         }
-
-    }
-
-    public static void main(String[] args) {
-        TestLogin test = new TestLogin();
-        test.testBuscarID();
-    }
 }
