@@ -12,6 +12,7 @@ import mandango.modelo.Usuarios;
  */
 public interface ILogin {
     
-    public Usuarios BuscarUsuario (String cedula);
+     public boolean AutenticarLogin(String usuarios, String contrasenia);
+    public boolean MostrarVentana(String usuario);
     
 }

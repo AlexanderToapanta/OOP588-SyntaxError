@@ -17,48 +17,54 @@ import org.bson.Document;
  */
 public class LoginMetodos implements ILogin {
 
-    Conexion conn = new Conexion();
+     Conexion conn = new Conexion();
     MongoDatabase database;
-    private MongoCollection<Document> collection;
+    private MongoCollection coleccionUsuarios, coleccionEmpleados,coleccionGerente;
 
     public LoginMetodos() {
         if (conn != null) {
             this.conn = conn.crearConexion();
             this.database = conn.getDataB();
-            this.collection = database.getCollection("Usuarios");
+            this.coleccionEmpleados = database.getCollection("Empleados");
+            this.coleccionUsuarios = database.getCollection("Usuarios");
+        }
+    }
+    private void Cierre() {
+        try {
+            conn.getMongo().close();
+        } catch (MongoException exM) {
+            JOptionPane.showMessageDialog(null, "Error en ingresar Datos" + exM.toString());
         }
     }
 
-    private void cierreConexion() {
-        try {
-            conn.getMongo().close();
-        } catch (MongoException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar" + ex.toString());
-        }
+
+    @Override
+    public boolean AutenticarLogin(String usuarios, String contrasenia) {
+  boolean encontrado=false;
+        Document filtro=null,filtro2=null;
+        Document resultado = null,resultado2=null;
+        try{
+             filtro = new Document ("usuario",usuarios);
+             resultado = (Document)coleccionUsuarios.find(filtro).first();
+             filtro2 = new Document ("contrasenia",contrasenia);
+             resultado2 = (Document)coleccionUsuarios.find(filtro2).first();
+             if ((resultado!= null)&&(resultado2!=null)){
+                 encontrado=true;
+             }
+        }catch(MongoException ex){
+            JOptionPane.showMessageDialog(null,"Error al consultar datos segun id';" +ex.toString());
+                     }finally{
+                             
+                             }
+             
+        
+        return encontrado;  
 
     }
 
     @Override
-    public Usuarios BuscarUsuario(String cedula) {
-        Usuarios usuario = null; // Inicializamos el objeto como null
-        Document filtro = new Document("cedula", cedula);
-        Document resultado = (Document) collection.find(filtro).first();
-
-        try {
-            if (resultado != null) {
-                // Si se encuentra un resultado en la base de datos
-                // Creamos un nuevo objeto Usuarios y asignamos los valores recuperados
-                usuario = new Usuarios();
-                usuario.getCedula();
-                usuario.getContrasenia();
-            }
-        } catch (MongoException ex) {
-            JOptionPane.showMessageDialog(null, "Error al consultarndatos segun id';" + ex.toString());
-        } finally {
-            cierreConexion();
-        }
-
-        return usuario;
+    public boolean MostrarVentana(String usuario) {
+       
     }
 
 }
