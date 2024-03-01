@@ -52,7 +52,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
-<<<<<<< Updated upstream
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         lbNombre = new javax.swing.JLabel();
@@ -61,14 +60,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         lbHorario = new javax.swing.JLabel();
         lbFechaNa = new javax.swing.JLabel();
         lbHorario13 = new javax.swing.JLabel();
-=======
-        jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
->>>>>>> Stashed changes
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -79,7 +70,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-<<<<<<< Updated upstream
         jPanel7.setBackground(new java.awt.Color(153, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Swis721 Blk BT", 2, 36)); // NOI18N
@@ -138,53 +128,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lbHorario)
                 .addContainerGap(205, Short.MAX_VALUE))
-=======
-        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
-
-        jLabel7.setFont(new java.awt.Font("Swis721 Blk BT", 2, 36)); // NOI18N
-        jLabel7.setText("BIENVENIDO A CAFE MANDANGO");
-
-        jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel2");
-
-        jLabel3.setText("jLabel3");
-
-        jLabel4.setText("jLabel4");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel7)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel2)
-                .addGap(49, 49, 49)
-                .addComponent(jLabel3)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel4)
-                .addContainerGap(102, Short.MAX_VALUE))
->>>>>>> Stashed changes
         );
 
         jMenu1.setText("Cafeteria");
@@ -211,7 +154,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< Updated upstream
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -219,13 +161,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 87, Short.MAX_VALUE))
-=======
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
->>>>>>> Stashed changes
         );
 
         pack();
@@ -273,21 +208,12 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< Updated upstream
     private javax.swing.JLabel jLabel13;
-=======
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
->>>>>>> Stashed changes
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-<<<<<<< Updated upstream
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lbEdad;
     private javax.swing.JLabel lbFechaNa;
@@ -295,9 +221,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
     private javax.swing.JLabel lbHorario13;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbrol;
-=======
-    private javax.swing.JPanel jPanel1;
->>>>>>> Stashed changes
     private javax.swing.JMenuItem mnCerrarSecion;
     // End of variables declaration//GEN-END:variables
 }

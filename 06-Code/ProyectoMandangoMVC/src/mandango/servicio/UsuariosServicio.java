@@ -7,13 +7,9 @@ package mandango.servicio;
 import java.util.List;
 import mandango.dao.EmpleadoMetodos;
 import mandango.modelo.Empleados;
-<<<<<<< Updated upstream
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.ProductosCafeteria;
 import mandango.modelo.Usuarios;
-=======
-import mandango.modelo.ProductosCafeteria;
->>>>>>> Stashed changes
 
 /**
  *
@@ -33,11 +29,7 @@ public class UsuariosServicio {
         return new EmpleadoMetodos().DatosEmpleados(empleados);
     }
     
-<<<<<<< Updated upstream
     public static EmpleadosSuperClase BuscarUsuario(String cedula){
-=======
-    public Empleados BuscarUsuario(String cedula){
->>>>>>> Stashed changes
         return new EmpleadoMetodos().BuscarUsuario(cedula);
     }
     

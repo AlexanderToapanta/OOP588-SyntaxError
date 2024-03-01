@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -89,7 +89,6 @@ public class EmpleadoMetodos implements IEmpleado {
     @Override
         public EmpleadosSuperClase BuscarUsuario(String usuario) {
 
-<<<<<<< Updated upstream
       EmpleadosSuperClase empleado = null;
     Document filtro = null;
     Document resultado = null;
@@ -97,26 +96,6 @@ public class EmpleadoMetodos implements IEmpleado {
     try {
         Document query = new Document("usuario", usuario);
         FindIterable<Document> result = collection.find(query);
-=======
-        Empleados empleado = null;
-        Document filtro=null;
-        Document resultado = null, usuario = null;
-        try{
-             filtro = new Document ("cedula",cedula);
-             resultado = (Document)collectionEmpleados.find(filtro).first();
-             if (resultado != null){
-                 usuario= collection.find(eq("cedula",resultado.getString("cedula"))).first();
-                 empleado.setNombre(resultado.getString("nombre"));
-                 empleado.setApellido(resultado.getString("apellido"));
-                 
-             }
-        }catch(MongoException ex){
-            JOptionPane.showMessageDialog(null,"Error al consultar datos segun id';" +ex.toString());
-                     }finally{
-                             cierreConexion();
-                             }
-             
->>>>>>> Stashed changes
         
         if (result.iterator().hasNext()) {
             resultado = result.iterator().next();
