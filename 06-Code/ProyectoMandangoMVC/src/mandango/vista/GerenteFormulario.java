@@ -60,6 +60,8 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        btnIngesoIngredientes = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         mnCerrarSecion = new javax.swing.JMenuItem();
 
@@ -133,6 +135,18 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenu3.setText("Gestionar Empleados");
         jMenuBar1.add(jMenu3);
 
+        jMenu5.setText("Finanzas");
+
+        btnIngesoIngredientes.setText("Ingresar Ingredientes");
+        btnIngesoIngredientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngesoIngredientesActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnIngesoIngredientes);
+
+        jMenuBar1.add(jMenu5);
+
         jMenu4.setText("Salir");
 
         mnCerrarSecion.setText("Cerrar Seción");
@@ -166,6 +180,12 @@ public class GerenteFormulario extends javax.swing.JFrame {
         login.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_mnCerrarSecionActionPerformed
+
+    private void btnIngesoIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngesoIngredientesActionPerformed
+         IngresoDeMateriaPrima ingredientes = new IngresoDeMateriaPrima();
+        ingredientes.setVisible(true);
+        
+    }//GEN-LAST:event_btnIngesoIngredientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,12 +223,14 @@ public class GerenteFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnIngesoIngredientes;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbEdad;

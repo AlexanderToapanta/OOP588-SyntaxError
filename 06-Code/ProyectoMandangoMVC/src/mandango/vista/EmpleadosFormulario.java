@@ -54,16 +54,15 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        lbNombre6 = new javax.swing.JLabel();
-        lbEdad6 = new javax.swing.JLabel();
-        lbrol6 = new javax.swing.JLabel();
-        lbHorario12 = new javax.swing.JLabel();
-        lbFechaNa6 = new javax.swing.JLabel();
+        lbNombre = new javax.swing.JLabel();
+        lbEdad = new javax.swing.JLabel();
+        lbrol = new javax.swing.JLabel();
+        lbHorario = new javax.swing.JLabel();
+        lbFechaNa = new javax.swing.JLabel();
         lbHorario13 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         mnCerrarSecion = new javax.swing.JMenuItem();
 
@@ -76,15 +75,15 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Swis721 Blk BT", 2, 36)); // NOI18N
         jLabel13.setText("BIENVENIDO A CAFE MANDANGO");
 
-        lbNombre6.setText("jLabel1");
+        lbNombre.setText("jLabel1");
 
-        lbEdad6.setText("jLabel2");
+        lbEdad.setText("jLabel2");
 
-        lbrol6.setText("jLabel3");
+        lbrol.setText("jLabel3");
 
-        lbHorario12.setText("jLabel4");
+        lbHorario.setText("jLabel4");
 
-        lbFechaNa6.setText("jLabel4");
+        lbFechaNa.setText("jLabel4");
 
         lbHorario13.setText("jLabel4");
 
@@ -99,12 +98,11 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbFechaNa6, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                    .addComponent(lbNombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbEdad6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(lbHorario12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                        .addComponent(lbrol6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbFechaNa, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addComponent(lbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addComponent(lbrol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbHorario13, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(109, 109, 109))
@@ -117,18 +115,18 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel13)
                         .addGap(44, 44, 44)
-                        .addComponent(lbNombre6))
+                        .addComponent(lbNombre))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(lbHorario13)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbFechaNa6)
+                .addComponent(lbFechaNa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbEdad6)
+                .addComponent(lbEdad)
                 .addGap(18, 18, 18)
-                .addComponent(lbrol6)
+                .addComponent(lbrol)
                 .addGap(18, 18, 18)
-                .addComponent(lbHorario12)
+                .addComponent(lbHorario)
                 .addContainerGap(205, Short.MAX_VALUE))
         );
 
@@ -137,9 +135,6 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
 
         jMenu2.setText("Cambiar Contraseña");
         jMenuBar1.add(jMenu2);
-
-        jMenu4.setText("Finanzas");
-        jMenuBar1.add(jMenu4);
 
         jMenu3.setText("Salir");
 
@@ -213,68 +208,19 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lbEdad;
-    private javax.swing.JLabel lbEdad1;
-    private javax.swing.JLabel lbEdad2;
-    private javax.swing.JLabel lbEdad3;
-    private javax.swing.JLabel lbEdad4;
-    private javax.swing.JLabel lbEdad5;
-    private javax.swing.JLabel lbEdad6;
     private javax.swing.JLabel lbFechaNa;
-    private javax.swing.JLabel lbFechaNa1;
-    private javax.swing.JLabel lbFechaNa2;
-    private javax.swing.JLabel lbFechaNa3;
-    private javax.swing.JLabel lbFechaNa4;
-    private javax.swing.JLabel lbFechaNa5;
-    private javax.swing.JLabel lbFechaNa6;
     private javax.swing.JLabel lbHorario;
-    private javax.swing.JLabel lbHorario1;
-    private javax.swing.JLabel lbHorario10;
-    private javax.swing.JLabel lbHorario11;
-    private javax.swing.JLabel lbHorario12;
     private javax.swing.JLabel lbHorario13;
-    private javax.swing.JLabel lbHorario2;
-    private javax.swing.JLabel lbHorario3;
-    private javax.swing.JLabel lbHorario4;
-    private javax.swing.JLabel lbHorario5;
-    private javax.swing.JLabel lbHorario6;
-    private javax.swing.JLabel lbHorario7;
-    private javax.swing.JLabel lbHorario8;
-    private javax.swing.JLabel lbHorario9;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JLabel lbNombre1;
-    private javax.swing.JLabel lbNombre2;
-    private javax.swing.JLabel lbNombre3;
-    private javax.swing.JLabel lbNombre4;
-    private javax.swing.JLabel lbNombre5;
-    private javax.swing.JLabel lbNombre6;
     private javax.swing.JLabel lbrol;
-    private javax.swing.JLabel lbrol1;
-    private javax.swing.JLabel lbrol2;
-    private javax.swing.JLabel lbrol3;
-    private javax.swing.JLabel lbrol4;
-    private javax.swing.JLabel lbrol5;
-    private javax.swing.JLabel lbrol6;
     private javax.swing.JMenuItem mnCerrarSecion;
     // End of variables declaration//GEN-END:variables
 }

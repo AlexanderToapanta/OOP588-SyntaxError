@@ -19,11 +19,6 @@
             <Property name="text" type="java.lang.String" value="Cambiar Contrase&#xf1;a"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Finanzas"/>
-          </Properties>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
@@ -96,13 +91,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lbFechaNa6" alignment="0" pref="196" max="32767" attributes="0"/>
-                      <Component id="lbNombre6" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                      <Component id="lbEdad6" alignment="0" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="lbHorario12" alignment="0" pref="184" max="32767" attributes="0"/>
-                          <Component id="lbrol6" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="lbFechaNa" alignment="0" pref="196" max="32767" attributes="0"/>
+                      <Component id="lbNombre" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                      <Component id="lbEdad" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lbHorario" alignment="0" pref="196" max="32767" attributes="0"/>
+                      <Component id="lbrol" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="lbHorario13" min="-2" pref="175" max="-2" attributes="0"/>
@@ -118,7 +111,7 @@
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Component id="lbNombre6" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbNombre" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
@@ -126,13 +119,13 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lbFechaNa6" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbFechaNa" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lbEdad6" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbEdad" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="lbrol6" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbrol" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="lbHorario12" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbHorario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="205" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -147,27 +140,27 @@
             <Property name="text" type="java.lang.String" value="BIENVENIDO A CAFE MANDANGO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbNombre6">
+        <Component class="javax.swing.JLabel" name="lbNombre">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbEdad6">
+        <Component class="javax.swing.JLabel" name="lbEdad">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbrol6">
+        <Component class="javax.swing.JLabel" name="lbrol">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbHorario12">
+        <Component class="javax.swing.JLabel" name="lbHorario">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbFechaNa6">
+        <Component class="javax.swing.JLabel" name="lbFechaNa">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
