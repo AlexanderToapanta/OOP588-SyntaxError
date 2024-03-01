@@ -7,7 +7,9 @@ package mandango.servicio;
 import java.util.List;
 import mandango.dao.EmpleadoMetodos;
 import mandango.modelo.Empleados;
+import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.ProductosCafeteria;
+import mandango.modelo.Usuarios;
 
 /**
  *
@@ -27,7 +29,7 @@ public class UsuariosServicio {
         return new EmpleadoMetodos().DatosEmpleados(empleados);
     }
     
-    public Empleados BuscarUsuario(String cedula){
+    public static EmpleadosSuperClase BuscarUsuario(String cedula){
         return new EmpleadoMetodos().BuscarUsuario(cedula);
     }
     

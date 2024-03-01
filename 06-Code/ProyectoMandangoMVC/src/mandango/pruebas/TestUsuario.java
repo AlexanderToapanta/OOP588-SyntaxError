@@ -9,6 +9,7 @@ import java.util.List;
 import mandango.dao.EmpleadoMetodos;
 import mandango.dao.GerenteMetodos;
 import mandango.modelo.Empleados;
+import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Usuarios;
 
 /**
@@ -36,14 +37,21 @@ public class TestUsuario {
     
     public void testBuscarUsuarios(){
         
-        Empleados empleado = new Empleados();
-        String cedula = "1900767508";
-        Empleados resultado = repositorio.BuscarUsuario(cedula);
+        EmpleadosSuperClase empleado = new EmpleadosSuperClase();
+        Usuarios usuario = new Usuarios();
+        
+        String cedula = "1105032963";
+        EmpleadosSuperClase resultado = repositorio.BuscarUsuario(cedula);
+        
+        
         
         if(resultado!= null)
-            System.out.println("nombre" + empleado.getNombre());
+           System.out.println(resultado.toString());
         else
             System.out.println("Error");
+    }
+    public void buscarIdTest() {
+        
     }
     
     public static void main(String[] args) {

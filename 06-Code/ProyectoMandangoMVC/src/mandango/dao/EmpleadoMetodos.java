@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.Empleados;
+import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.ProductosCafeteria;
 import mandango.modelo.Usuarios;
 import org.bson.Document;
@@ -86,32 +87,43 @@ public class EmpleadoMetodos implements IEmpleado {
     }
 
     @Override
-        public Empleados BuscarUsuario(String cedula) {
+        public EmpleadosSuperClase BuscarUsuario(String usuario) {
 
-        Empleados empleado = null;
-        Document filtro=null;
-        Document resultado = null, usuario = null;
-        try{
-             filtro = new Document ("cedula",cedula);
-             resultado = (Document)collectionEmpleados.find(filtro).first();
-             if (resultado != null){
-                 usuario= collection.find(eq("cedula",resultado.getString("cedula"))).first();
-                 empleado.setNombre(resultado.getString("nombre"));
-                 empleado.setApellido(resultado.getString("apellido"));
-                 
-             }
-        }catch(MongoException ex){
-            JOptionPane.showMessageDialog(null,"Error al consultarndatos segun id';" +ex.toString());
-                     }finally{
-                             cierreConexion();
-                             }
-             
+      EmpleadosSuperClase empleado = null;
+    Document filtro = null;
+    Document resultado = null;
+    
+    try {
+        Document query = new Document("usuario", usuario);
+        FindIterable<Document> result = collection.find(query);
         
-        return empleado;
+        if (result.iterator().hasNext()) {
+            resultado = result.iterator().next();
+            if (resultado != null) {
+                empleado = new EmpleadosSuperClase();
+                empleado.setCedula(resultado.getString("cedula"));
+                empleado.setNombre(resultado.getString("nombre"));
+                empleado.setApellido(resultado.getString("apellido"));
+                empleado.setFechaNacimiento(resultado.getDate("fechaNacimiento"));
+                empleado.setUsuario(resultado.getString("usuario"));
+                empleado.setContrasenia(resultado.getString("contrasenia"));
+                empleado.setRol(resultado.getString("rol"));
+            }
+            
+            
+        }
+    } catch (MongoException ex) {
+        JOptionPane.showMessageDialog(null, "Error al consultar datos según usuario: " + ex.toString());
+    } finally {
+        cierreConexion();
+    }
+
+    return empleado;
+    }
         
     }
     
     
 
 
-}
+
