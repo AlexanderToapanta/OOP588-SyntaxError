@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/IEmpleado.java</file>
             <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/EmpleadoMetodos.java</file>
             <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/IngresoDeMateriaPrima.java</file>
@@ -19,6 +20,52 @@
             <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/Login.java</file>
             <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/GerenteMetodos.java</file>
             <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/servicio/LoginServicio.java</file>
+=======
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/GerenteFormulario.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/ILogin.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/Login.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/servicio/EmpleadoServicio.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/EmpleadosFormulario.java</file>
+=======
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/iconos/fotoGerente%20(1).png</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/Login.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/EmpleadosFormulario.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/GerenteFormulario.java</file>
+>>>>>>> 3b95bc905b24493b1bf746f1206aad80ed240125
+=======
+>>>>>>> e0d7b130b718f6c5ef8b1301067bc77875ff7ffe
+            <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/GerenteFormulario.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/ILogin.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/pruebas/TestLogin.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/Login.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/EmpleadosFormulario.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/LoginMetodos.java</file>
+<<<<<<< HEAD
+=======
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/servicio/GerenteServicio.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/modelo/Gerente.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/LoginMetodos.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/servicio/EmpleadoServicio.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/Login.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/modelo/Empleados.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/EmpleadosFormulario.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/modelo/EmpleadosSuperClase.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/ILogin.java</file>
+            <file>file:/C:/Users/Alexander/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/GerenteFormulario.java</file>
+>>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Usuario/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/modelo/EmpleadosSuperClase.java</file>
+=======
+>>>>>>> dbbfb8e63880a3b68ef9931e22d19196f87102f7
+>>>>>>> cf08364fd3511f5662fcb4073bf6628eeea3b2d3
+>>>>>>> e0d7b130b718f6c5ef8b1301067bc77875ff7ffe
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>

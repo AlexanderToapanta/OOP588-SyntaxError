@@ -60,20 +60,32 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
           <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
+=======
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="87" max="32767" attributes="0"/>
           </Group>
+=======
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+<<<<<<< Updated upstream
     <Container class="javax.swing.JPanel" name="jPanel7">
+=======
+    <Container class="javax.swing.JPanel" name="jPanel1">
+>>>>>>> Stashed changes
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="99" type="rgb"/>
@@ -84,6 +96,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+<<<<<<< Updated upstream
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="39" max="32767" attributes="0"/>
@@ -100,12 +113,31 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="lbHorario13" min="-2" pref="175" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+=======
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< Updated upstream
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -127,12 +159,29 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lbHorario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="205" max="32767" attributes="0"/>
+=======
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="102" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JLabel" name="jLabel13">
+=======
+        <Component class="javax.swing.JLabel" name="jLabel7">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Swis721 Blk BT" size="36" style="2"/>
@@ -140,21 +189,34 @@
             <Property name="text" type="java.lang.String" value="BIENVENIDO A CAFE MANDANGO"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JLabel" name="lbNombre">
+=======
+        <Component class="javax.swing.JLabel" name="jLabel1">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JLabel" name="lbEdad">
+=======
+        <Component class="javax.swing.JLabel" name="jLabel2">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JLabel" name="lbrol">
+=======
+        <Component class="javax.swing.JLabel" name="jLabel3">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JLabel" name="lbHorario">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
@@ -166,6 +228,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbHorario13">
+=======
+        <Component class="javax.swing.JLabel" name="jLabel4">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>

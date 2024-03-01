@@ -14,9 +14,13 @@ import mandango.modelo.Usuarios;
  */
 public interface ILogin {
     
-     public boolean AutenticarLogin(String usuarios, String contrasenia);
+    public boolean AutenticarLogin(String usuarios, String contrasenia);
     public boolean MostrarVentana(String usuario);
+<<<<<<< Updated upstream
         public List<EmpleadosSuperClase> ListaUsuarios();
+=======
+    public List<EmpleadosSuperClase> ListaUsuarios();
+>>>>>>> Stashed changes
 
     
 }

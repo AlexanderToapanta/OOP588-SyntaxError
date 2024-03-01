@@ -21,7 +21,10 @@ import static mandango.servicio.LoginServicio.AutenticarLogin;
 public class Login extends javax.swing.JFrame {
 
     List<EmpleadosSuperClase> ListaUsuarios =null;
+<<<<<<< Updated upstream
      public static String usser = null;
+=======
+>>>>>>> Stashed changes
    
     
     public Login() {
@@ -153,6 +156,7 @@ public class Login extends javax.swing.JFrame {
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         String usuario= txtUsuario.getText(),contrasenia = txtContrasenia.getText();
         if(LoginServicio.AutenticarLogin(usuario, contrasenia)){
+<<<<<<< Updated upstream
              usser= txtUsuario.getText();
                 System.out.println(usser);
             for (EmpleadosSuperClase buscar :ListaUsuarios){
@@ -175,6 +179,26 @@ public class Login extends javax.swing.JFrame {
             
         }
         
+=======
+            for (EmpleadosSuperClase buscar :ListaUsuarios){
+            String cedula = buscar.getCedula();
+            String nombre = buscar.getNombre();
+            String apellido = buscar.getApellido();
+            String rol = buscar.getRol();
+            Date fechaNacimiento = buscar.getFechaNacimiento(); 
+            if(cedula.equals(usuario)&&rol.equals("Gerente")){
+               GerenteFormulario Gerente = new GerenteFormulario();
+                Gerente.setVisible(true);
+                setVisible(false);
+            } else if(cedula.equals(usuario)){
+                
+            EmpleadosFormulario Empleados = new EmpleadosFormulario();
+            Empleados.setVisible(true);
+            setVisible(false);
+            }
+        }
+        }
+>>>>>>> Stashed changes
     }//GEN-LAST:event_btEntrarActionPerformed
 
     /**

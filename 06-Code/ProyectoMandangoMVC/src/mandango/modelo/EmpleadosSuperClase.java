@@ -84,6 +84,19 @@ public class EmpleadosSuperClase {
         this.contrasenia = contrasenia;
     }
 
+<<<<<<< Updated upstream
+=======
+    public EmpleadosSuperClase(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula, String usuario) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rol = rol;
+        this.fechaNacimiento = fechaNacimiento;
+        this.cedula = cedula;
+        this.usuario = usuario;
+    }
+    
+
+>>>>>>> Stashed changes
     public EmpleadosSuperClase(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -96,8 +109,17 @@ public class EmpleadosSuperClase {
         this.rol = rol;
         this.usuario = usuario;
     }
+<<<<<<< Updated upstream
     
 
+=======
+
+       
+    public EmpleadosSuperClase(String cedula) {
+        this.cedula = cedula;
+    }
+    
+>>>>>>> Stashed changes
     @Override
     public String toString() {
         return "EmpleadosSuperClase{" + "nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + ", fechaNacimiento=" + fechaNacimiento + ", cedula=" + cedula + ", usuario=" + usuario + ", contrasenia=" + contrasenia + '}';

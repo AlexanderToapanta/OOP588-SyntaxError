@@ -50,18 +50,29 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+<<<<<<< Updated upstream
         lbNombre = new javax.swing.JLabel();
         lbFechaNa = new javax.swing.JLabel();
         lbEdad = new javax.swing.JLabel();
         lbrol = new javax.swing.JLabel();
         lbHorario = new javax.swing.JLabel();
+=======
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+>>>>>>> Stashed changes
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+<<<<<<< Updated upstream
         jMenu5 = new javax.swing.JMenu();
         btnIngesoIngredientes = new javax.swing.JMenuItem();
+=======
+>>>>>>> Stashed changes
         jMenu4 = new javax.swing.JMenu();
         mnCerrarSecion = new javax.swing.JMenuItem();
 
@@ -72,6 +83,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Swis721 Blk BT", 2, 36)); // NOI18N
         jLabel7.setText("BIENVENIDO A CAFE MANDANGO");
 
+<<<<<<< Updated upstream
         lbNombre.setText("jLabel1");
 
         lbFechaNa.setText("jLabel2");
@@ -81,6 +93,17 @@ public class GerenteFormulario extends javax.swing.JFrame {
         lbrol.setText("jLabel4");
 
         lbHorario.setText("jLabel5");
+=======
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setText("jLabel4");
+
+        jLabel5.setText("jLabel5");
+>>>>>>> Stashed changes
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fotoGerente (1).png"))); // NOI18N
 
@@ -95,6 +118,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addContainerGap(74, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< Updated upstream
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbrol, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -102,6 +126,15 @@ public class GerenteFormulario extends javax.swing.JFrame {
                             .addComponent(lbFechaNa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+=======
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+>>>>>>> Stashed changes
                         .addComponent(jLabel6)
                         .addGap(105, 105, 105))))
         );
@@ -113,6 +146,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< Updated upstream
                         .addComponent(lbNombre)
                         .addGap(38, 38, 38)
                         .addComponent(lbFechaNa)
@@ -122,6 +156,17 @@ public class GerenteFormulario extends javax.swing.JFrame {
                         .addComponent(lbrol)
                         .addGap(48, 48, 48)
                         .addComponent(lbHorario))
+=======
+                        .addComponent(jLabel1)
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel2)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel3)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel4)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel5))
+>>>>>>> Stashed changes
                     .addComponent(jLabel6))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
@@ -135,6 +180,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenu3.setText("Gestionar Empleados");
         jMenuBar1.add(jMenu3);
 
+<<<<<<< Updated upstream
         jMenu5.setText("Finanzas");
 
         btnIngesoIngredientes.setText("Ingresar Ingredientes");
@@ -155,6 +201,16 @@ public class GerenteFormulario extends javax.swing.JFrame {
                 mnCerrarSecionActionPerformed(evt);
             }
         });
+=======
+        jMenu4.setText("Salir");
+
+        mnCerrarSecion.setText("Cerrar Seción");
+        mnCerrarSecion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCerrarSecionActionPerformed(evt);
+            }
+        });
+>>>>>>> Stashed changes
         jMenu4.add(mnCerrarSecion);
 
         jMenuBar1.add(jMenu4);
@@ -181,12 +237,15 @@ public class GerenteFormulario extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_mnCerrarSecionActionPerformed
 
+<<<<<<< Updated upstream
     private void btnIngesoIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngesoIngredientesActionPerformed
          IngresoDeMateriaPrima ingredientes = new IngresoDeMateriaPrima();
         ingredientes.setVisible(true);
         
     }//GEN-LAST:event_btnIngesoIngredientesActionPerformed
 
+=======
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
@@ -223,13 +282,22 @@ public class GerenteFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< Updated upstream
     private javax.swing.JMenuItem btnIngesoIngredientes;
+=======
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+>>>>>>> Stashed changes
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+<<<<<<< Updated upstream
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -238,6 +306,10 @@ public class GerenteFormulario extends javax.swing.JFrame {
     private javax.swing.JLabel lbHorario;
     private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbrol;
+=======
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+>>>>>>> Stashed changes
     private javax.swing.JMenuItem mnCerrarSecion;
     // End of variables declaration//GEN-END:variables
 }

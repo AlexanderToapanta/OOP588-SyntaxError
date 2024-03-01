@@ -68,12 +68,21 @@ public class LoginMetodos implements ILogin {
         try{
             documento=coleccionUsuarios.find();
         for (Document buscar : documento){
+<<<<<<< Updated upstream
             String usuario = buscar.getString("usuario");
 //            String nombre = buscar.getString("nombre");
 //            String apellido = buscar.getString("apellido");
             String rol = buscar.getString("rol");
 //            Date fechaNacimiento = buscar.getDate("fechaNacimiento");
             EmpleadosSuperClase usuarios= new EmpleadosSuperClase(rol, usuario);
+=======
+            String cedula = buscar.getString("cedula");
+            String nombre = buscar.getString("nombre");
+            String apellido = buscar.getString("apellido");
+            String rol = buscar.getString("rol");
+            Date fechaNacimiento = buscar.getDate("fechaNacimiento");
+            EmpleadosSuperClase usuarios= new EmpleadosSuperClase(nombre, apellido, rol, fechaNacimiento, cedula);
+>>>>>>> Stashed changes
             ListaUsuarios.add(usuarios);
         }
         }catch (MongoException ex){

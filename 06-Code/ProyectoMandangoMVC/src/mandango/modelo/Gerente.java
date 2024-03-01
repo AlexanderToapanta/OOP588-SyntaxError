@@ -98,7 +98,5 @@ public class Gerente {
         this.cedula = cedula;
         this.contrasenia = contrasenia;
     }
-    
-    
-    
+
 }

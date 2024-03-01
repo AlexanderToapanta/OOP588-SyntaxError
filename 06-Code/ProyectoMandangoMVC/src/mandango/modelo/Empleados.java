@@ -17,16 +17,7 @@ public class Empleados {
     
     private String cedula, usuario, contrasenia;
 
-    public Empleados() {
-    }
-
-    public Empleados(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.rol = rol;
-        this.fechaNacimiento = fechaNacimiento;
-        this.cedula = cedula;
-    }
+    
 
     public Empleados(String cedula, String contrasenia) {
         this.cedula = cedula;
@@ -101,7 +92,16 @@ public class Empleados {
     public Empleados(String cedula) {
         this.cedula = cedula;
     }
-    
+    public Empleados() {
+    }
+
+    public Empleados(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rol = rol;
+        this.fechaNacimiento = fechaNacimiento;
+        this.cedula = cedula;
+    }
     
     
     
