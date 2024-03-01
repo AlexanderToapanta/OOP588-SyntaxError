@@ -29,7 +29,7 @@ public class UsuariosServicio {
         return new EmpleadoMetodos().DatosEmpleados(empleados);
     }
     
-    public static EmpleadosSuperClase BuscarUsuario(String cedula){
+    public static Empleados BuscarUsuario(String cedula){
         return new EmpleadoMetodos().BuscarUsuario(cedula);
     }
     

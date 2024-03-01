@@ -87,9 +87,9 @@ public class EmpleadoMetodos implements IEmpleado {
     }
 
     @Override
-        public EmpleadosSuperClase BuscarUsuario(String usuario) {
+        public Empleados BuscarUsuario(String usuario) {
 
-      EmpleadosSuperClase empleado = null;
+      Empleados empleado = null;
     Document filtro = null;
     Document resultado = null;
     
@@ -100,7 +100,7 @@ public class EmpleadoMetodos implements IEmpleado {
         if (result.iterator().hasNext()) {
             resultado = result.iterator().next();
             if (resultado != null) {
-                empleado = new EmpleadosSuperClase();
+                empleado = new Empleados();
                 empleado.setCedula(resultado.getString("cedula"));
                 empleado.setNombre(resultado.getString("nombre"));
                 empleado.setApellido(resultado.getString("apellido"));

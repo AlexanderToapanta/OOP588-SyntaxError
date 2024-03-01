@@ -6,7 +6,6 @@ package mandango.dao;
 
 import java.util.List;
 import mandango.modelo.Empleados;
-import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.ProductosCafeteria;
 import mandango.modelo.Usuarios;
 
@@ -19,6 +18,6 @@ public interface IEmpleado {
     public List<ProductosCafeteria> ListarProductos();
     public boolean InsertarProductos();
     public boolean DatosEmpleados(Empleados empleados);
-    public EmpleadosSuperClase BuscarUsuario(String usuario);
+    public Empleados BuscarUsuario(String usuario);
     
 }

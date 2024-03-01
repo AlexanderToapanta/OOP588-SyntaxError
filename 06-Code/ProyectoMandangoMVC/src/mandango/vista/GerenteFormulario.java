@@ -6,7 +6,7 @@ package mandango.vista;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import mandango.modelo.EmpleadosSuperClase;
+import mandango.modelo.Empleados;
 import mandango.servicio.UsuariosServicio;
 
 /**
@@ -15,7 +15,7 @@ import mandango.servicio.UsuariosServicio;
  */
 public class GerenteFormulario extends javax.swing.JFrame {
 
-      EmpleadosSuperClase gerente = new EmpleadosSuperClase();
+    Empleados gerente = new Empleados();
     private  String dato;
     public GerenteFormulario() {
         initComponents();
@@ -25,8 +25,8 @@ public class GerenteFormulario extends javax.swing.JFrame {
      public void datosPerfil(){
         Login dato = new Login();
         String usuario = dato.usser;
-       System.err.println(dato.usser);
-    gerente = UsuariosServicio.BuscarUsuario(usuario);
+        System.err.println(dato.usser);
+        gerente = UsuariosServicio.BuscarUsuario(usuario);
     
     if (gerente != null) {
         lbNombre.setText("Empleado: " + gerente.getNombre() + " " + gerente.getApellido());

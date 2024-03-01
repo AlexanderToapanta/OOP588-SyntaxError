@@ -17,7 +17,7 @@ import mandango.servicio.UsuariosServicio;
  */
 public class EmpleadosFormulario extends javax.swing.JFrame {
 
-   EmpleadosSuperClase empleado = new EmpleadosSuperClase();
+    Empleados empleado = new Empleados();
     private  String dato;
     public EmpleadosFormulario() {
         initComponents();
@@ -27,8 +27,8 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
    public void datosPerfil(){
         Login dato = new Login();
         String usuario = dato.usser;
-       System.out.println(dato.usser);
-    empleado = UsuariosServicio.BuscarUsuario(usuario);
+        System.out.println(dato.usser);
+        empleado = UsuariosServicio.BuscarUsuario(usuario);
     
     if (empleado != null) {
         lbNombre.setText("Empleado: " + empleado.getNombre() + " " + empleado.getApellido());
