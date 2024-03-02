@@ -41,7 +41,7 @@ public class TestUsuario {
         Usuarios usuario = new Usuarios();
         
         String cedula = "1105032963";
-        Empleados resultado = repositorio.BuscarUsuario(cedula);
+        EmpleadosSuperClase resultado = repositorio.BuscarUsuario(cedula);
         
         
         
