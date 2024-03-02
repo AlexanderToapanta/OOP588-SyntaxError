@@ -28,14 +28,14 @@ public class EmpleadoMetodos implements IEmpleado {
 
     Conexion conn = new Conexion();
     MongoDatabase database;
-    
+
     private MongoCollection<Document> collection;
 
     public EmpleadoMetodos() {
         if (conn != null) {
             this.conn = conn.crearConexion();
             this.database = conn.getDataB();
-            
+
             this.collection = database.getCollection("Usuarios");
         }
     }
@@ -87,9 +87,9 @@ public class EmpleadoMetodos implements IEmpleado {
     }
 
     @Override
-        public EmpleadosSuperClase BuscarUsuario(String usuario) {
+    public EmpleadosSuperClase BuscarUsuario(String usuario) {
 
-      EmpleadosSuperClase empleado = null;
+    EmpleadosSuperClase empleado = null;
     Document filtro = null;
     Document resultado = null;
     
