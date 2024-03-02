@@ -157,8 +157,7 @@ public class Login extends javax.swing.JFrame {
                 System.out.println(usser);
             for (EmpleadosSuperClase buscar :ListaUsuarios){
             String usuarios = buscar.getUsuario();
-            String rol = buscar.getRol();
-            Date fechaNacimiento = buscar.getFechaNacimiento(); 
+            String rol = buscar.getRol();            
             if(usuarios.equals(usuario)&&rol.equals("Gerente")){
                GerenteFormulario Gerente = new GerenteFormulario();
             Gerente.setVisible(true);

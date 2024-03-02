@@ -28,14 +28,12 @@ public class EmpleadoMetodos implements IEmpleado {
 
     Conexion conn = new Conexion();
     MongoDatabase database;
-    private MongoCollection<Document> collectionEmpleados;
     private MongoCollection<Document> collection;
 
     public EmpleadoMetodos() {
         if (conn != null) {
             this.conn = conn.crearConexion();
             this.database = conn.getDataB();
-            this.collectionEmpleados = database.getCollection("Empleados");
             this.collection = database.getCollection("Usuarios");
         }
     }
@@ -55,7 +53,7 @@ public class EmpleadoMetodos implements IEmpleado {
         FindIterable<Document> documento;
         List<ProductosCafeteria> ListaProductos = new ArrayList<ProductosCafeteria>();
         try {
-            documento = collectionEmpleados.find();
+            documento = collection.find();
             for (Document buscar : documento) {
                String nombreProducto = buscar.getString("nombreProducto");
                int cantidad = buscar.getInteger("cantidad");

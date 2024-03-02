@@ -17,7 +17,7 @@ import mandango.servicio.UsuariosServicio;
  */
 public class EmpleadosFormulario extends javax.swing.JFrame {
 
-    Empleados empleado = new Empleados();
+    EmpleadosSuperClase empleado = new EmpleadosSuperClase();
     private  String dato;
     public EmpleadosFormulario() {
         initComponents();
