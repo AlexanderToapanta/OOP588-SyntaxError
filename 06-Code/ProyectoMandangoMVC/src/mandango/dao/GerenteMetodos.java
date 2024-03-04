@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.Empleados;
+import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Gerente;
 
 import org.bson.Document;
@@ -73,27 +74,6 @@ public class GerenteMetodos implements IGerente{
     }
 
     @Override
-    public boolean InsertarEmpleado(Empleados empleado) {
-    Document document;
-        try{
-        document = new Document("cedula", empleado.getCedula())
-                .append("nombre", empleado.getNombre())
-                .append("apellido", empleado.getApellido())
-                .append("fechaNacimiento", empleado.getFechaNacimiento())
-                .append("usuario", empleado.getUsuario())
-                .append("rol", empleado.getRol())
-                .append("contrasenia", empleado.getContrasenia());
-                collection.insertOne(document);
-        }catch (MongoException ex){
-            JOptionPane.showMessageDialog(null,"Error de insercion" +ex.toString());
-            return false;  
-        }   finally{
-            cierreConexion();   
-        }
-           return true;      
-    }
-
-    @Override
     public boolean EliminarEmpleado(String cedula) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -113,6 +93,27 @@ public class GerenteMetodos implements IGerente{
 
                 throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         
+    }
+
+    @Override
+    public boolean InsertarEmpleado(EmpleadosSuperClase empleado) {
+        Document document;
+        try{
+        document = new Document("cedula", empleado.getCedula())
+                .append("nombre", empleado.getNombre())
+                .append("apellido", empleado.getApellido())
+                .append("fechaNacimiento", empleado.getFechaNacimiento())
+                .append("usuario", empleado.getUsuario())
+                .append("rol", empleado.getRol())
+                .append("contrasenia", empleado.getContrasenia());
+                collection.insertOne(document);
+        }catch (MongoException ex){
+            JOptionPane.showMessageDialog(null,"Error de insercion" +ex.toString());
+            return false;  
+        }   finally{
+            cierreConexion();   
+        }
+           return true;
     }
 
        

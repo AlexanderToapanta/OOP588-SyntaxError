@@ -14,9 +14,11 @@ import mandango.modelo.EmpleadosSuperClase;
  * @author Usuario
  */
 public class LoginServicio {
+    
     public static boolean AutenticarLogin(String usuarios, String contrasenia){
     return new LoginMetodos().AutenticarLogin(usuarios, contrasenia);
     }
+    
      public static List<EmpleadosSuperClase> ListaUsuarios() {
         return new LoginMetodos().ListaUsuarios();
     }
