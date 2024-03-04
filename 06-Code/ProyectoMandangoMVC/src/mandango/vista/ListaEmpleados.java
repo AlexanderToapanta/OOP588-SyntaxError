@@ -76,7 +76,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nombre", "Cedula", "Rol"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
