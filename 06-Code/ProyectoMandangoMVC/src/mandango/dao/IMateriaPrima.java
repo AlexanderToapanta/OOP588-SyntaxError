@@ -14,6 +14,6 @@ import mandango.modelo.MateriaPrima;
 public interface IMateriaPrima {
     
      public List<MateriaPrima> ListarMateriaPrima();
-     public boolean InsertarMateriaPrima();
+     public boolean InsertarMateriaPrima(MateriaPrima materia);
     
 }
