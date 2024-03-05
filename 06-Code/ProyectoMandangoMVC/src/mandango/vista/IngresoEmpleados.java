@@ -4,6 +4,7 @@
  */
 package mandango.vista;
 
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.GerenteServicio;
@@ -35,7 +36,6 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        clFNacimiento = new com.toedter.calendar.JDateChooser();
         cmbRol = new javax.swing.JComboBox<>();
         btnIngresar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -44,6 +44,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        clFechaNacimiento = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,8 +99,8 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel4)
-                        .addGap(98, 98, 98)
-                        .addComponent(clFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(107, 107, 107)
+                        .addComponent(clFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jLabel1))
@@ -127,11 +128,11 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(clFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(23, 23, 23)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(clFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,15 +158,15 @@ public class IngresoEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
+         SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMyy");
         EmpleadosSuperClase insertarEmpleado=new EmpleadosSuperClase(
                 txtCedula.getText(),
                 txtNombre.getText(),
                 txtApellido.getText(),
-                clFNacimiento.getDate(),
+                clFechaNacimiento.getDate(),
                 txtCedula.getText(),
                 cmbRol.getSelectedItem().toString(),
-                clFNacimiento.getDate().toString()
+                formatoFecha.format(clFechaNacimiento.getDate())
                 );
         if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
             JOptionPane.showMessageDialog(null, "registro ingresado correctamente");
@@ -220,7 +221,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnRegresar;
-    private com.toedter.calendar.JDateChooser clFNacimiento;
+    private com.toedter.calendar.JDateChooser clFechaNacimiento;
     private javax.swing.JComboBox<String> cmbRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
