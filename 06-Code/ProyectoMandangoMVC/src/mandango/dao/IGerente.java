@@ -19,7 +19,7 @@ import mandango.modelo.Gerente;
 public interface IGerente {
     
     public List<Empleados> ListarEmpleados();
-    public boolean InsertarEmpleado(Empleados empleado);
+    public boolean InsertarEmpleado(EmpleadosSuperClase empleado);
     public boolean EliminarEmpleado(String cedula);
     public boolean VisualizarGanancias();
     public boolean BuscarUsuario(String cedula);
