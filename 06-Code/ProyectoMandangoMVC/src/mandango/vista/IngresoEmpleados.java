@@ -4,6 +4,7 @@
  */
 package mandango.vista;
 
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.GerenteServicio;
@@ -157,15 +158,17 @@ public class IngresoEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        String cont_temp = dateFormat.format(clFNacimiento.getDate());
         EmpleadosSuperClase insertarEmpleado=new EmpleadosSuperClase(
-                txtCedula.getText(),
                 txtNombre.getText(),
-                txtApellido.getText(),
-                clFNacimiento.getDate(),
                 txtCedula.getText(),
+//                txtNombre.getText(),
                 cmbRol.getSelectedItem().toString(),
-                clFNacimiento.getDate().toString()
+                clFNacimiento.getDate(),
+                txtApellido.getText(),
+                txtCedula.getText()+"xd",
+                cont_temp
                 );
         if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
             JOptionPane.showMessageDialog(null, "registro ingresado correctamente");

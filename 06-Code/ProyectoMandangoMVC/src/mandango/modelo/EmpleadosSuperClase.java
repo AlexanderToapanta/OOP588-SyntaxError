@@ -96,6 +96,8 @@ public class EmpleadosSuperClase {
         this.rol = rol;
         this.usuario = usuario;
     }
+
+    
     
 
     @Override
@@ -104,3 +106,4 @@ public class EmpleadosSuperClase {
     }
     
 }
+

@@ -24,5 +24,6 @@ public interface IGerente {
     public boolean VisualizarGanancias();
     public boolean BuscarUsuario(String cedula);
     public boolean DatosGerente(Gerente gerente);
+    public boolean ActualizarClave(String usuario, String contrasenia);
     
 }
