@@ -20,5 +20,6 @@ public interface IEmpleado {
     public boolean InsertarProductos();
     public boolean DatosEmpleados(Empleados empleados);
     public EmpleadosSuperClase BuscarUsuario(String usuario);
+    public boolean ActualizarClave(EmpleadosSuperClase personal);
     
 }

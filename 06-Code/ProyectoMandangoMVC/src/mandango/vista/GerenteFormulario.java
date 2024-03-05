@@ -60,13 +60,16 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        btncambiapas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        btnIngesoIngredientes = new javax.swing.JMenuItem();
+        btnMostarEgresos = new javax.swing.JMenuItem();
+        btnIngresarIngredientes = new javax.swing.JMenuItem();
+        btnIngresos = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         mnCerrarSecion = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
 
@@ -131,6 +134,15 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Cambiar Contraseña");
+
+        btncambiapas.setText("Cambiar");
+        btncambiapas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncambiapasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btncambiapas);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Gestionar Empleados");
@@ -138,13 +150,29 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         jMenu5.setText("Finanzas");
 
-        btnIngesoIngredientes.setText("Ingresar Ingredientes");
-        btnIngesoIngredientes.addActionListener(new java.awt.event.ActionListener() {
+        btnMostarEgresos.setText("Mostrar Egresos");
+        btnMostarEgresos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngesoIngredientesActionPerformed(evt);
+                btnMostarEgresosActionPerformed(evt);
             }
         });
-        jMenu5.add(btnIngesoIngredientes);
+        jMenu5.add(btnMostarEgresos);
+
+        btnIngresarIngredientes.setText("Ingresar Ingredientes");
+        btnIngresarIngredientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarIngredientesActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnIngresarIngredientes);
+
+        btnIngresos.setText("Mostrar Ingresos");
+        btnIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresosActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnIngresos);
 
         jMenuBar1.add(jMenu5);
 
@@ -182,11 +210,26 @@ public class GerenteFormulario extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_mnCerrarSecionActionPerformed
 
-    private void btnIngesoIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngesoIngredientesActionPerformed
+    private void btnIngresarIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarIngredientesActionPerformed
          IngresoDeMateriaPrima ingredientes = new IngresoDeMateriaPrima();
         ingredientes.setVisible(true);
         
-    }//GEN-LAST:event_btnIngesoIngredientesActionPerformed
+    }//GEN-LAST:event_btnIngresarIngredientesActionPerformed
+
+    private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresosActionPerformed
+
+    private void btnMostarEgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostarEgresosActionPerformed
+        MostraEgresos egresos = new MostraEgresos();
+        egresos.setVisible(true);
+    }//GEN-LAST:event_btnMostarEgresosActionPerformed
+
+    private void btncambiapasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncambiapasActionPerformed
+      CambiarContrasenia cambiar = new CambiarContrasenia();
+        cambiar.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btncambiapasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,7 +267,10 @@ public class GerenteFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btnIngesoIngredientes;
+    private javax.swing.JMenuItem btnIngresarIngredientes;
+    private javax.swing.JMenuItem btnIngresos;
+    private javax.swing.JMenuItem btnMostarEgresos;
+    private javax.swing.JMenuItem btncambiapas;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;

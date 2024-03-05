@@ -45,10 +45,7 @@ public class LoginMetodos implements ILogin {
 
   
 
-    @Override
-    public boolean MostrarVentana(String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 
     @Override
     public boolean AutenticarLogin(String usuarios, String contrasenia) {
@@ -68,11 +65,12 @@ public class LoginMetodos implements ILogin {
         try{
             documento=coleccionUsuarios.find();
         for (Document buscar : documento){
+             String cedula = buscar.getString("cedula");
             String usuario = buscar.getString("usuario");
-//            String nombre = buscar.getString("nombre");
-//            String apellido = buscar.getString("apellido");
+            String nombre = buscar.getString("nombre");
+            String apellido = buscar.getString("apellido");
             String rol = buscar.getString("rol");
-//            Date fechaNacimiento = buscar.getDate("fechaNacimiento");
+            Date fechaNacimiento = buscar.getDate("fechaNacimiento");
             EmpleadosSuperClase usuarios= new EmpleadosSuperClase(rol, usuario);
             ListaUsuarios.add(usuarios);
         }
