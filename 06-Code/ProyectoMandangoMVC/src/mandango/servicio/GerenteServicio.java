@@ -4,8 +4,8 @@
  */
 package mandango.servicio;
 
-import java.util.List;
 import mandango.dao.GerenteMetodos;
+import mandango.modelo.Empleados;
 import mandango.modelo.EmpleadosSuperClase;
 
 /**
@@ -17,7 +17,4 @@ public class GerenteServicio {
         return new GerenteMetodos().InsertarEmpleado(empleado);
     }
     
-    public static List<EmpleadosSuperClase> ListarEmpleados(){
-        return new GerenteMetodos().ListarEmpleados();
-    }
 }

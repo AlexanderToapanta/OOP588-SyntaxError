@@ -66,12 +66,13 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        btncambiapas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         mnCerrarSecion = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel7.setBackground(new java.awt.Color(153, 0, 0));
 
@@ -150,6 +151,15 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Cambiar Contraseña");
+
+        btncambiapas.setText("Cambiar");
+        btncambiapas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncambiapasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btncambiapas);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Salir");
@@ -185,6 +195,12 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
             login.setVisible(true);
             setVisible(false);
     }//GEN-LAST:event_mnCerrarSecionActionPerformed
+
+    private void btncambiapasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncambiapasActionPerformed
+        CambiarContrasenia cambiar = new CambiarContrasenia();
+        cambiar.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btncambiapasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +238,7 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btncambiapas;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
