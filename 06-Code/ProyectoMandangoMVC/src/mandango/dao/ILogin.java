@@ -17,6 +17,8 @@ public interface ILogin {
      public boolean AutenticarLogin(String usuarios, String contrasenia);
     public boolean MostrarVentana(String usuario);
         public List<EmpleadosSuperClase> ListaUsuarios();
+        public String EncriptarClave(String clave);
+        public String DesencriptarClave(String clave, String claveEncriptada);
 
     
 }
