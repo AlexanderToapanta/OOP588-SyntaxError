@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/IGerente.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/ILogin.java</file>
             <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/Login.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/IImagenes.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/EmpleadoMetodos.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/LoginMetodos.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/IProducto.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/vista/IngresoEmpleados.java</file>
+            <file>file:/C:/Users/DELL/Desktop/OOP588-SyntaxError/06-Code/ProyectoMandangoMVC/src/mandango/dao/IEmpleado.java</file>
         </group>
     </open-files>
 </project-private>
