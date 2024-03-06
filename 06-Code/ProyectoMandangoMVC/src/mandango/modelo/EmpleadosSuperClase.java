@@ -94,6 +94,13 @@ public class EmpleadosSuperClase {
         this.rol = rol;
     }
 
+    public EmpleadosSuperClase(String cedula, String nombre, String rol) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.rol = rol;
+    }
+    
+
     public EmpleadosSuperClase(String rol, String usuario) {
         this.rol = rol;
         this.usuario = usuario;

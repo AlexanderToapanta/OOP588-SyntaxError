@@ -20,6 +20,15 @@ public class IngresoEmpleados extends javax.swing.JFrame {
     public IngresoEmpleados() {
         initComponents();
         clFNacimiento.setMaxSelectableDate(new GregorianCalendar(2005, Calendar.JANUARY, 1).getTime());
+        this.setLocationRelativeTo(null);
+    }
+    
+    public void limpiarDatos() {
+        txtApellido.setText("");
+        txtCedula.setText("");
+        txtNombre.setText("");
+        clFNacimiento.setDate(null);
+        cmbRol.setSelectedIndex(0);
     }
 
     /**
@@ -64,6 +73,11 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         jLabel5.setText("Rol:");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Cedula");
 
@@ -170,7 +184,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                 );
         if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
             JOptionPane.showMessageDialog(null, "registro ingresado correctamente");
-//            limpiarDatos();
+            limpiarDatos();
             this.dispose();
             
             
@@ -181,6 +195,12 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         newframe.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ListaEmpleados newframe = new ListaEmpleados();
+        newframe.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
     
     
     /**
