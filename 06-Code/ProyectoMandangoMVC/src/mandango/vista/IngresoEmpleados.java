@@ -191,11 +191,6 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                 txtCedula.getText(),
                 txtNombre.getText(),
                 txtApellido.getText(),
-
-
-                clFNacimiento.getDate(),
-                cmbRol.getSelectedItem().toString(),
-
                 clFNacimiento.getDate(),
                 cmbRol.getSelectedItem().toString(),
                 txtCedula.getText()+"xd",
