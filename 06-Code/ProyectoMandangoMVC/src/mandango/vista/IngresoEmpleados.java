@@ -6,6 +6,10 @@ package mandango.vista;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import java.text.SimpleDateFormat;
+>>>>>>> parent of 49db744 (gg)
 =======
 import java.text.SimpleDateFormat;
 >>>>>>> parent of 49db744 (gg)
@@ -163,6 +167,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                     .addComponent(jLabel3)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jLabel4)
@@ -175,6 +180,22 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                     .addComponent(btnIngresar)
                     .addComponent(btnRegresar))
                 .addGap(59, 59, 59))
+=======
+                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(clFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresar)
+                    .addComponent(btnRegresar))
+                .addGap(90, 90, 90))
+>>>>>>> parent of 49db744 (gg)
 =======
                     .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
@@ -231,10 +252,17 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                 txtApellido.getText(),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 clFNacimiento.getDate(),
                 txtCedula.getText(),
                 cmbRol.getSelectedItem().toString(),
                 clFNacimiento.getDate().toString()
+=======
+                clFechaNacimiento.getDate(),
+                txtCedula.getText(),
+                cmbRol.getSelectedItem().toString(),
+                formatoFecha.format(clFechaNacimiento.getDate())
+>>>>>>> parent of 49db744 (gg)
 =======
                 clFechaNacimiento.getDate(),
                 txtCedula.getText(),
@@ -303,6 +331,10 @@ public class IngresoEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    private com.toedter.calendar.JDateChooser clFechaNacimiento;
+>>>>>>> parent of 49db744 (gg)
 =======
     private com.toedter.calendar.JDateChooser clFechaNacimiento;
 >>>>>>> parent of 49db744 (gg)
