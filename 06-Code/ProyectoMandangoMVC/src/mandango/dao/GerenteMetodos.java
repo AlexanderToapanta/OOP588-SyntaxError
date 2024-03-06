@@ -46,23 +46,18 @@ public class GerenteMetodos implements IGerente{
     }
 
     @Override
-    public List<Empleados> ListarEmpleados() {
+    public List<EmpleadosSuperClase> ListarEmpleados() {
      FindIterable<Document> documento;
-        List<Empleados> ListaEmpleados = new ArrayList<Empleados>();
+        List<EmpleadosSuperClase> ListaEmpleados = new ArrayList<EmpleadosSuperClase>();
         try {
             documento = collection.find();
             for (Document buscar : documento) {
                String cedula = buscar.getString("cedula");
                String nombre = buscar.getString("nombre");
-               String apellido = buscar.getString("apellido");
-               Date fechaNaci = buscar.getDate("fechaNacimiento");
-               String Usuario = buscar.getString("usuario");
                String rol = buscar.getString("rol");
                
-               Empleados empleado = new Empleados(nombre, apellido, rol, fechaNaci, cedula, Usuario);
+               EmpleadosSuperClase empleado = new EmpleadosSuperClase(cedula, nombre, rol);
                ListaEmpleados.add(empleado);
-              // Usuarios usuario = new Usuarios(cedula, Usuario, nombre, apellido, rol, fechaNaci);
-               // ListaUsuarios.add(usuario);
             }
 
         } catch (MongoException ex) {
