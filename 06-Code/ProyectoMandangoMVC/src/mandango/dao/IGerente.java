@@ -18,11 +18,12 @@ import mandango.modelo.Gerente;
  */
 public interface IGerente {
     
-    public List<EmpleadosSuperClase> ListarEmpleados();
+    public List<Empleados> ListarEmpleados();
     public boolean InsertarEmpleado(EmpleadosSuperClase empleado);
     public boolean EliminarEmpleado(String cedula);
     public boolean VisualizarGanancias();
     public boolean BuscarUsuario(String cedula);
     public boolean DatosGerente(Gerente gerente);
+    public boolean ActualizarClave(String usuario, String contrasenia);
     
 }

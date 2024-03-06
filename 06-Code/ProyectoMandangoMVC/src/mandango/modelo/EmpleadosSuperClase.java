@@ -11,11 +11,9 @@ import java.util.Date;
  * @author Alexander
  */
 public class EmpleadosSuperClase {
-    private String cedula;
-    private String nombre,apellido;
-    private Date fechaNacimiento;           
-    private String usuario, rol, contrasenia;
-
+    private String nombre, apellido, rol;
+    private Date fechaNacimiento;   
+    private String cedula, usuario, contrasenia;
 
     public String getNombre() {
         return nombre;
@@ -76,35 +74,30 @@ public class EmpleadosSuperClase {
     public EmpleadosSuperClase() {
     }
 
-    public EmpleadosSuperClase(String cedula, String nombre, String apellido, Date fechaNacimiento , String rol,  String usuario, String contrasenia) {
-        this.cedula = cedula;
+    public EmpleadosSuperClase(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula, String usuario, String contrasenia) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.usuario = usuario;
         this.rol = rol;
+        this.fechaNacimiento = fechaNacimiento;
+        this.cedula = cedula;
+        this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
 
     public EmpleadosSuperClase(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula) {
-        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.rol = rol;
         this.fechaNacimiento = fechaNacimiento;
-        this.rol = rol;
-    }
-
-    public EmpleadosSuperClase(String cedula, String nombre, String rol) {
         this.cedula = cedula;
-        this.nombre = nombre;
-        this.rol = rol;
     }
-    
 
     public EmpleadosSuperClase(String rol, String usuario) {
         this.rol = rol;
         this.usuario = usuario;
     }
+
+    
     
 
     @Override
@@ -113,3 +106,4 @@ public class EmpleadosSuperClase {
     }
     
 }
+
