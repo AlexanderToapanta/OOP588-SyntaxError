@@ -8,7 +8,6 @@ import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -97,28 +96,6 @@ public class GerenteMetodos implements IGerente{
     }
 
     @Override
-
-    public boolean ActualizarClave(String usuario, String contrasenia) {
-        Document filtro,update;
-        UpdateResult resultado;
-        boolean actualizar = false;
-        try{
-            filtro = new Document("usuario",usuario);
-            update = new Document ("$set",new Document("contrasenia",contrasenia));
-            resultado = collection.updateOne(filtro, update);
-            if(resultado.getModifiedCount()>0){
-                actualizar = true;
-                
-            }
-        }catch(MongoException ex){
-                    
-                    }finally{
-                            cierreConexion();
-                            }
-                    return actualizar;
-    }
-     
-
     public boolean InsertarEmpleado(EmpleadosSuperClase empleado) {
         Document document;
         try{
@@ -140,5 +117,4 @@ public class GerenteMetodos implements IGerente{
     }
 
        
-
 }

@@ -4,7 +4,8 @@
  */
 package mandango.vista;
 
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.GerenteServicio;
@@ -14,12 +15,11 @@ import mandango.servicio.GerenteServicio;
  * @author Alexander
  */
 public class IngresoEmpleados extends javax.swing.JFrame {
-
-    /**
-     * Creates new form IngresoEmpleados
-     */
+    
+    
     public IngresoEmpleados() {
         initComponents();
+        clFNacimiento.setMaxSelectableDate(new GregorianCalendar(2005, Calendar.JANUARY, 1).getTime());
     }
 
     /**
@@ -158,17 +158,15 @@ public class IngresoEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-        String cont_temp = dateFormat.format(clFNacimiento.getDate());
+        
         EmpleadosSuperClase insertarEmpleado=new EmpleadosSuperClase(
-                txtNombre.getText(),
                 txtCedula.getText(),
-//                txtNombre.getText(),
-                cmbRol.getSelectedItem().toString(),
-                clFNacimiento.getDate(),
+                txtNombre.getText(),
                 txtApellido.getText(),
+                clFNacimiento.getDate(),
+                cmbRol.getSelectedItem().toString(),
                 txtCedula.getText()+"xd",
-                cont_temp
+                clFNacimiento.getDate().toString()
                 );
         if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
             JOptionPane.showMessageDialog(null, "registro ingresado correctamente");

@@ -22,7 +22,6 @@ public class Login extends javax.swing.JFrame {
 
     List<EmpleadosSuperClase> ListaUsuarios =null;
      public static String usser = null;
-     public static String clave = null;
    
     
     public Login() {
@@ -155,7 +154,6 @@ public class Login extends javax.swing.JFrame {
         String usuario= txtUsuario.getText(),contrasenia = txtContrasenia.getText();
         if(LoginServicio.AutenticarLogin(usuario, contrasenia)){
              usser= txtUsuario.getText();
-             clave = txtContrasenia.getText();
                 System.out.println(usser);
             for (EmpleadosSuperClase buscar :ListaUsuarios){
             String usuarios = buscar.getUsuario();

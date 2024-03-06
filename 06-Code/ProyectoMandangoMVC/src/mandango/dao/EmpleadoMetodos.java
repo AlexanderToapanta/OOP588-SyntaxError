@@ -9,7 +9,6 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
-import com.mongodb.client.result.UpdateResult;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -120,27 +119,6 @@ public class EmpleadoMetodos implements IEmpleado {
     }
 
     return empleado;
-    }
-
-    @Override
-    public boolean ActualizarClave(EmpleadosSuperClase personal) {
-        Document filtro,update;
-        UpdateResult resultado;
-        boolean actualizar = false;
-        try{
-            filtro = new Document("usuario",personal.getCedula());
-            update = new Document ("$set",new Document("contrasenia",personal.getContrasenia()));
-            resultado = collection.updateOne(filtro, update);
-            if(resultado.getModifiedCount()>0){
-                actualizar = true;
-                
-            }
-        }catch(MongoException ex){
-                    
-                    }finally{
-                            cierreConexion();
-                            }
-                    return actualizar;
     }
         
     }
