@@ -98,6 +98,7 @@
                           <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                           <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
                           <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
@@ -108,6 +109,8 @@
                           <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
 
+=======
+>>>>>>> parent of 49db744 (gg)
 =======
 >>>>>>> parent of 49db744 (gg)
                           <Component id="btnRegresar" min="-2" max="-2" attributes="0"/>
@@ -164,6 +167,9 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <Component id="clFechaNacimiento" min="-2" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
+>>>>>>> parent of 49db744 (gg)
+=======
 >>>>>>> parent of 49db744 (gg)
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -171,6 +177,7 @@
                       <Component id="cmbRol" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="47" max="32767" attributes="0"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -212,10 +219,13 @@
 
 =======
 >>>>>>> parent of 49db744 (gg)
+=======
+>>>>>>> parent of 49db744 (gg)
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnIngresar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnRegresar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -226,6 +236,9 @@
 
                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
 
+=======
+                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+>>>>>>> parent of 49db744 (gg)
 =======
                   <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
 >>>>>>> parent of 49db744 (gg)
