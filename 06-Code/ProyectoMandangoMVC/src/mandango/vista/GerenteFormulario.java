@@ -59,6 +59,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        btnIngresarProductos = new javax.swing.JCheckBoxMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btncambiapas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -86,7 +87,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         lbHorario.setText("jLabel5");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fotoGerente (1).png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fotoGerente.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,9 +104,8 @@ public class GerenteFormulario extends javax.swing.JFrame {
                             .addComponent(lbNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                             .addComponent(lbFechaNa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lbHorario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                                .addComponent(lbrol, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lbHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addComponent(lbrol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(105, 105, 105))))
@@ -132,6 +132,16 @@ public class GerenteFormulario extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Productos");
+
+        btnIngresarProductos.setSelected(true);
+        btnIngresarProductos.setText("Ingresar Platillos");
+        btnIngresarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarProductosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnIngresarProductos);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Cambiar Contraseña");
@@ -232,6 +242,12 @@ public class GerenteFormulario extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btncambiapasActionPerformed
 
+    private void btnIngresarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductosActionPerformed
+      IngresoDePlatillos platillos = new IngresoDePlatillos();
+        platillos.setVisible(true);
+        
+    }//GEN-LAST:event_btnIngresarProductosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +285,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnIngresarIngredientes;
+    private javax.swing.JCheckBoxMenuItem btnIngresarProductos;
     private javax.swing.JMenuItem btnIngresos;
     private javax.swing.JMenuItem btnMostarEgresos;
     private javax.swing.JMenuItem btncambiapas;
