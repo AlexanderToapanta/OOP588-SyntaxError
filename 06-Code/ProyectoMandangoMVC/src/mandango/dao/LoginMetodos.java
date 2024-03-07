@@ -8,9 +8,21 @@ import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Usuarios;
@@ -81,5 +93,29 @@ public class LoginMetodos implements ILogin {
         }
         return ListaUsuarios;
     
+    }
+
+    @Override
+    public String DesencriptarClave(String clave, String claveEncriptada) {
+        String desencriptar = "";
+        try{
+            byte[] mensaje = Base64.getDecoder().decode(claveEncriptada.getBytes("utf-8"));
+            MessageDigest digestor = MessageDigest.getInstance("MD5");
+            byte[] gestion = digestor.digest(clave.getBytes("utf-8"));
+            byte[] keyByte = Arrays.copyOf(gestion, 24);
+            SecretKey llave = new SecretKeySpec(keyByte, "DEsede");
+            Cipher descriptar = Cipher.getInstance("DEsede");
+            descriptar.init(Cipher.DECRYPT_MODE, llave);
+            byte[] text = descriptar.doFinal(mensaje);
+            desencriptar = new String(text, "UTF-8");
+        }catch(NoSuchAlgorithmException | BadPaddingException | InvalidKeyException | 
+                NoSuchPaddingException | UnsupportedEncodingException | IllegalBlockSizeException e){
+            e.printStackTrace();
+        }catch(Exception ex){
+            
+        }
+
+        return desencriptar;
+
     }
 }

@@ -22,5 +22,9 @@ public class LoginServicio {
      public static List<EmpleadosSuperClase> ListaUsuarios() {
         return new LoginMetodos().ListaUsuarios();
     }
+     
+     public static String DesencriptarClave(String encriptedclave, String clave){
+         return new LoginMetodos().DesencriptarClave(clave, encriptedclave);
+     }
     
 }

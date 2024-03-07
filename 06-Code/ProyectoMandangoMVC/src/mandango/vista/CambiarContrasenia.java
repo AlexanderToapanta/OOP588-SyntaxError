@@ -164,10 +164,13 @@ public class CambiarContrasenia extends javax.swing.JFrame {
 
     private void btnActualziarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualziarActionPerformed
         if (validar()){
-            if (psCambioClave.getText().equals(psConfirmarClave.getText())){
+            String clave = psCambioClave.getText();
+            String confirmar = psConfirmarClave.getText();
+            if (clave.equals(confirmar)){
                 int confirmacion = JOptionPane.showConfirmDialog(null,"Seguro en actualizar la contrasenia?", "Confirmacion",JOptionPane.YES_NO_OPTION);
            if(confirmacion == JOptionPane.YES_OPTION){
-               if(UsuariosServicio.ActualizarClave(txtUsuario.getText(), psConfirmarClave.getText())){
+                String encriptedclave = UsuariosServicio.EncriptarClave(clave);
+               if(UsuariosServicio.ActualizarClave(txtUsuario.getText(), encriptedclave)){
                    JOptionPane.showMessageDialog(null, "Datos actualizados");
                }else {
                    JOptionPane.showMessageDialog(null, "No se actualizaron los datos");

@@ -9,9 +9,15 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 import mandango.modelo.Empleados;
 import mandango.modelo.EmpleadosSuperClase;
@@ -93,13 +99,13 @@ public class GerenteMetodos implements IGerente{
 
     @Override
 
-    public boolean ActualizarClave(String usuario, String contrasenia) {
+    public boolean ActualizarClave(String usuario, String claveencriptada) {
         Document filtro,update;
         UpdateResult resultado;
         boolean actualizar = false;
         try{
             filtro = new Document("usuario",usuario);
-            update = new Document ("$set",new Document("contrasenia",contrasenia));
+            update = new Document ("$set",new Document("contrasenia",claveencriptada));
             resultado = collection.updateOne(filtro, update);
             if(resultado.getModifiedCount()>0){
                 actualizar = true;
@@ -132,6 +138,29 @@ public class GerenteMetodos implements IGerente{
             cierreConexion();   
         }
            return true;
+    }
+
+    @Override
+    public String EncriptarClave(String clave) {
+        String encriptar = "";
+        try{
+            MessageDigest gestor = MessageDigest.getInstance("MD5");
+            byte[] key = gestor.digest(clave.getBytes("utf-8"));
+            byte[] clavebyte = Arrays.copyOf(key, 24);
+            SecretKey llave = new SecretKeySpec(clavebyte, "DEsede");
+            Cipher cifrar = Cipher.getInstance("DEsede");
+            cifrar.init(Cipher.ENCRYPT_MODE, llave);
+            
+            byte[] text = clave.getBytes("utf-8");
+            byte[] buffer = cifrar.doFinal(text);
+            byte[] base64 = Base64.getEncoder().encode(buffer);
+            encriptar = new String(base64);
+        }catch(Exception ex){
+            
+        }
+
+        return encriptar;
+
     }
 
        

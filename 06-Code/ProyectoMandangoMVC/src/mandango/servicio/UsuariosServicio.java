@@ -39,4 +39,8 @@ public class UsuariosServicio {
         
     }
     
+    public static String EncriptarClave(String clave){
+        return new EmpleadoMetodos().EncriptarClave(clave);
+    }
+   
 }
