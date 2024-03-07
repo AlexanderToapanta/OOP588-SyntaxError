@@ -8,6 +8,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Productos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="btnIngresarProductos">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Ingresar Platillos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarProductosActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
@@ -133,10 +144,8 @@
                               <Component id="lbNombre" alignment="0" pref="206" max="32767" attributes="0"/>
                               <Component id="lbFechaNa" alignment="0" max="32767" attributes="0"/>
                               <Component id="lbEdad" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="lbHorario" alignment="0" pref="121" max="32767" attributes="0"/>
-                                  <Component id="lbrol" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="lbHorario" alignment="0" pref="206" max="32767" attributes="0"/>
+                              <Component id="lbrol" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="36" max="32767" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -208,7 +217,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/iconos/fotoGerente (1).png"/>
+              <Image iconType="3" name="/iconos/fotoGerente.png"/>
             </Property>
           </Properties>
         </Component>
