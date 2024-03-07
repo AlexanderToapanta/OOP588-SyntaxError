@@ -74,12 +74,12 @@ public class EmpleadosSuperClase {
     public EmpleadosSuperClase() {
     }
 
-    public EmpleadosSuperClase(String nombre, String apellido, String rol, Date fechaNacimiento, String cedula, String usuario, String contrasenia) {
+    public EmpleadosSuperClase(String cedula, String nombre, String apellido, Date fechaNacimiento, String rol,  String usuario, String contrasenia) {
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.rol = rol;
         this.fechaNacimiento = fechaNacimiento;
-        this.cedula = cedula;
+        this.rol = rol;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
@@ -90,6 +90,12 @@ public class EmpleadosSuperClase {
         this.rol = rol;
         this.fechaNacimiento = fechaNacimiento;
         this.cedula = cedula;
+    }
+    
+    public EmpleadosSuperClase(String cedula, String nombre, String rol) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.rol = rol;
     }
 
     public EmpleadosSuperClase(String rol, String usuario) {

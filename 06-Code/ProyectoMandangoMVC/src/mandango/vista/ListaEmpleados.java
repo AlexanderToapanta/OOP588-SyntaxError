@@ -4,17 +4,37 @@
  */
 package mandango.vista;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import mandango.modelo.EmpleadosSuperClase;
+import mandango.servicio.GerenteServicio;
 /**
  *
  * @author Alexander
  */
 public class ListaEmpleados extends javax.swing.JFrame {
-
+    private DefaultTableModel modeloTabla;
+    List<EmpleadosSuperClase> usuarios = null;
+    int filaSeleccionada = -1;
     /**
      * Creates new form IngresoDeEmpleados
      */
     public ListaEmpleados() {
         initComponents();
+        MostrarTabla();
+        this.setLocationRelativeTo(null);
+        btnActualizar.setVisible(false);
+    }
+    
+    public void MostrarTabla() {
+        usuarios = GerenteServicio.ListarEmpleados();
+        modeloTabla = (DefaultTableModel) tblDatos.getModel();
+        modeloTabla.setRowCount(0);     
+        for (EmpleadosSuperClase buscar : usuarios) {
+            
+            modeloTabla.addRow(new Object[]{buscar.getCedula(),buscar.getNombre(),buscar.getRol()});
+        }
+
     }
 
     /**
@@ -29,12 +49,11 @@ public class ListaEmpleados extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnInsertar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDatos = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        opSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,20 +61,16 @@ public class ListaEmpleados extends javax.swing.JFrame {
 
         btnActualizar.setText("Actualizar");
 
-        btnEliminar.setText("Salir");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addComponent(btnInsertar)
-                .addGap(66, 66, 66)
+                .addGap(28, 28, 28)
                 .addComponent(btnActualizar)
-                .addGap(90, 90, 90)
-                .addComponent(btnEliminar)
-                .addGap(95, 95, 95))
+                .addGap(52, 52, 52))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,29 +78,48 @@ public class ListaEmpleados extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsertar)
-                    .addComponent(btnActualizar)
-                    .addComponent(btnEliminar))
+                    .addComponent(btnActualizar))
                 .addGap(29, 29, 29))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Cedula", "Rol"
+                "Cedula", "Nombre", "Rol"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDatos);
 
         jMenu1.setText("Ir a ....");
-        jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Salir");
-        jMenuBar1.add(jMenu2);
+        opSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        opSalir.setText("Salir");
+        opSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opSalirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(opSalir);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -93,14 +127,14 @@ public class ListaEmpleados extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +149,14 @@ public class ListaEmpleados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void opSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_opSalirActionPerformed
+
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        btnActualizar.setVisible(true);
+    }//GEN-LAST:event_tblDatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -122,13 +164,12 @@ public class ListaEmpleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInsertar;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JMenuItem opSalir;
+    private javax.swing.JTable tblDatos;
     // End of variables declaration//GEN-END:variables
 }

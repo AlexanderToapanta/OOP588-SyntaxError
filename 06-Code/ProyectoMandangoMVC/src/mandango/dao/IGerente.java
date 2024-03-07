@@ -5,7 +5,6 @@
 package mandango.dao;
 
 import java.util.List;
-import mandango.modelo.Empleados;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Gerente;
 
@@ -18,7 +17,7 @@ import mandango.modelo.Gerente;
  */
 public interface IGerente {
     
-    public List<Empleados> ListarEmpleados();
+    public List<EmpleadosSuperClase> ListarEmpleados();
     public boolean InsertarEmpleado(EmpleadosSuperClase empleado);
     public boolean EliminarEmpleado(String cedula);
     public boolean VisualizarGanancias();
