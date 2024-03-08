@@ -47,6 +47,13 @@ public class ProductosCafeteria {
     public ProductosCafeteria() {
     }
 
+    public ProductosCafeteria(int cantidad, double precio) {
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
+
+   
+
     @Override
     public String toString() {
         return "ProductosCafeteria{" + "nombreProducto=" + nombreProducto + ", cantidad=" + cantidad + ", precio=" + precio + '}';

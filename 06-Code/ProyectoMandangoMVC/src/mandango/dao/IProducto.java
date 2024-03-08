@@ -15,7 +15,7 @@ public interface IProducto {
     
     public boolean InsertarProductos(ProductosCafeteria producto);
     public List<ProductosCafeteria> ListarProductos();
-    
+    public boolean ActualizarStock(int cantidad,String platillo);
     
     
 }

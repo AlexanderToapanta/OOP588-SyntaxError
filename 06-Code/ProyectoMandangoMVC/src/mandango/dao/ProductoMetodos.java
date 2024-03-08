@@ -8,6 +8,7 @@ import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -22,13 +23,14 @@ public class ProductoMetodos implements IProducto{
     
     Conexion conn = new Conexion();
     MongoDatabase database;
-    private MongoCollection<Document>collection;
+    private MongoCollection collection,coleccionGanacias;
     
     public ProductoMetodos() {
         if (conn!=null){
             this.conn=conn.crearConexion();
             this.database = conn.getDataB();
             this.collection = database.getCollection("ProductosCafeteria");
+            this.coleccionGanacias = database.getCollection("GanaciasPlatillos");
         }
         }
     
@@ -82,6 +84,27 @@ public class ProductoMetodos implements IProducto{
         return ListaPerfiles;    
     }
 
+    @Override
+    public boolean ActualizarStock(int cantidad, String platillo) {
+         Document filtro,update;
+           UpdateResult resultado;
+           boolean actualizar = false;
+        try{
+            filtro = new Document("nombreProducto",platillo);
+            update = new Document ("$set",new Document ("cantidad",cantidad));
+            resultado = collection.updateOne(filtro, update);
+        }catch (MongoException ex){
+            JOptionPane.showMessageDialog(null,"Error al actualizar" +ex.toString());
+            return false;  
+        }   finally{
+             cierreConexion();
+        }
+           return true; 
+    }
+
+  
+
+    
     
    
  }

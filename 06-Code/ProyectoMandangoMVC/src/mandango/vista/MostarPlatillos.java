@@ -4,94 +4,71 @@
  */
 package mandango.vista;
 
-
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import mandango.modelo.PlatillosPedidos;
 import mandango.modelo.ProductosCafeteria;
-import mandango.servicio.PlatillosPedidosServicio;
 import mandango.servicio.ProductoServicio;
-
 
 /**
  *
  * @author Usuario
  */
-public class MostrarIngresos extends javax.swing.JFrame {
+public class MostarPlatillos extends javax.swing.JFrame {
 
-     private DefaultTableModel dtm;
-     double total;
-     List<PlatillosPedidos> tabladatosGanancias=null;
-    public MostrarIngresos() {
+   private DefaultTableModel dtm;
+    List<ProductosCafeteria> tablaPlatillos=null;
+    public MostarPlatillos() {
         initComponents();
-        tabladatosGanancias = PlatillosPedidosServicio.ListarPlatillosPedidos();
+        tablaPlatillos = ProductoServicio.ListarProductos();
         MostrarDatos();
-        Total();
     }
-    
-public void MostrarDatos(){
-        dtm = (DefaultTableModel)tblDatos.getModel();
+
+     public void MostrarDatos(){
+        dtm = (DefaultTableModel)tblPlatillos.getModel();
         dtm.setRowCount(0);
         
-        for (PlatillosPedidos buscar :tabladatosGanancias){
-            String nombre = buscar.getNombrePlatillo();
+        for (ProductosCafeteria buscar :tablaPlatillos){
+            String nombre = buscar.getNombreProducto();
              int cantidad = buscar.getCantidad();
-              double precio = buscar.getPrecioun();
-              double ganancia = buscar.getGanancia();
+              double precio = buscar.getPrecio();
               String precio_s = String.format("%.2f", precio);
-              String ganancia_s = String.format("%.2f", ganancia);
-            dtm.addRow(new Object []{cantidad,nombre,precio_s,ganancia_s});
+            dtm.addRow(new Object []{nombre,cantidad,precio,precio_s});
             
         }
     }
-   public void Total (){
-     for (PlatillosPedidos buscar :tabladatosGanancias){
-            
-              double precio = buscar.getGanancia();
-              total = precio + total;
-        }
-          System.out.println(total);
-          lbtotal.setText("Total gastado:" + String.format("%.2f", total));
-}
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbtotal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatos = new javax.swing.JTable();
+        tblPlatillos = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Ingresos diarios");
+        jLabel1.setText("Menu de Cafe Mandango");
 
-        lbtotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbtotal.setText("jLabel1");
-
-        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
+        tblPlatillos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Cantidad", "Producto", "Precio Unitario", "Ganancia"
+                "Platillo", "Stock", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblDatos);
+        jScrollPane1.setViewportView(tblPlatillos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,36 +77,28 @@ public void MostrarDatos(){
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lbtotal))))
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbtotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,20 +127,20 @@ public void MostrarDatos(){
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MostrarIngresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MostarPlatillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MostrarIngresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MostarPlatillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MostrarIngresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MostarPlatillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MostrarIngresos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(MostarPlatillos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new MostrarIngresos().setVisible(true);
+//                new MostarPlatillos().setVisible(true);
 //            }
 //        });
 //    }
@@ -180,7 +149,6 @@ public void MostrarDatos(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbtotal;
-    private javax.swing.JTable tblDatos;
+    private javax.swing.JTable tblPlatillos;
     // End of variables declaration//GEN-END:variables
 }

@@ -59,6 +59,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         btnIngresarProductos = new javax.swing.JCheckBoxMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btncambiapas = new javax.swing.JMenuItem();
@@ -132,6 +133,9 @@ public class GerenteFormulario extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Productos");
+
+        jMenuItem1.setText("Mostrar platillos");
+        jMenu1.add(jMenuItem1);
 
         btnIngresarProductos.setSelected(true);
         btnIngresarProductos.setText("Ingresar Platillos");
@@ -297,6 +301,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbEdad;
     private javax.swing.JLabel lbFechaNa;

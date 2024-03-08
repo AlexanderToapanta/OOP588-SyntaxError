@@ -63,6 +63,7 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
         txtPrecio = new javax.swing.JTextField();
         spCantidadesPlatillos = new javax.swing.JSpinner();
         btnInsertar = new javax.swing.JButton();
+        prueba = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -83,6 +84,9 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
                 btnInsertarActionPerformed(evt);
             }
         });
+
+        prueba.setText("Cantidades a la venta");
+        prueba.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,7 +114,10 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
                                     .addComponent(txtPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(201, 201, 201)
-                        .addComponent(btnInsertar)))
+                        .addComponent(btnInsertar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(prueba)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +137,9 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(spCantidadesPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addComponent(prueba)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(btnInsertar)
                 .addGap(57, 57, 57))
         );
@@ -162,8 +171,9 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
             
        if(ProductoServicio.InsertarProductos(insertarplatillo)){
            JOptionPane.showMessageDialog(null, "Ingreso exitoso");
-           
-           
+           MostraEgresos dato = new MostraEgresos();
+           double xd = dato.total;
+           prueba.setText(String.format("", xd));
        }
        
        Limpiar();
@@ -213,6 +223,7 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel prueba;
     private javax.swing.JSpinner spCantidadesPlatillos;
     private javax.swing.JTextField txtPlatillo;
     private javax.swing.JTextField txtPrecio;

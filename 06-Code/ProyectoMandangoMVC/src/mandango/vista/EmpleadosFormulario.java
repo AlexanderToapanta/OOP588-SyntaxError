@@ -65,6 +65,7 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         lbHorario13 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        btnCafeteria = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btncambiapas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -148,6 +149,15 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Cafeteria");
+
+        btnCafeteria.setText("Ingreso a la cafeteria");
+        btnCafeteria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCafeteriaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCafeteria);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Cambiar Contraseña");
@@ -202,6 +212,10 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btncambiapasActionPerformed
 
+    private void btnCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCafeteriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCafeteriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,6 +252,7 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnCafeteria;
     private javax.swing.JMenuItem btncambiapas;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JMenu jMenu1;
