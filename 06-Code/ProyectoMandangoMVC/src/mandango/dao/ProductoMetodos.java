@@ -102,6 +102,25 @@ public class ProductoMetodos implements IProducto{
            return true; 
     }
 
+    @Override
+    public boolean ActulizarStockyPrecio(ProductosCafeteria producto) {
+         Document filtro,update;
+           UpdateResult resultado;
+           boolean actualizar = false;
+        try{
+            filtro = new Document("nombreProducto",producto.getNombreProducto());
+            update = new Document ("$set",new Document ("cantidad",producto.getCantidad())
+            .append("precio", producto.getPrecio()));
+            resultado = collection.updateOne(filtro, update);
+        }catch (MongoException ex){
+            JOptionPane.showMessageDialog(null,"Error al actualizar" +ex.toString());
+            return false;  
+        }   finally{
+             cierreConexion();
+        }
+           return true; 
+    }
+
   
 
     

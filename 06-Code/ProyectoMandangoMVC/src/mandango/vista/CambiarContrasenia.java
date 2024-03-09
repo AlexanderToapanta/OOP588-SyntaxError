@@ -43,6 +43,11 @@ public class CambiarContrasenia extends javax.swing.JFrame {
 
         return validar;
     }
+    public void limpiarDatos(){
+       psCambioClave.setText(" ");
+       psConfirmarClave.setText(" ");
+       
+   }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -172,13 +177,16 @@ public class CambiarContrasenia extends javax.swing.JFrame {
                 String encriptedclave = UsuariosServicio.EncriptarClave(clave);
                if(UsuariosServicio.ActualizarClave(txtUsuario.getText(), encriptedclave)){
                    JOptionPane.showMessageDialog(null, "Datos actualizados");
+                   
                }else {
                    JOptionPane.showMessageDialog(null, "No se actualizaron los datos");
                }
+               
            }
             }else {
                 JOptionPane.showMessageDialog(null,"El campo de contrasenia y confirmar contrsenia deben ser iguales");
             }
+            limpiarDatos();
         }
     }//GEN-LAST:event_btnActualziarActionPerformed
 

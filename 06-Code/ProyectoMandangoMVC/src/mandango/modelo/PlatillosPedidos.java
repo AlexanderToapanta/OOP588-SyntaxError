@@ -9,9 +9,9 @@ package mandango.modelo;
  * @author Usuario
  */
 public class PlatillosPedidos {
-    String nombrePlatillo;
-    int cantidad;
-    double precioun,ganancia;
+   private String nombrePlatillo;
+    private int cantidad;
+    private double precioun,ganancia;
 
     public String getNombrePlatillo() {
         return nombrePlatillo;

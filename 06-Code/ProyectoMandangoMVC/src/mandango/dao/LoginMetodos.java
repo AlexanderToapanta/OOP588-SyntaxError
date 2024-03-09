@@ -36,13 +36,12 @@ public class LoginMetodos implements ILogin {
 
      Conexion conn = new Conexion();
     MongoDatabase database;
-    private MongoCollection coleccionUsuarios, coleccionEmpleados,coleccionGerente;
+    private MongoCollection coleccionUsuarios;
 
     public LoginMetodos() {
         if (conn != null) {
             this.conn = conn.crearConexion();
             this.database = conn.getDataB();
-            this.coleccionEmpleados = database.getCollection("Empleados");
             this.coleccionUsuarios = database.getCollection("Usuarios");
         }
     }

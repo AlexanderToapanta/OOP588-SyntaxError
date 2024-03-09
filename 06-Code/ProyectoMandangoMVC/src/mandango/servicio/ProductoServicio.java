@@ -5,9 +5,7 @@
 package mandango.servicio;
 
 import java.util.List;
-import mandango.dao.MateriaPrimaMetodos;
 import mandango.dao.ProductoMetodos;
-import mandango.modelo.MateriaPrima;
 import mandango.modelo.ProductosCafeteria;
 
 /**
@@ -25,5 +23,7 @@ public class ProductoServicio {
     public static boolean ActualizarStock(int cantidad, String platillo){
          return new ProductoMetodos().ActualizarStock(cantidad, platillo);
      }
-   
+   public static boolean ActulizarStockyPrecio(ProductosCafeteria producto){
+         return new ProductoMetodos().ActulizarStockyPrecio(producto);
+     }
 }
