@@ -41,7 +41,8 @@ public class GastosyGananciasMetodos implements IGatosyGanciasD {
         try{
         document = new Document("Dia",caja.getDia())
                 .append("ganacias", caja.getGanancias())
-                .append("gastos", caja.getGastos());
+                .append("gastos", caja.getGastos())
+                .append("TotalDiario", caja.getTotal());
                 coleccioncaja.insertOne(document);
         }catch (MongoException ex){
             JOptionPane.showMessageDialog(null,"Error de insercion" +ex.toString());

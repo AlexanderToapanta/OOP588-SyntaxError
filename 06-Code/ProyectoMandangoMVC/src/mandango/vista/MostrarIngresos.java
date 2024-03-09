@@ -20,7 +20,7 @@ import mandango.servicio.ProductoServicio;
 public class MostrarIngresos extends javax.swing.JFrame {
 
      private DefaultTableModel dtm;
-     double total;
+     static double totalI;
      List<PlatillosPedidos> tabladatosGanancias=null;
     public MostrarIngresos() {
         initComponents();
@@ -48,10 +48,10 @@ public void MostrarDatos(){
      for (PlatillosPedidos buscar :tabladatosGanancias){
             
               double precio = buscar.getGanancia();
-              total = precio + total;
+              totalI = precio + totalI;
         }
-          System.out.println(total);
-          lbtotal.setText("Total gastado:" + String.format("%.2f", total));
+          System.out.println(totalI);
+          lbtotal.setText("Total gastado:" + String.format("%.2f", totalI));
 }
     
     @SuppressWarnings("unchecked")

@@ -5,7 +5,9 @@
 package mandango.vista;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import mandango.modelo.Empleados;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.UsuariosServicio;
@@ -68,6 +70,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         btnMostarEgresos = new javax.swing.JMenuItem();
         btnIngresarIngredientes = new javax.swing.JMenuItem();
         btnIngresos = new javax.swing.JMenuItem();
+        btnRegistroDiario = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         mnCerrarSecion = new javax.swing.JMenuItem();
 
@@ -189,6 +192,14 @@ public class GerenteFormulario extends javax.swing.JFrame {
         });
         jMenu5.add(btnIngresos);
 
+        btnRegistroDiario.setText("RegsitroDiario");
+        btnRegistroDiario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroDiarioActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnRegistroDiario);
+
         jMenuBar1.add(jMenu5);
 
         jMenu4.setText("Salir");
@@ -252,6 +263,20 @@ public class GerenteFormulario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnIngresarProductosActionPerformed
 
+    private void btnRegistroDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroDiarioActionPerformed
+        
+        GastosYGanaciasD registro = new GastosYGanaciasD();
+        int dia=registro.dia;
+        int dias=dia+1;
+        LocalDate diass = LocalDate.now();
+        if(dia<dias){
+            JOptionPane.showMessageDialog(null, "Ya se cerro caja del dia: " +diass);
+        }else{
+        registro.setVisible(true);
+        setVisible(false);
+        }
+    }//GEN-LAST:event_btnRegistroDiarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,6 +317,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem btnIngresarProductos;
     private javax.swing.JMenuItem btnIngresos;
     private javax.swing.JMenuItem btnMostarEgresos;
+    private javax.swing.JMenuItem btnRegistroDiario;
     private javax.swing.JMenuItem btncambiapas;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

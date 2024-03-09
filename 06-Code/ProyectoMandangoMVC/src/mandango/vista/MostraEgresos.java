@@ -18,7 +18,7 @@ public class MostraEgresos extends javax.swing.JFrame {
     private DefaultTableModel dtm;
     List<MateriaPrima> tabladatosMateriaprima=null;
     double precio;
-    double total;
+    static double totalE;
     public MostraEgresos() {
         initComponents();
         tabladatosMateriaprima = MateriaPrimaServicio.ListarMateriaPrima();
@@ -46,10 +46,10 @@ public class MostraEgresos extends javax.swing.JFrame {
              int cantidad = buscar.getCantidad();
               double precio = buscar.getPrecio();
               double preciot = cantidad*precio;
-              total = total + preciot;
+              totalE = totalE + preciot;
         }
-          System.out.println(total);
-          lbtotal.setText("Total gastado:" + String.format("%.2f", total));
+          System.out.println(totalE);
+          lbtotal.setText("Total gastado:" + String.format("%.2f", totalE));
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

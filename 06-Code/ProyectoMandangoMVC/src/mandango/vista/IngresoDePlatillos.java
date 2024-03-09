@@ -4,6 +4,7 @@
  */
 package mandango.vista;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.ProductosCafeteria;
 import mandango.servicio.ProductoServicio;
@@ -14,11 +15,11 @@ import mandango.servicio.ProductoServicio;
  */
 public class IngresoDePlatillos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IngresoDePlatillos
-     */
+  List<ProductosCafeteria> tablaPlatillos=null;
+  
     public IngresoDePlatillos() {
         initComponents();
+        tablaPlatillos=ProductoServicio.ListarProductos();
     }
 
     private boolean validar (){
@@ -49,7 +50,20 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
         txtPrecio.setText(" ");
         spCantidadesPlatillos.setValue(0);
     } 
-      
+      private boolean ValidarExistencia(){
+          boolean existencia = true;
+          for(ProductosCafeteria buscar:tablaPlatillos){
+               String platillo = buscar.getNombreProducto().trim().toLowerCase();
+               String ingreso = txtPlatillo.getText().trim().toLowerCase();
+               if(platillo.equals(ingreso)){
+                   JOptionPane.showMessageDialog(null, "EL platillo ya se encuentra ingresado");
+                   existencia = false;
+                   break;
+               } 
+              
+               }
+          return existencia;
+      }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,7 +77,6 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
         txtPrecio = new javax.swing.JTextField();
         spCantidadesPlatillos = new javax.swing.JSpinner();
         btnInsertar = new javax.swing.JButton();
-        prueba = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -84,9 +97,6 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
                 btnInsertarActionPerformed(evt);
             }
         });
-
-        prueba.setText("Cantidades a la venta");
-        prueba.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,10 +124,7 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
                                     .addComponent(txtPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(201, 201, 201)
-                        .addComponent(btnInsertar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(prueba)))
+                        .addComponent(btnInsertar)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,9 +144,7 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(spCantidadesPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(prueba)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(btnInsertar)
                 .addGap(57, 57, 57))
         );
@@ -164,21 +169,21 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         if(validar()){
-            ProductosCafeteria insertarplatillo = new ProductosCafeteria(
-                    txtPlatillo.getText(),
-                    Integer.parseInt(spCantidadesPlatillos.getValue().toString()),
-                    Double.parseDouble(txtPrecio.getText()));
+           if(ValidarExistencia()){
+                 ProductosCafeteria insertarplatillo = new ProductosCafeteria(
+                          txtPlatillo.getText(), 
+                           (int)spCantidadesPlatillos.getValue(), 
+                            Double.parseDouble(txtPrecio.getText()));
             
        if(ProductoServicio.InsertarProductos(insertarplatillo)){
            JOptionPane.showMessageDialog(null, "Ingreso exitoso");
-           MostraEgresos dato = new MostraEgresos();
-           double xd = dato.total;
-           prueba.setText(String.format("", xd));
-       }
-       
+           }
+           
+        tablaPlatillos=ProductoServicio.ListarProductos();
        Limpiar();
        
        }
+        }
     }//GEN-LAST:event_btnInsertarActionPerformed
 
     /**
@@ -223,7 +228,6 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel prueba;
     private javax.swing.JSpinner spCantidadesPlatillos;
     private javax.swing.JTextField txtPlatillo;
     private javax.swing.JTextField txtPrecio;

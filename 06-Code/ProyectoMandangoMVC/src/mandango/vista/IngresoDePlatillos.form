@@ -75,10 +75,6 @@
                           <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
                           <Component id="btnInsertar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                          <Component id="prueba" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <EmptySpace pref="135" max="32767" attributes="0"/>
               </Group>
@@ -104,9 +100,7 @@
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="spCantidadesPlatillos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="prueba" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="81" max="32767" attributes="0"/>
+                  <EmptySpace pref="134" max="32767" attributes="0"/>
                   <Component id="btnInsertar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
@@ -153,12 +147,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="prueba">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cantidades a la venta"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -12,7 +12,15 @@ import java.util.Date;
  */
 public class GananciasyGastosDiarios {
     private Date dia;
-    private double ganancias,gastos;
+    private double ganancias,gastos,total;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
 
     public Date getDia() {
         return dia;
@@ -41,12 +49,14 @@ public class GananciasyGastosDiarios {
     public GananciasyGastosDiarios() {
     }
 
-    public GananciasyGastosDiarios(Date dia, double ganancias, double gastos) {
+    public GananciasyGastosDiarios(Date dia, double ganancias, double gastos, double total) {
         this.dia = dia;
         this.ganancias = ganancias;
         this.gastos = gastos;
+        this.total = total;
     }
 
+    
     @Override
     public String toString() {
         return "GananciasyGastosDiarios{" + "dia=" + dia + ", ganancias=" + ganancias + ", gastos=" + gastos + '}';
