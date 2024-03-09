@@ -26,4 +26,7 @@ public class ProductoServicio {
    public static boolean ActulizarStockyPrecio(ProductosCafeteria producto){
          return new ProductoMetodos().ActulizarStockyPrecio(producto);
      }
+   public static boolean EliminarPlatillo(String platillo){
+         return new ProductoMetodos().EliminarPlatillo(platillo);
+     }
 }

@@ -6,9 +6,14 @@ package mandango.vista;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
 import mandango.modelo.Empleados;
 import mandango.modelo.EmpleadosSuperClase;
+import mandango.modelo.GananciasyGastosDiarios;
 import mandango.modelo.Usuarios;
+import mandango.servicio.GastosyGananciasServicio;
 import mandango.servicio.UsuariosServicio;
 
 /**
@@ -19,12 +24,13 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
 
 
    EmpleadosSuperClase empleado = new EmpleadosSuperClase();
-
+List<GananciasyGastosDiarios> listaregistro;
 
     private  String dato;
     public EmpleadosFormulario() {
         initComponents();
         datosPerfil();
+        listaregistro = GastosyGananciasServicio.ListaGanaciasDiarias();
     }
 
    public void datosPerfil(){
@@ -49,7 +55,25 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
         lbHorario.setText("Horario: 15:00-22:00");
     }
     }
-       
+     private boolean ValidarExistencia(){
+          boolean existencia = true;
+           SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+            for (GananciasyGastosDiarios buscar:listaregistro){
+           String date = formatoFecha.format(buscar.getDia());
+           String dates = formatoFecha.format(day);
+                System.out.println(date);
+                System.out.println(dates);
+           if(date.equals(dates)){
+               JOptionPane.showMessageDialog(null, "Ya se cerro caja del dia: " +dates);
+            existencia=false;
+            break;
+        }
+           break;
+       }        
+               
+          return existencia;
+      }  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -213,7 +237,11 @@ public class EmpleadosFormulario extends javax.swing.JFrame {
     }//GEN-LAST:event_btncambiapasActionPerformed
 
     private void btnCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCafeteriaActionPerformed
-        // TODO add your handling code here:
+         if(ValidarExistencia()){
+         Cafeteria cafeteria = new Cafeteria();
+        cafeteria.setVisible(true);
+        
+        }
     }//GEN-LAST:event_btnCafeteriaActionPerformed
 
     /**

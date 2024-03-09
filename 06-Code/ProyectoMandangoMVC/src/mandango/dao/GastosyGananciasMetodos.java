@@ -5,11 +5,15 @@
 package mandango.dao;
 
 import com.mongodb.MongoException;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.GananciasyGastosDiarios;
+import mandango.modelo.ProductosCafeteria;
 import org.bson.Document;
 
 /**
@@ -55,7 +59,22 @@ public class GastosyGananciasMetodos implements IGatosyGanciasD {
 
     @Override
     public List<GananciasyGastosDiarios> ListaGanaciasDiarias() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+       
+    FindIterable<Document> documento;
+        List<GananciasyGastosDiarios> ListaPerfiles = new ArrayList<>();
+        try{
+            documento=coleccioncaja.find();
+        for (Document buscar : documento){
+           Date day = buscar.getDate("Dia");
+           GananciasyGastosDiarios registro = new  GananciasyGastosDiarios(day);
+            ListaPerfiles.add(registro);
+        }
+        
+        }catch (MongoException ex){
+            JOptionPane.showMessageDialog(null,"Error al consultar datos"+ex.getMessage());
+        }finally {
+            Cierre();
+        }
+    return ListaPerfiles;
+}
 }

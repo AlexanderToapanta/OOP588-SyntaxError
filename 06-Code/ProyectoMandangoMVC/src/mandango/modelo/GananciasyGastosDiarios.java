@@ -56,6 +56,10 @@ public class GananciasyGastosDiarios {
         this.total = total;
     }
 
+    public GananciasyGastosDiarios(Date dia) {
+        this.dia = dia;
+    }
+
     
     @Override
     public String toString() {

@@ -17,6 +17,7 @@ public interface IProducto {
     public List<ProductosCafeteria> ListarProductos();
     public boolean ActualizarStock(int cantidad,String platillo);
     public boolean ActulizarStockyPrecio(ProductosCafeteria producto);
+    public boolean EliminarPlatillo (String platillo);
     
     
 }

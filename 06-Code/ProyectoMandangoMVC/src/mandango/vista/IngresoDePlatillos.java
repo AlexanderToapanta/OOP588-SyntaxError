@@ -89,6 +89,18 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
         jLabel4.setText("Cantidades a la venta");
         jLabel4.setToolTipText("");
 
+        txtPlatillo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPlatilloKeyTyped(evt);
+            }
+        });
+
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
+
         spCantidadesPlatillos.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         btnInsertar.setText("Insertar");
@@ -113,7 +125,7 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(spCantidadesPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(spCantidadesPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -185,6 +197,25 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
        }
         }
     }//GEN-LAST:event_btnInsertarActionPerformed
+
+    private void txtPlatilloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlatilloKeyTyped
+        char validacionpt2 = evt.getKeyChar();
+        if (Character.isDigit(validacionpt2)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+        }
+    }//GEN-LAST:event_txtPlatilloKeyTyped
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+      char validacionpt2 = evt.getKeyChar();
+        if (Character.isLetter(validacionpt2)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
+
+        }
+    }//GEN-LAST:event_txtPrecioKeyTyped
 
     /**
      * @param args the command line arguments

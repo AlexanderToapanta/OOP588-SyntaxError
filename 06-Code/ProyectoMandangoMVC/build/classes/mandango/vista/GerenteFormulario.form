@@ -9,18 +9,20 @@
             <Property name="text" type="java.lang.String" value="Productos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="btnMoPlatillos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar platillos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoPlatillosActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="btnIngresarProductos">
+            <MenuItem class="javax.swing.JMenuItem" name="btnInPlatillos">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Ingresar Platillos"/>
+                <Property name="text" type="java.lang.String" value="Ingresar platillos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarProductosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInPlatillosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

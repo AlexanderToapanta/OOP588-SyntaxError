@@ -86,6 +86,18 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
 
         txtPlatillo.setEditable(false);
 
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
+
+        txtcantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcantidadKeyTyped(evt);
+            }
+        });
+
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +197,26 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         platillos.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+        char validacionpt2 = evt.getKeyChar();
+        if (Character.isLetter(validacionpt2)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
+
+        }
+    }//GEN-LAST:event_txtPrecioKeyTyped
+
+    private void txtcantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcantidadKeyTyped
+       char validacionpt2 = evt.getKeyChar();
+        if (Character.isLetter(validacionpt2)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
+
+        }
+    }//GEN-LAST:event_txtcantidadKeyTyped
 
 //    /**
 //     * @param args the command line arguments

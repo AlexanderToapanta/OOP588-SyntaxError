@@ -7,9 +7,14 @@ package mandango.vista;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.Empleados;
 import mandango.modelo.EmpleadosSuperClase;
+import mandango.modelo.GananciasyGastosDiarios;
+import mandango.modelo.ProductosCafeteria;
+import mandango.servicio.GastosyGananciasServicio;
 import mandango.servicio.UsuariosServicio;
 
 /**
@@ -19,10 +24,13 @@ import mandango.servicio.UsuariosServicio;
 public class GerenteFormulario extends javax.swing.JFrame {
 
     EmpleadosSuperClase gerente = new EmpleadosSuperClase();
+    List<GananciasyGastosDiarios> listaregistro;
     private  String dato;
     public GerenteFormulario() {
         initComponents();
         datosPerfil();
+        listaregistro = GastosyGananciasServicio.ListaGanaciasDiarias();
+                
     }
 
      public void datosPerfil(){
@@ -47,6 +55,25 @@ public class GerenteFormulario extends javax.swing.JFrame {
         lbHorario.setText("Horario: 15:00-22:00");
     }
     }
+     private boolean ValidarExistencia(){
+          boolean existencia = true;
+           SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+            for (GananciasyGastosDiarios buscar:listaregistro){
+           String date = formatoFecha.format(buscar.getDia());
+           String dates = formatoFecha.format(day);
+                System.out.println(date);
+                System.out.println(dates);
+           if(date.equals(dates)){
+            JOptionPane.showMessageDialog(null, "Ya se cerro caja del dia: " +dates);
+            existencia=false;
+            break;
+        }
+           break;
+       }        
+               
+          return existencia;
+      }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,8 +88,8 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        btnIngresarProductos = new javax.swing.JCheckBoxMenuItem();
+        btnMoPlatillos = new javax.swing.JMenuItem();
+        btnInPlatillos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btncambiapas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -137,17 +164,21 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         jMenu1.setText("Productos");
 
-        jMenuItem1.setText("Mostrar platillos");
-        jMenu1.add(jMenuItem1);
-
-        btnIngresarProductos.setSelected(true);
-        btnIngresarProductos.setText("Ingresar Platillos");
-        btnIngresarProductos.addActionListener(new java.awt.event.ActionListener() {
+        btnMoPlatillos.setText("Mostrar platillos");
+        btnMoPlatillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarProductosActionPerformed(evt);
+                btnMoPlatillosActionPerformed(evt);
             }
         });
-        jMenu1.add(btnIngresarProductos);
+        jMenu1.add(btnMoPlatillos);
+
+        btnInPlatillos.setText("Ingresar platillos");
+        btnInPlatillos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInPlatillosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnInPlatillos);
 
         jMenuBar1.add(jMenu1);
 
@@ -237,13 +268,16 @@ public class GerenteFormulario extends javax.swing.JFrame {
     }//GEN-LAST:event_mnCerrarSecionActionPerformed
 
     private void btnIngresarIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarIngredientesActionPerformed
+          if(ValidarExistencia()){
          IngresoDeMateriaPrima ingredientes = new IngresoDeMateriaPrima();
         ingredientes.setVisible(true);
+        }
         
     }//GEN-LAST:event_btnIngresarIngredientesActionPerformed
 
     private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
-        // TODO add your handling code here:
+       MostrarIngresos ingresos = new MostrarIngresos();
+       ingresos.setEnabled(true);
     }//GEN-LAST:event_btnIngresosActionPerformed
 
     private void btnMostarEgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostarEgresosActionPerformed
@@ -257,25 +291,24 @@ public class GerenteFormulario extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btncambiapasActionPerformed
 
-    private void btnIngresarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductosActionPerformed
-      IngresoDePlatillos platillos = new IngresoDePlatillos();
-        platillos.setVisible(true);
-        
-    }//GEN-LAST:event_btnIngresarProductosActionPerformed
-
     private void btnRegistroDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroDiarioActionPerformed
-        
-        GastosYGanaciasD registro = new GastosYGanaciasD();
-        int dia=registro.dia;
-        int dias=dia+1;
-        LocalDate diass = LocalDate.now();
-        if(dia<dias){
-            JOptionPane.showMessageDialog(null, "Ya se cerro caja del dia: " +diass);
-        }else{
+        if(ValidarExistencia()){
+         GastosYGanaciasD registro = new GastosYGanaciasD();
         registro.setVisible(true);
         setVisible(false);
         }
+        
     }//GEN-LAST:event_btnRegistroDiarioActionPerformed
+
+    private void btnInPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInPlatillosActionPerformed
+        IngresoDePlatillos platillos = new IngresoDePlatillos();
+        platillos.setVisible(true);
+    }//GEN-LAST:event_btnInPlatillosActionPerformed
+
+    private void btnMoPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoPlatillosActionPerformed
+       MostarPlatillos platillos = new MostarPlatillos();
+        platillos.setVisible(true);
+    }//GEN-LAST:event_btnMoPlatillosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,9 +346,10 @@ public class GerenteFormulario extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnInPlatillos;
     private javax.swing.JMenuItem btnIngresarIngredientes;
-    private javax.swing.JCheckBoxMenuItem btnIngresarProductos;
     private javax.swing.JMenuItem btnIngresos;
+    private javax.swing.JMenuItem btnMoPlatillos;
     private javax.swing.JMenuItem btnMostarEgresos;
     private javax.swing.JMenuItem btnRegistroDiario;
     private javax.swing.JMenuItem btncambiapas;
@@ -327,7 +361,6 @@ public class GerenteFormulario extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbEdad;
     private javax.swing.JLabel lbFechaNa;

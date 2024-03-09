@@ -8,12 +8,14 @@ import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.ProductosCafeteria;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 /**
  *
@@ -23,14 +25,14 @@ public class ProductoMetodos implements IProducto{
     
     Conexion conn = new Conexion();
     MongoDatabase database;
-    private MongoCollection collection,coleccionGanacias;
+    private MongoCollection collection;
     
     public ProductoMetodos() {
         if (conn!=null){
             this.conn=conn.crearConexion();
             this.database = conn.getDataB();
             this.collection = database.getCollection("ProductosCafeteria");
-            this.coleccionGanacias = database.getCollection("GanaciasPlatillos");
+            
         }
         }
     
@@ -119,6 +121,27 @@ public class ProductoMetodos implements IProducto{
              cierreConexion();
         }
            return true; 
+    }
+
+    @Override
+    public boolean EliminarPlatillo(String platillo) {
+        Bson filtro = null;
+        DeleteResult result = null;
+        boolean eliminar = false;
+        try {
+            filtro = new Document("nombreProducto", platillo);
+            result = collection.deleteOne(filtro);
+            if (result.getDeletedCount() > 0) {
+                eliminar = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontro el resgistro para eliminar");
+            }
+        } catch (MongoException ex) {
+
+        } finally {
+            cierreConexion();
+        }
+        return eliminar;
     }
 
   
