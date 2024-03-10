@@ -33,6 +33,7 @@ public class UsuariosServicio {
     public static EmpleadosSuperClase BuscarUsuario(String cedula){
         return new EmpleadoMetodos().BuscarUsuario(cedula);
     }
+    
     public static boolean ActualizarClave(String usuario, String contrasenia){
         
          return new GerenteMetodos().ActualizarClave(usuario, contrasenia);

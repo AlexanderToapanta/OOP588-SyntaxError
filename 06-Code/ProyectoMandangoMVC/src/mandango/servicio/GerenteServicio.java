@@ -24,4 +24,9 @@ public class GerenteServicio {
     public static boolean EliminarEmpleado(String cedula){
         return new GerenteMetodos().EliminarEmpleado(cedula);
     }
+    
+    public static boolean ActualizarEmpleado (EmpleadosSuperClase empleado){
+        return new GerenteMetodos().ActualizarEmpleado (empleado);
+    }
+    
 }

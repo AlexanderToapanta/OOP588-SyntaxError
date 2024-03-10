@@ -105,8 +105,30 @@ public class GerenteMetodos implements IGerente{
     }
 
     @Override
-    public boolean BuscarUsuario(String cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public EmpleadosSuperClase BuscarUsuario(String cedula) {
+        EmpleadosSuperClase empleado = null;
+        Document filtro = null;
+        Document resultado = null;
+        try {
+            filtro = new Document("cedula", cedula);
+            resultado = (Document) collection.find(filtro).first();
+
+            if (resultado != null) {
+                empleado = new EmpleadosSuperClase();                
+                empleado.setNombre(resultado.getString("nombre"));
+                empleado.setApellido(resultado.getString("apellido"));
+                empleado.setRol(resultado.getString("rol"));
+                empleado.setFechaNacimiento(resultado.getDate("fechaNacimiento"));
+                empleado.setCedula(resultado.getString("cedula"));
+            }
+
+        } catch (MongoException ex) {
+            JOptionPane.showMessageDialog(null, "Error al consultar datos segun id " + ex.getMessage());
+        } finally {
+            cierreConexion();
+        }
+        return empleado;
+ 
     }
 
     @Override
@@ -142,7 +164,7 @@ public class GerenteMetodos implements IGerente{
     public boolean InsertarEmpleado(EmpleadosSuperClase empleado) {
         Document document;
         try{
-        document = new Document("cedula", empleado.getCedula())
+            document = new Document("cedula", empleado.getCedula())
                 .append("nombre", empleado.getNombre())
                 .append("apellido", empleado.getApellido())
                 .append("fechaNacimiento", empleado.getFechaNacimiento())
@@ -153,10 +175,34 @@ public class GerenteMetodos implements IGerente{
         }catch (MongoException ex){
             JOptionPane.showMessageDialog(null,"Error de insercion" +ex.toString());
             return false;  
-        }   finally{
+        }finally{
             cierreConexion();   
         }
            return true;
+    }
+    
+    @Override
+    public boolean ActualizarEmpleado(EmpleadosSuperClase empleado) {
+        boolean actualizar = false;
+        try {
+            Document filtrar = new Document("cedula", empleado.getCedula());
+            Document documento = new Document("$set", new Document()
+                .append("nombre", empleado.getNombre())
+                .append("apellido", empleado.getApellido())
+                .append("fechaNacimiento", empleado.getFechaNacimiento())    
+                .append("rol", empleado.getRol()));
+                
+            UpdateResult resultado = collection.updateOne(filtrar, documento);
+            if (resultado.getModifiedCount() > 0) {
+                actualizar = true;
+            }
+        }catch(MongoException ex){
+            JOptionPane.showMessageDialog(null, "Error de insercion" + ex.toString());
+//            actualizar= false;
+        }finally{
+            cierreConexion();
+        }
+        return actualizar;    
     }
 
     @Override
@@ -182,6 +228,6 @@ public class GerenteMetodos implements IGerente{
 
     }
 
-       
+   
 
 }

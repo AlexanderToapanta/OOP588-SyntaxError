@@ -18,10 +18,11 @@ import mandango.servicio.GerenteServicio;
  *
  * @author Alexander
  */
-public class ActualizarEmpleados extends javax.swing.JFrame {
+public class ActualizarEmpleado extends javax.swing.JFrame {
     
     
-    public ActualizarEmpleados() {
+    
+    public ActualizarEmpleado() {
         initComponents();
         clFNacimiento.setMaxSelectableDate(new GregorianCalendar(2005, Calendar.JANUARY, 1).getTime());
         this.setLocationRelativeTo(null);
@@ -119,7 +120,7 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         clFNacimiento = new com.toedter.calendar.JDateChooser();
         cmbRol = new javax.swing.JComboBox<>();
-        btnIngresar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -151,10 +152,10 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
 
         cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rol...", "Gerente", "Mesero", "Cajero", "Chef", " " }));
 
-        btnIngresar.setText("Ingresar");
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setText("Actualizaciar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -176,7 +177,7 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        jLabel1.setText("Ingreso de Empleado");
+        jLabel1.setText("Actualizacíon de Empleado");
 
         jLabel2.setText("Nombre:");
 
@@ -210,13 +211,13 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
                         .addGap(98, 98, 98)
                         .addComponent(clFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(128, 128, 128)
-                        .addComponent(btnIngresar)
+                        .addComponent(btnActualizar)
                         .addGap(107, 107, 107)
-                        .addComponent(btnRegresar)))
+                        .addComponent(btnRegresar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -246,7 +247,7 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
                     .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresar)
+                    .addComponent(btnActualizar)
                     .addComponent(btnRegresar))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
@@ -259,7 +260,7 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
     if (validarCampos()) {
             int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro de guardar datos", "Ingreso de Datos", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirmacion == JOptionPane.OK_OPTION) {
@@ -269,11 +270,9 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
                         txtNombre.getText(),
                         txtApellido.getText(),
                         clFNacimiento.getDate(),
-                        cmbRol.getSelectedItem().toString(),
-                        txtCedula.getText()+"xd",
-                        formatoFecha.format(clFNacimiento.getDate())
+                        cmbRol.getSelectedItem().toString()
                         );
-                if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
+                if(GerenteServicio.ActualizarEmpleado(insertarEmpleado)){
                     JOptionPane.showMessageDialog(null, "registro ingresado correctamente");
                     limpiarDatos();
                     regresarLista();
@@ -284,8 +283,8 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
+    }//GEN-LAST:event_btnActualizarActionPerformed
+    
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         ListaEmpleados newframe = new ListaEmpleados();
         newframe.setVisible(true);
@@ -375,13 +374,13 @@ public class ActualizarEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ActualizarEmpleados().setVisible(true);
+                new ActualizarEmpleado().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnRegresar;
     private com.toedter.calendar.JDateChooser clFNacimiento;
     private javax.swing.JComboBox<String> cmbRol;
