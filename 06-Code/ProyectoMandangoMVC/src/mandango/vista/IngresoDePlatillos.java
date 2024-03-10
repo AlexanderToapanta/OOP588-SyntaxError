@@ -4,6 +4,7 @@
  */
 package mandango.vista;
 
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.ProductosCafeteria;
@@ -180,6 +181,7 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+          Date fechaActual = new Date();
         if(validar()){
            if(ValidarExistencia()){
                  ProductosCafeteria insertarplatillo = new ProductosCafeteria(
