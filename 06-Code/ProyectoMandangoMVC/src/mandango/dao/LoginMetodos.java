@@ -98,12 +98,12 @@ public class LoginMetodos implements ILogin {
     public String DesencriptarClave(String clave, String claveEncriptada) {
         String desencriptar = "";
         try{
-            byte[] mensaje = Base64.getDecoder().decode(claveEncriptada.getBytes("utf-8"));
-            MessageDigest digestor = MessageDigest.getInstance("MD5");
-            byte[] gestion = digestor.digest(clave.getBytes("utf-8"));
+            byte[] mensaje = Base64.getDecoder().decode(claveEncriptada.getBytes("UTF-8"));
+            MessageDigest digestor = MessageDigest.getInstance("SHA-256");
+            byte[] gestion = digestor.digest(clave.getBytes("UTF-8"));
             byte[] keyByte = Arrays.copyOf(gestion, 24);
-            SecretKey llave = new SecretKeySpec(keyByte, "DEsede");
-            Cipher descriptar = Cipher.getInstance("DEsede");
+            SecretKey llave = new SecretKeySpec(keyByte, "DESede");
+            Cipher descriptar = Cipher.getInstance("DESede/ECB/PKCS5Padding");
             descriptar.init(Cipher.DECRYPT_MODE, llave);
             byte[] text = descriptar.doFinal(mensaje);
             desencriptar = new String(text, "UTF-8");
@@ -115,6 +115,29 @@ public class LoginMetodos implements ILogin {
         }
 
         return desencriptar;
+
+    }
+
+    @Override
+    public String EncriptarClave(String clave) {
+        String encriptar = "";
+        try{
+            MessageDigest gestor = MessageDigest.getInstance("SHA-256");
+            byte[] key = gestor.digest(clave.getBytes("UTF-8"));
+            byte[] clavebyte = Arrays.copyOf(key, 24);
+            SecretKey llave = new SecretKeySpec(clavebyte, "DESede");
+            Cipher cifrar = Cipher.getInstance("DESede/ECB/PKCS5Padding");
+            cifrar.init(Cipher.ENCRYPT_MODE, llave);
+            
+            byte[] text = clave.getBytes("UTF-8");
+            byte[] buffer = cifrar.doFinal(text);
+            byte[] base64 = Base64.getEncoder().encode(buffer);
+            encriptar = new String(base64);
+        }catch(Exception ex){
+            
+        }
+
+        return encriptar;
 
     }
 }

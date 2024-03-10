@@ -26,5 +26,9 @@ public class LoginServicio {
      public static String DesencriptarClave(String encriptedclave, String clave){
          return new LoginMetodos().DesencriptarClave(clave, encriptedclave);
      }
+     
+     public static String EncriptarClave(String clave){
+         return new LoginMetodos().EncriptarClave(clave);
+     }
     
 }
