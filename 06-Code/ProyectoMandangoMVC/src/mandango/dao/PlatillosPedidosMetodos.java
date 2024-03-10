@@ -70,8 +70,8 @@ public class PlatillosPedidosMetodos implements IPlatillosPedidos {
 
             for (Document temp : documentoPlatillospedidos) {
                 PlatillosPedidos pedido = new PlatillosPedidos();
-                String nombreP = temp.getString("nombrePedido");
-                Document platillos = (Document) collection.find(eq("nombreProducto",nombreP)).first();
+                String nombreP = temp.getString("nombreProducto");
+                Document platillos = (Document) collection.find(eq("nombrePedido",nombreP)).first();
 
                 pedido.setNombrePlatillo(temp.getString("nombrePedido"));
                 pedido.setCantidad(temp.getInteger("cantidad"));

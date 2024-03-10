@@ -18,5 +18,6 @@ public interface ILogin {
     
      public List<EmpleadosSuperClase> ListaUsuarios();
      public String DesencriptarClave(String clave, String claveEncriptada); 
+     public String EncriptarClave(String clave);
     
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.dao.Conexion;
 import mandango.modelo.EmpleadosSuperClase;
+import mandango.modelo.Usuarios;
 import mandango.servicio.LoginServicio;
 import static mandango.servicio.LoginServicio.AutenticarLogin;
 
@@ -153,7 +154,12 @@ public class Login extends javax.swing.JFrame {
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         String usuario= txtUsuario.getText(),contrasenia = txtContrasenia.getText();
-        if(LoginServicio.AutenticarLogin(usuario, contrasenia)){
+        Usuarios usuario1 = new Usuarios();
+            String encriptedPassword = LoginServicio.EncriptarClave(contrasenia);
+          usuario1.setContrasenia(encriptedPassword);
+        LoginServicio.DesencriptarClave(usuario1.getContrasenia(), encriptedPassword);
+            System.out.println("Clave desencriptada: " + usuario1.getContrasenia());
+        if(LoginServicio.AutenticarLogin(usuario, usuario1.getContrasenia())){
              usser= txtUsuario.getText();
              clave = txtContrasenia.getText();
                 System.out.println(usser);
@@ -168,13 +174,14 @@ public class Login extends javax.swing.JFrame {
             EmpleadosFormulario Empleados = new EmpleadosFormulario();
             Empleados.setVisible(true);
             setVisible(false);
-           
             
             }
             
+           
+        }
         }
             
-        }
+        
         
     }//GEN-LAST:event_btEntrarActionPerformed
 

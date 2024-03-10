@@ -133,14 +133,14 @@ public class EmpleadoMetodos implements IEmpleado {
     public String EncriptarClave(String clave) {
         String encriptar = "";
         try{
-            MessageDigest gestor = MessageDigest.getInstance("MD5");
-            byte[] key = gestor.digest(clave.getBytes("utf-8"));
+            MessageDigest gestor = MessageDigest.getInstance("SHA-256");
+            byte[] key = gestor.digest(clave.getBytes("UTF-8"));
             byte[] clavebyte = Arrays.copyOf(key, 24);
-            SecretKey llave = new SecretKeySpec(clavebyte, "DEsede");
-            Cipher cifrar = Cipher.getInstance("DEsede");
+            SecretKey llave = new SecretKeySpec(clavebyte, "DESede");
+            Cipher cifrar = Cipher.getInstance("DESede/ECB/PKCS5Padding");
             cifrar.init(Cipher.ENCRYPT_MODE, llave);
             
-            byte[] text = clave.getBytes("utf-8");
+            byte[] text = clave.getBytes("UTF-8");
             byte[] buffer = cifrar.doFinal(text);
             byte[] base64 = Base64.getEncoder().encode(buffer);
             encriptar = new String(base64);

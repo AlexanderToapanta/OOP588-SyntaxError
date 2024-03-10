@@ -47,6 +47,10 @@ public class Usuarios {
         this.contrasenia = contrasenia;
     }
 
+    public Usuarios(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
     @Override
     public String toString() {
         return "Usuarios{" + "cedula=" + cedula + ", usuario=" + usuario + ", contrasenia=" + contrasenia + '}';
