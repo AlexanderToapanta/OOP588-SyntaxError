@@ -125,7 +125,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         lbHorario.setText("jLabel5");
         jPanel1.add(lbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 206, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/FondoGeneral2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/FondoGeneral.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 710));
 
         jMenu1.setText("Productos");
@@ -217,9 +217,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
