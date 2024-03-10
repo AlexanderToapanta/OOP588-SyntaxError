@@ -135,6 +135,18 @@ public class IngresoEmpleados extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+        });
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyPressed(evt);
+            }
+        });
+
         jLabel4.setText("Fecha Nacimiento");
 
         cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rol...", "Gerente", "Mesero", "Cajero", "Chef", " " }));
@@ -156,6 +168,12 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         });
 
         jLabel6.setText("Cedula");
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel1.setText("Ingreso de Empleado");
@@ -275,6 +293,58 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         newframe.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        if (Character.isLetter(teclaPresionada)) {
+                JOptionPane.showMessageDialog(null, "No se permiten letras en cedula.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                String textoActual = txtCedula.getText();
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtCedula.setText(nuevoTexto);
+            }
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        String textoActual = txtNombre.getText();
+
+        if (Character.isDigit(teclaPresionada)) {
+            JOptionPane.showMessageDialog(null, "No se permiten números en el Nombre.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtNombre.setText(nuevoTexto);
+            }
+        } else {
+            if (!textoActual.isEmpty()) {
+                String primeraLetra = textoActual.substring(0, 1).toUpperCase();
+                String restoDelTexto = textoActual.substring(1);
+                txtNombre.setText(primeraLetra + restoDelTexto);
+            }
+        }
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        String textoActual = txtApellido.getText();
+
+        if (Character.isDigit(teclaPresionada)) {
+            JOptionPane.showMessageDialog(null, "No se permiten números en el Apellido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtApellido.setText(nuevoTexto);
+            }
+        } else {
+            if (!textoActual.isEmpty()) {
+                String primeraLetra = textoActual.substring(0, 1).toUpperCase();
+                String restoDelTexto = textoActual.substring(1);
+                txtApellido.setText(primeraLetra + restoDelTexto);
+            }
+        }
+    }//GEN-LAST:event_txtApellidoKeyPressed
     
     
     /**
