@@ -11,7 +11,6 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.GerenteServicio;
-import mandango.servicio.UsuariosServicio;
 
 /**
  *
@@ -120,7 +119,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel4)
-                        .addGap(76, 76, 76)
+                        .addGap(98, 98, 98)
                         .addComponent(clFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(170, 170, 170)
@@ -174,8 +173,6 @@ public class IngresoEmpleados extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMyy");
-        String clavefecha = formatoFecha.format(clFNacimiento.getDate());
-        String claveencriptada = UsuariosServicio.EncriptarClave(clavefecha);
         EmpleadosSuperClase insertarEmpleado=new EmpleadosSuperClase(
                 txtCedula.getText(),
                 txtNombre.getText(),
@@ -183,7 +180,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                 clFNacimiento.getDate(),
                 cmbRol.getSelectedItem().toString(),
                 txtCedula.getText()+"xd",
-                claveencriptada
+                formatoFecha.format(clFNacimiento.getDate())
 
                 );
         if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){

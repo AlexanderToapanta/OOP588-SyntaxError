@@ -97,7 +97,7 @@ public class LoginMetodos implements ILogin {
     @Override
     public String DesencriptarClave(String clave, String claveEncriptada) {
         String desencriptar = "";
-        try {
+        try{
             byte[] mensaje = Base64.getDecoder().decode(claveEncriptada.getBytes("UTF-8"));
             MessageDigest digestor = MessageDigest.getInstance("SHA-256");
             byte[] gestion = digestor.digest(clave.getBytes("UTF-8"));
@@ -107,10 +107,13 @@ public class LoginMetodos implements ILogin {
             descriptar.init(Cipher.DECRYPT_MODE, llave);
             byte[] text = descriptar.doFinal(mensaje);
             desencriptar = new String(text, "UTF-8");
-        } catch (NoSuchAlgorithmException | BadPaddingException | InvalidKeyException
-                | NoSuchPaddingException | UnsupportedEncodingException | IllegalBlockSizeException e) {
+        }catch(NoSuchAlgorithmException | BadPaddingException | InvalidKeyException | 
+                NoSuchPaddingException | UnsupportedEncodingException | IllegalBlockSizeException e){
             e.printStackTrace();
-        } 
+        }catch(Exception ex){
+            
+        }
+
         return desencriptar;
 
     }
