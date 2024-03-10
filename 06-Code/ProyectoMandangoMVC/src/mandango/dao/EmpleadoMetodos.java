@@ -137,7 +137,7 @@ public class EmpleadoMetodos implements IEmpleado {
             byte[] key = gestor.digest(clave.getBytes("UTF-8"));
             byte[] clavebyte = Arrays.copyOf(key, 24);
             SecretKey llave = new SecretKeySpec(clavebyte, "DESede");
-            Cipher cifrar = Cipher.getInstance("DESede/ECB/PKCS5Padding");
+            Cipher cifrar = Cipher.getInstance("DESede");
             cifrar.init(Cipher.ENCRYPT_MODE, llave);
             
             byte[] text = clave.getBytes("UTF-8");

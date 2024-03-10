@@ -13,6 +13,7 @@ import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Usuarios;
 import mandango.servicio.LoginServicio;
 import static mandango.servicio.LoginServicio.AutenticarLogin;
+import mandango.servicio.UsuariosServicio;
 
 
 /**
@@ -24,7 +25,7 @@ public class Login extends javax.swing.JFrame {
     List<EmpleadosSuperClase> ListaUsuarios =null;
      public static String usser = null;
      public static String clave = null;
-   
+   EmpleadosSuperClase gerente = new EmpleadosSuperClase();
     
     public Login() {
        
@@ -155,9 +156,10 @@ public class Login extends javax.swing.JFrame {
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         String usuario= txtUsuario.getText(),contrasenia = txtContrasenia.getText();
         Usuarios usuario1 = new Usuarios();
+       gerente = UsuariosServicio.BuscarUsuario(usuario);
             String encriptedPassword = LoginServicio.EncriptarClave(contrasenia);
           usuario1.setContrasenia(encriptedPassword);
-        LoginServicio.DesencriptarClave(usuario1.getContrasenia(), encriptedPassword);
+        LoginServicio.DesencriptarClave(encriptedPassword, gerente.getContrasenia());
             System.out.println("Clave desencriptada: " + usuario1.getContrasenia());
         if(LoginServicio.AutenticarLogin(usuario, usuario1.getContrasenia())){
              usser= txtUsuario.getText();
