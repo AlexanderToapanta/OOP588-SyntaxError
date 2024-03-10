@@ -28,6 +28,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
+    
     public void limpiarDatos() {
         txtApellido.setText("");
         txtCedula.setText("");

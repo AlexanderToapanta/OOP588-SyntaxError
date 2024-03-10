@@ -37,6 +37,8 @@ public class ActualizacionEmpleados extends javax.swing.JFrame {
         txtCedula.setText(perfil.getCedula());
         txtNombre.setText(perfil.getNombre());
         txtApellido.setText(perfil.getApellido());
+        cmbRol.setSelectedItem(perfil.getRol());
+        clFNacimiento.setDate(perfil.getFechaNacimiento());
 
     }
     
@@ -273,21 +275,29 @@ public class ActualizacionEmpleados extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         if (validarCampos()) {
-            int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro de guardar datos", "Ingreso de Datos", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Seguro de guardar datos", "Ingreso de Datos", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirmacion == JOptionPane.OK_OPTION) {
             EmpleadosSuperClase insertarEmpleado = new EmpleadosSuperClase(
-                    txtCedula.getText(),
                     txtNombre.getText(),
+                    txtApellido.getText(),
                     cmbRol.getSelectedItem().toString(),
                     clFNacimiento.getDate(),
-                    txtApellido.getText()
+                    txtCedula.getText()
                 );
-            if(GerenteServicio.ActualizarEmpleado(insertarEmpleado)){
-                JOptionPane.showMessageDialog(null, "registro ingresado correctamente");
-                limpiarDatos();
+
+            if (GerenteServicio.ActualizarEmpleado(insertarEmpleado)) {
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente!!!");
                 regresarLista();
+                btnActualizar.setSelected(false);
+            }else{
+                btnActualizar.setSelected(false);
+                JOptionPane.showMessageDialog(null, "Los datos no se pudieron actializar");
+                
             }
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Coloque el nombre del perfil");
+            btnActualizar.setSelected(false);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 

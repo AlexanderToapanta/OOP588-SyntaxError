@@ -162,23 +162,28 @@ public class GerenteMetodos implements IGerente{
      
 
     public boolean InsertarEmpleado(EmpleadosSuperClase empleado) {
-        Document document;
-        try{
-        document = new Document("cedula", empleado.getCedula())
+        Document documento, filtro = new Document("cedula", empleado.getCedula());
+        long contador = collection.countDocuments(filtro);
+        try {   
+            if (contador == 0) {
+                documento = new Document("cedula", empleado.getCedula())
                 .append("nombre", empleado.getNombre())
                 .append("apellido", empleado.getApellido())
                 .append("fechaNacimiento", empleado.getFechaNacimiento())
                 .append("usuario", empleado.getUsuario())
                 .append("rol", empleado.getRol())
                 .append("contrasenia", empleado.getContrasenia());
-                collection.insertOne(document);
-        }catch (MongoException ex){
-            JOptionPane.showMessageDialog(null,"Error de insercion" +ex.toString());
-            return false;  
-        }   finally{
-            cierreConexion();   
+                collection.insertOne(documento);
+            } else {
+                return false;
+            }
+        } catch (MongoException ex) {
+            JOptionPane.showMessageDialog(null, "error al insertar datos: " + ex.toString());
+            return false;
+        } finally {
+            cierreConexion();
         }
-           return true;
+        return true;
     }
 
     @Override
@@ -206,25 +211,32 @@ public class GerenteMetodos implements IGerente{
 
     @Override
     public boolean ActualizarEmpleado(EmpleadosSuperClase empleado) {
+        boolean actualizar = false;
+        Document filtro = null, documento = null;
+        UpdateResult result = null;
         try {
+            filtro = new Document("cedula", empleado.getCedula());
+            documento = new Document("$set", new Document()
+                    .append("cedula", empleado.getCedula())
+                    .append("nombre", empleado.getNombre())
+                    .append("apellido", empleado.getApellido())
+                    .append("fechaNacimiento", empleado.getFechaNacimiento())    
+                    .append("rol", empleado.getRol()));
 
-            Bson filtro = Filters.eq("cedula", empleado.getCedula());
+            result = collection.updateOne(filtro, documento);
+            if (result.getModifiedCount() > 0) {
+                actualizar = true;
 
-            Document nuevoDocumento = new Document("cedula", empleado.getCedula())
-                .append("nombre", empleado.getNombre())
-                .append("apellido", empleado.getApellido())
-                .append("fechaNacimiento", empleado.getFechaNacimiento())    
-                .append("rol", empleado.getRol());
-
-            UpdateResult resultado = collection.updateOne(filtro, new Document("$set", nuevoDocumento));
-
-            return resultado.getModifiedCount() > 0;
+            } else {
+                return false;
+            }
         } catch (MongoException ex) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar el perfil: " + ex.toString());
+            JOptionPane.showMessageDialog(null, "Error al actualizar datos:" + ex.toString());
             return false;
         } finally {
             cierreConexion();
         }
+        return true;
     }
     
       
