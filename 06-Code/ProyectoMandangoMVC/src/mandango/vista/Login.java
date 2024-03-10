@@ -24,6 +24,8 @@ public class Login extends javax.swing.JFrame {
     List<EmpleadosSuperClase> ListaUsuarios =null;
      public static String usser = null;
      public static String clave = null;
+     EmpleadosSuperClase gerente = new EmpleadosSuperClase();
+
    
     
     public Login() {
@@ -157,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         Usuarios usuario1 = new Usuarios();
             String encriptedPassword = LoginServicio.EncriptarClave(contrasenia);
           usuario1.setContrasenia(encriptedPassword);
-        LoginServicio.DesencriptarClave(usuario1.getContrasenia(), encriptedPassword);
+        LoginServicio.DesencriptarClave(encriptedPassword, gerente.getContrasenia());
             System.out.println("Clave desencriptada: " + usuario1.getContrasenia());
         if(LoginServicio.AutenticarLogin(usuario, usuario1.getContrasenia())){
              usser= txtUsuario.getText();
