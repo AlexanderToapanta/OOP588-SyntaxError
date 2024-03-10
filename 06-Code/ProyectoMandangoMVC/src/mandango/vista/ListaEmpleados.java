@@ -63,6 +63,11 @@ public class ListaEmpleados extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnInsertar.setText("Ingresar");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -211,6 +216,12 @@ public class ListaEmpleados extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione el registro a eliminar");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        IngresoEmpleados ingresar = new IngresoEmpleados();
+        ingresar.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btnInsertarActionPerformed
 
     /**
      * @param args the command line arguments

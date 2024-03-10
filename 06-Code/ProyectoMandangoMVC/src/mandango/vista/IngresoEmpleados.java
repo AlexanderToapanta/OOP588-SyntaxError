@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.GerenteServicio;
+import mandango.servicio.UsuariosServicio;
 
 /**
  *
@@ -245,6 +246,8 @@ public class IngresoEmpleados extends javax.swing.JFrame {
             int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro de guardar datos", "Ingreso de Datos", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirmacion == JOptionPane.OK_OPTION) {
                 SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMyy");
+                String clavefecha = formatoFecha.format(clFNacimiento.getDate());
+                String claveencriptada = UsuariosServicio.EncriptarClave(clavefecha);
                 EmpleadosSuperClase insertarEmpleado=new EmpleadosSuperClase(
                         txtCedula.getText(),
                         txtNombre.getText(),
@@ -252,7 +255,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                         clFNacimiento.getDate(),
                         cmbRol.getSelectedItem().toString(),
                         txtCedula.getText()+"xd",
-                        formatoFecha.format(clFNacimiento.getDate())
+                        claveencriptada
                         );
                 if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
                     JOptionPane.showMessageDialog(null, "registro ingresado correctamente");
