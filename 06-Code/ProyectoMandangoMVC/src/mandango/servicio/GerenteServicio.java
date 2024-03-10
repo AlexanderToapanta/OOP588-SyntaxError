@@ -20,4 +20,16 @@ public class GerenteServicio {
     public static List<EmpleadosSuperClase> ListarEmpleados(){
         return new GerenteMetodos().ListarEmpleados();
     }
+    
+    public static boolean EliminarEmpleado(String cedula){
+        return new GerenteMetodos().EliminarEmpleado(cedula);
+    }
+    
+    public static EmpleadosSuperClase BuscarUsuario(String cedula){
+        return new GerenteMetodos().BuscarUsuario(cedula);
+    }
+    
+    public static boolean ActualizarEmpleado (EmpleadosSuperClase empleado){
+        return new GerenteMetodos().ActualizarEmpleado(empleado);
+    }
 }

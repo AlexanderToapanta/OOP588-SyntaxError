@@ -8,6 +8,8 @@ import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Gerente;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 /**
  *
@@ -77,7 +80,24 @@ public class GerenteMetodos implements IGerente{
 
     @Override
     public boolean EliminarEmpleado(String cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Bson filtro = null;
+        DeleteResult resultado = null;
+        boolean eliminar = false;
+        try{
+            filtro = new Document("cedula", cedula);
+            resultado = collection.deleteOne(filtro);
+            if(resultado.getDeletedCount()>0){
+                eliminar = true;
+            }else{
+            JOptionPane.showMessageDialog(null, "No se encontro el registro para  eliminar.");
+            }
+        }catch(MongoException ex){
+            JOptionPane.showMessageDialog(null, "Error de eliminacion" + ex.toString());
+            eliminar= false;
+        }finally{
+            cierreConexion();
+        }
+        return eliminar;
     }
 
     @Override
@@ -86,8 +106,29 @@ public class GerenteMetodos implements IGerente{
     }
 
     @Override
-    public boolean BuscarUsuario(String cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public EmpleadosSuperClase BuscarUsuario(String cedula) {
+        EmpleadosSuperClase empleado = null;
+        Document filtro = null;
+        Document resultado = null;
+        try {
+            filtro = new Document("cedula", cedula);
+            resultado = (Document) collection.find(filtro).first();
+
+            if (resultado != null) {
+                empleado = new EmpleadosSuperClase();                
+                empleado.setNombre(resultado.getString("nombre"));
+                empleado.setApellido(resultado.getString("apellido"));
+                empleado.setRol(resultado.getString("rol"));
+                empleado.setFechaNacimiento(resultado.getDate("fechaNacimiento"));
+                empleado.setCedula(resultado.getString("cedula"));
+            }
+
+        } catch (MongoException ex) {
+            JOptionPane.showMessageDialog(null, "Error al consultar datos segun id " + ex.getMessage());
+        } finally {
+            cierreConexion();
+        }
+        return empleado;
     }
 
     @Override
@@ -163,6 +204,29 @@ public class GerenteMetodos implements IGerente{
 
     }
 
-       
+    @Override
+    public boolean ActualizarEmpleado(EmpleadosSuperClase empleado) {
+        try {
+
+            Bson filtro = Filters.eq("cedula", empleado.getCedula());
+
+            Document nuevoDocumento = new Document("cedula", empleado.getCedula())
+                .append("nombre", empleado.getNombre())
+                .append("apellido", empleado.getApellido())
+                .append("fechaNacimiento", empleado.getFechaNacimiento())    
+                .append("rol", empleado.getRol());
+
+            UpdateResult resultado = collection.updateOne(filtro, new Document("$set", nuevoDocumento));
+
+            return resultado.getModifiedCount() > 0;
+        } catch (MongoException ex) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar el perfil: " + ex.toString());
+            return false;
+        } finally {
+            cierreConexion();
+        }
+    }
+    
+      
 
 }

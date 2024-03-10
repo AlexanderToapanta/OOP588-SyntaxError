@@ -20,8 +20,9 @@ public interface IGerente {
     public List<EmpleadosSuperClase> ListarEmpleados();
     public boolean InsertarEmpleado(EmpleadosSuperClase empleado);
     public boolean EliminarEmpleado(String cedula);
+    public EmpleadosSuperClase BuscarUsuario(String cedula);
+    public boolean ActualizarEmpleado(EmpleadosSuperClase empleado);
     public boolean VisualizarGanancias();
-    public boolean BuscarUsuario(String cedula);
     public boolean DatosGerente(Gerente gerente);
     public String EncriptarClave(String clave);
     public boolean ActualizarClave(String usuario, String claveencriptada);

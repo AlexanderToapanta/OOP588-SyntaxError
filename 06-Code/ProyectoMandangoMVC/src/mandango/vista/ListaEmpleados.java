@@ -5,6 +5,8 @@
 package mandango.vista;
 
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.GerenteServicio;
@@ -16,6 +18,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     List<EmpleadosSuperClase> usuarios = null;
     int filaSeleccionada = -1;
+    public static String codCedula = "";
     /**
      * Creates new form IngresoDeEmpleados
      */
@@ -24,6 +27,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
         MostrarTabla();
         this.setLocationRelativeTo(null);
         btnActualizar.setVisible(false);
+        btnEliminar.setVisible(false);
     }
     
     public void MostrarTabla() {
@@ -49,6 +53,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnInsertar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -60,6 +65,18 @@ public class ListaEmpleados extends javax.swing.JFrame {
         btnInsertar.setText("Ingresar");
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,9 +85,11 @@ public class ListaEmpleados extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(61, Short.MAX_VALUE)
                 .addComponent(btnInsertar)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnActualizar)
-                .addGap(52, 52, 52))
+                .addGap(12, 12, 12)
+                .addComponent(btnEliminar)
+                .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +97,8 @@ public class ListaEmpleados extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsertar)
-                    .addComponent(btnActualizar))
+                    .addComponent(btnActualizar)
+                    .addComponent(btnEliminar))
                 .addGap(29, 29, 29))
         );
 
@@ -154,8 +174,43 @@ public class ListaEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_opSalirActionPerformed
 
     private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        filaSeleccionada = tblDatos.getSelectedRow();
         btnActualizar.setVisible(true);
+        btnEliminar.setVisible(true);
     }//GEN-LAST:event_tblDatosMouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        int filaSeleccionada = tblDatos.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            codCedula = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+            ActualizacionEmpleados modificar = new ActualizacionEmpleados();
+            modificar.setVisible(true);
+            setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione el registro a actualizar");
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int filaSeleccionada = tblDatos.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            int confirmar = JOptionPane.showConfirmDialog(null, "Seguro de eliminar el registro",
+                    "Confirmacion", JOptionPane.YES_NO_OPTION);
+            if (confirmar == JOptionPane.YES_OPTION) {
+                codCedula = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+
+                if (GerenteServicio.EliminarEmpleado(codCedula)) {
+                    modeloTabla.removeRow(filaSeleccionada);
+                    JOptionPane.showMessageDialog(null, "Registro eliminado correctamente");
+                }
+            } else {
+                ListSelectionModel seleccionModel = tblDatos.getSelectionModel();
+                seleccionModel.clearSelection();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione el registro a eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +219,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInsertar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
