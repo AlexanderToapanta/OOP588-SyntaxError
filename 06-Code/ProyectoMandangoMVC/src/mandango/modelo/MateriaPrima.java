@@ -4,6 +4,8 @@
  */
 package mandango.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author DELL
@@ -13,6 +15,7 @@ public class MateriaPrima {
     private String nombreMateriPrima;
     private int cantidad;
     private double precio;
+    private Date Fgastos;
 
     public String getNombreMateriPrima() {
         return nombreMateriPrima;
@@ -38,6 +41,16 @@ public class MateriaPrima {
         this.precio = precio;
     }
 
+    public Date getFgastos() {
+        return Fgastos;
+    }
+
+    public void setFgastos(Date Fgastos) {
+        this.Fgastos = Fgastos;
+    }
+
+    
+
     public MateriaPrima(String nombreMateriPrima, int cantidad, double precio) {
         this.nombreMateriPrima = nombreMateriPrima;
         this.cantidad = cantidad;
@@ -47,10 +60,23 @@ public class MateriaPrima {
     public MateriaPrima() {
     }
 
+    public MateriaPrima(String nombreMateriPrima, int cantidad, double precio, Date Fgastos) {
+        this.nombreMateriPrima = nombreMateriPrima;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.Fgastos = Fgastos;
+    }
+
     @Override
     public String toString() {
-        return "MateriaPrima{" + "nombreMateriPrima=" + nombreMateriPrima + ", cantidad=" + cantidad + ", precio=" + precio + '}';
+        return "MateriaPrima{" + "nombreMateriPrima=" + nombreMateriPrima + ", cantidad=" + cantidad + ", precio=" + precio + ", Fgastos=" + Fgastos + '}';
     }
+
+    
+
+    
+
+    
     
     
     

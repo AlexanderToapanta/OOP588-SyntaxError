@@ -4,6 +4,7 @@
  */
 package mandango.vista;
 
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +16,7 @@ import mandango.servicio.MateriaPrimaServicio;
  * @author Usuario
  */
 public class IngresoDeMateriaPrima extends javax.swing.JFrame {
-
+static boolean zi = false;
     public IngresoDeMateriaPrima() {
         initComponents();
         
@@ -201,15 +202,17 @@ public class IngresoDeMateriaPrima extends javax.swing.JFrame {
 
     private void btningresaringreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btningresaringreActionPerformed
         if(validar()){
+            Date fechaActual = new Date();
             MateriaPrima insertarmateria = new MateriaPrima(
                     txtIngredientes.getText(),
                     Integer.parseInt(spCantidad.getValue().toString()),
-                    Double.parseDouble(txtPrecio.getText()));
+                    Double.parseDouble(txtPrecio.getText())
+            ,fechaActual);
             
        if(MateriaPrimaServicio.InsertarMateriaPrima(insertarmateria)){
            JOptionPane.showMessageDialog(null, "Ingreso exitoso");
            
-           
+           zi=true;
        }
        
        Limpiar();
