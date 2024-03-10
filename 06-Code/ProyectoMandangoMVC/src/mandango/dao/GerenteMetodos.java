@@ -8,6 +8,7 @@ import com.mongodb.MongoException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import mandango.modelo.EmpleadosSuperClase;
 import mandango.modelo.Gerente;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 /**
  *
@@ -77,7 +79,24 @@ public class GerenteMetodos implements IGerente{
 
     @Override
     public boolean EliminarEmpleado(String cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Bson filtro = null;
+        DeleteResult resultado = null;
+        boolean eliminar = false;
+        try{
+            filtro = new Document("cedula", cedula);
+            resultado = collection.deleteOne(filtro);
+            if(resultado.getDeletedCount()>0){
+                eliminar = true;
+            }else{
+            JOptionPane.showMessageDialog(null, "No se encontro el registro para  eliminar.");
+            }
+        }catch(MongoException ex){
+            JOptionPane.showMessageDialog(null, "Error de eliminacion" + ex.toString());
+            eliminar= false;
+        }finally{
+            cierreConexion();
+        }
+        return eliminar;
     }
 
     @Override

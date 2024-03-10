@@ -95,7 +95,6 @@ public class EmpleadoMetodos implements IEmpleado {
 
     @Override
     public EmpleadosSuperClase BuscarUsuario(String usuario) {
-
     EmpleadosSuperClase empleado = null;
     Document filtro = null;
     Document resultado = null;
@@ -115,9 +114,7 @@ public class EmpleadoMetodos implements IEmpleado {
                 empleado.setUsuario(resultado.getString("usuario"));
                 empleado.setContrasenia(resultado.getString("contrasenia"));
                 empleado.setRol(resultado.getString("rol"));
-            }
-            
-            
+            }           
         }
     } catch (MongoException ex) {
         JOptionPane.showMessageDialog(null, "Error al consultar datos según usuario: " + ex.toString());
