@@ -6,8 +6,10 @@ package mandango.vista;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.EmpleadosSuperClase;
 import mandango.servicio.GerenteServicio;
@@ -31,6 +33,74 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         txtNombre.setText("");
         clFNacimiento.setDate(null);
         cmbRol.setSelectedIndex(0);
+    }
+    
+    
+    private boolean validarCampos() {
+        List<String> errores = new ArrayList<>();
+
+        if (txtCedula.getText().trim().isEmpty()) {
+            errores.add("Ingrese la cédula");
+        }
+        if (txtApellido.getText().isEmpty()) {
+            errores.add("Ingrese el Apellido");
+        }
+        if (txtNombre.getText().trim().isEmpty()) {
+            errores.add("Ingrese el Nombre");
+        }
+        
+        if (clFNacimiento.getDate() == null) {
+            errores.add("Ingrese la fecha de nacimiento");
+        }
+        // Validar la cédula
+        String cedula = txtCedula.getText().trim();
+        if (cedula.isEmpty() || !validarCedula(cedula)) {
+            errores.add("La cédula ingresada no existe");
+        }
+        
+        if (cmbRol.getSelectedIndex()==0) {
+            errores.add("Ingrese un rol al trabajador.");
+        }
+
+        if (!errores.isEmpty()) {
+            JOptionPane.showMessageDialog(null, String.join("\n", errores));
+            return false;
+        }
+
+        return true;
+    }
+    
+    
+    private static boolean validarCedula(String cedula) {
+        if (!cedula.matches("\\d{10}")) {
+            return false;
+        }
+        String numeros = cedula.substring(0, 9);
+        int ultimoDigito = Integer.parseInt(cedula.substring(9));
+        int suma = 0;
+        for (int i = 0; i < 9; i++) {
+            int digito = Character.getNumericValue(numeros.charAt(i));
+            if (i % 2 == 0) {
+                digito *= 2;
+                if (digito > 9) {
+                    digito -= 9;
+                }
+            }
+            suma += digito;
+        }
+
+        int ultimoDigitoVerificado = 10 - (suma % 10);
+        if (ultimoDigitoVerificado == 10) {
+            ultimoDigitoVerificado = 0;
+        }
+
+        return ultimoDigito == ultimoDigitoVerificado;
+    }
+    
+    public void regresarLista(){
+        ListaEmpleados consultar = new ListaEmpleados();
+        consultar.setVisible(true);
+        setVisible(false);
     }
 
     /**
@@ -65,6 +135,18 @@ public class IngresoEmpleados extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+        });
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyPressed(evt);
+            }
+        });
+
         jLabel4.setText("Fecha Nacimiento");
 
         cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rol...", "Gerente", "Mesero", "Cajero", "Chef", " " }));
@@ -86,6 +168,12 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         });
 
         jLabel6.setText("Cedula");
+
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel1.setText("Ingreso de Empleado");
@@ -125,9 +213,9 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                         .addGap(170, 170, 170)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+                        .addGap(128, 128, 128)
                         .addComponent(btnIngresar)
-                        .addGap(109, 109, 109)
+                        .addGap(107, 107, 107)
                         .addComponent(btnRegresar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -156,11 +244,11 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(92, 92, 92)
+                .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIngresar)
                     .addComponent(btnRegresar))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
@@ -172,29 +260,30 @@ public class IngresoEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMyy");
-        EmpleadosSuperClase insertarEmpleado=new EmpleadosSuperClase(
-                txtCedula.getText(),
-                txtNombre.getText(),
-                txtApellido.getText(),
-                clFNacimiento.getDate(),
-                cmbRol.getSelectedItem().toString(),
-                txtCedula.getText()+"xd",
-                formatoFecha.format(clFNacimiento.getDate())
-
-                );
-        if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
-            JOptionPane.showMessageDialog(null, "registro ingresado correctamente");
-            limpiarDatos();
-            this.dispose();
-            
-            
-        }else{
-            JOptionPane.showMessageDialog(null,"error al ingresar registro ");
+    if (validarCampos()) {
+            int confirmacion = JOptionPane.showConfirmDialog(this, "Seguro de guardar datos", "Ingreso de Datos", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (confirmacion == JOptionPane.OK_OPTION) {
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMyy");
+                EmpleadosSuperClase insertarEmpleado=new EmpleadosSuperClase(
+                        txtCedula.getText(),
+                        txtNombre.getText(),
+                        txtApellido.getText(),
+                        clFNacimiento.getDate(),
+                        cmbRol.getSelectedItem().toString(),
+                        txtCedula.getText()+"xd",
+                        formatoFecha.format(clFNacimiento.getDate())
+                        );
+                if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
+                    JOptionPane.showMessageDialog(null, "registro ingresado correctamente");
+                    limpiarDatos();
+                    regresarLista();
+                } else {
+                    JOptionPane.showMessageDialog(null, "La cedula ya fue ingresada con anterioridad");
+                    txtCedula.setText("");
+                    txtCedula.requestFocus();
+                }
+            }
         }
-        ListaEmpleados newframe = new ListaEmpleados();
-        newframe.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -202,6 +291,58 @@ public class IngresoEmpleados extends javax.swing.JFrame {
         newframe.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void txtCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        if (Character.isLetter(teclaPresionada)) {
+                JOptionPane.showMessageDialog(null, "No se permiten letras en cedula.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                String textoActual = txtCedula.getText();
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtCedula.setText(nuevoTexto);
+            }
+        }
+    }//GEN-LAST:event_txtCedulaKeyPressed
+
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        String textoActual = txtNombre.getText();
+
+        if (Character.isDigit(teclaPresionada)) {
+            JOptionPane.showMessageDialog(null, "No se permiten números en el Nombre.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtNombre.setText(nuevoTexto);
+            }
+        } else {
+            if (!textoActual.isEmpty()) {
+                String primeraLetra = textoActual.substring(0, 1).toUpperCase();
+                String restoDelTexto = textoActual.substring(1);
+                txtNombre.setText(primeraLetra + restoDelTexto);
+            }
+        }
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtApellidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyPressed
+        char teclaPresionada = evt.getKeyChar();
+        String textoActual = txtApellido.getText();
+
+        if (Character.isDigit(teclaPresionada)) {
+            JOptionPane.showMessageDialog(null, "No se permiten números en el Apellido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+            if (textoActual.length() > 0) {
+                String nuevoTexto = textoActual.substring(0, textoActual.length() - 1);
+                txtApellido.setText(nuevoTexto);
+            }
+        } else {
+            if (!textoActual.isEmpty()) {
+                String primeraLetra = textoActual.substring(0, 1).toUpperCase();
+                String restoDelTexto = textoActual.substring(1);
+                txtApellido.setText(primeraLetra + restoDelTexto);
+            }
+        }
+    }//GEN-LAST:event_txtApellidoKeyPressed
     
     
     /**
