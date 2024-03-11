@@ -46,7 +46,7 @@ public class PlatillosPedidosMetodos implements IPlatillosPedidos {
     public boolean InsertarPlatillosPedidos(PlatillosPedidos ganacias) {
        Document document;
         try{
-        document = new Document("nombrePedido",ganacias.getNombrePlatillo())
+        document = new Document("nombre_producto",ganacias.getNombrePlatillo())
                 .append("cantidad", ganacias.getCantidad())
                 .append("ganancias", ganacias.getGanancia())
                 .append("fecha",ganacias.getFganancias());

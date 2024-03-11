@@ -69,7 +69,7 @@ List<GananciasyGastosDiarios> listaregistro;
             existencia=false;
             break;
         }
-           break;
+           
        }        
                
           return existencia;

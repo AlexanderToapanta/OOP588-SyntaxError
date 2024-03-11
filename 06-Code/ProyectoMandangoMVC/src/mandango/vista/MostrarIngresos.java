@@ -8,9 +8,12 @@ package mandango.vista;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import mandango.modelo.GananciasyGastosDiarios;
 import mandango.modelo.PlatillosPedidos;
 import mandango.modelo.ProductosCafeteria;
+import mandango.servicio.GastosyGananciasServicio;
 import mandango.servicio.PlatillosPedidosServicio;
 import mandango.servicio.ProductoServicio;
 
@@ -24,11 +27,14 @@ public class MostrarIngresos extends javax.swing.JFrame {
      private DefaultTableModel dtm;
      static double totalI;
      List<PlatillosPedidos> tabladatosGanancias=null;
+       List<GananciasyGastosDiarios> listaregistro;
     public MostrarIngresos() {
         initComponents();
         tabladatosGanancias = PlatillosPedidosServicio.ListarPlatillosPedidos();
+        listaregistro = GastosyGananciasServicio.ListaGanaciasDiarias();
         MostrarDatos();
         Total();
+        limpiarTabla();
     }
     
 public void MostrarDatos(){
@@ -53,6 +59,22 @@ public void MostrarDatos(){
             
         }
     }
+ private boolean ValidarExistencia(){
+          boolean existencia = true;
+           SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+            for (GananciasyGastosDiarios buscar:listaregistro){
+           String date = formatoFecha.format(buscar.getDia());
+           String dates = formatoFecha.format(day);
+           if(date.equals(dates)){
+            existencia=false;
+            break;
+        }
+          
+       }        
+               
+          return existencia;
+      }  
    public void Total (){
        totalI=0;
      for (PlatillosPedidos buscar :tabladatosGanancias){
@@ -67,10 +89,15 @@ public void MostrarDatos(){
         }
               
         }
-          System.out.println(totalI);
+          
           lbtotal.setText(String.format("%.2f", totalI));
 }
-    
+     public void limpiarTabla(){
+      if(ValidarExistencia()){
+      dtm =(DefaultTableModel)tblDatos.getModel();
+      dtm.setRowCount(0);
+      }
+  }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
