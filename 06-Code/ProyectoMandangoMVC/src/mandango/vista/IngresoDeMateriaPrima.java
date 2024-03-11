@@ -73,24 +73,32 @@ public class IngresoDeMateriaPrima extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("SimSun-ExtB", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingreso de Ingredientes");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("SimSun-ExtB", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrediente");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 72, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         txtIngredientes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtIngredientesKeyTyped(evt);
             }
         });
-        jPanel1.add(txtIngredientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 69, 188, -1));
+        jPanel1.add(txtIngredientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 188, -1));
 
+        jLabel3.setFont(new java.awt.Font("SimSun-ExtB", 3, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cantidad");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 115, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("SimSun-ExtB", 3, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Precio Unitario");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 151, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         spCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
         spCantidad.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -98,7 +106,7 @@ public class IngresoDeMateriaPrima extends javax.swing.JFrame {
                 spCantidadStateChanged(evt);
             }
         });
-        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 112, -1, -1));
+        jPanel1.add(spCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +118,7 @@ public class IngresoDeMateriaPrima extends javax.swing.JFrame {
                 txtPrecioKeyTyped(evt);
             }
         });
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 148, 83, -1));
+        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 83, -1));
 
         btningresaringre.setText("registrar");
         btningresaringre.addActionListener(new java.awt.event.ActionListener() {
@@ -118,11 +126,11 @@ public class IngresoDeMateriaPrima extends javax.swing.JFrame {
                 btningresaringreActionPerformed(evt);
             }
         });
-        jPanel1.add(btningresaringre, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 238, -1, -1));
+        jPanel1.add(btningresaringre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
         jPanel1.add(lbtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 279, 208, 28));
 
-        jLabel5.setText("jLabel5");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Tallarines a la carbonara-Los Tragaldabas.jpg"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 490));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
