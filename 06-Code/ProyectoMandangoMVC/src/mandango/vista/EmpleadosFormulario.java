@@ -174,6 +174,7 @@ List<GananciasyGastosDiarios> listaregistro;
 
         jMenu1.setText("Cafeteria");
 
+        btnCafeteria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_201535903.png"))); // NOI18N
         btnCafeteria.setText("Ingreso a la cafeteria");
         btnCafeteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +187,7 @@ List<GananciasyGastosDiarios> listaregistro;
 
         jMenu2.setText("Cambiar Contraseña");
 
+        btncambiapas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_201248464.png"))); // NOI18N
         btncambiapas.setText("Cambiar");
         btncambiapas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +200,7 @@ List<GananciasyGastosDiarios> listaregistro;
 
         jMenu3.setText("Salir");
 
+        mnCerrarSecion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200334793.png"))); // NOI18N
         mnCerrarSecion.setText("Cerrar Seción");
         mnCerrarSecion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

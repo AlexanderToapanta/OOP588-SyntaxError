@@ -108,11 +108,19 @@ public class Cafeteria extends javax.swing.JFrame {
         btnInsertarPedido = new javax.swing.JButton();
         lbtotalPagar = new javax.swing.JLabel();
         btnotroplatillo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Cafeteria");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cafeteria");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 140, 30));
+
+        cmb_Platillos.setBackground(new java.awt.Color(0, 102, 102));
+        cmb_Platillos.setForeground(new java.awt.Color(0, 0, 204));
         cmb_Platillos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un platillo" }));
         cmb_Platillos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,6 +132,22 @@ public class Cafeteria extends javax.swing.JFrame {
                 cmb_PlatillosActionPerformed(evt);
             }
         });
+        jPanel1.add(cmb_Platillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 460, -1));
+
+        lbPlatillo.setBackground(new java.awt.Color(51, 51, 51));
+        lbPlatillo.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        lbPlatillo.setForeground(new java.awt.Color(102, 0, 0));
+        jPanel1.add(lbPlatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 380, 20));
+
+        lbcantidad.setBackground(new java.awt.Color(102, 102, 102));
+        lbcantidad.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        lbcantidad.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(lbcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 350, 20));
+
+        lbprecio.setBackground(new java.awt.Color(102, 102, 102));
+        lbprecio.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        lbprecio.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(lbprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 340, 20));
 
         spnPedidip.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         spnPedidip.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -131,6 +155,7 @@ public class Cafeteria extends javax.swing.JFrame {
                 spnPedidipStateChanged(evt);
             }
         });
+        jPanel1.add(spnPedidip, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 89, -1));
 
         btnInsertarPedido.setText("Insertar Pedido");
         btnInsertarPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +163,8 @@ public class Cafeteria extends javax.swing.JFrame {
                 btnInsertarPedidoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnInsertarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
+        jPanel1.add(lbtotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 316, 231, -1));
 
         btnotroplatillo.setText("Seleccionar otro platillo");
         btnotroplatillo.addActionListener(new java.awt.event.ActionListener() {
@@ -145,77 +172,18 @@ public class Cafeteria extends javax.swing.JFrame {
                 btnotroplatilloActionPerformed(evt);
             }
         });
+        jPanel1.add(btnotroplatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(36, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmb_Platillos, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbtotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 30, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(spnPedidip, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(260, 260, 260)
-                                .addComponent(jLabel1)
-                                .addGap(30, 30, 30)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnInsertarPedido)
-                        .addGap(238, 238, 238))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnotroplatillo)
-                        .addGap(210, 210, 210))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(cmb_Platillos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(lbPlatillo)
-                .addGap(53, 53, 53)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbcantidad)
-                    .addComponent(lbprecio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(spnPedidip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(lbtotalPagar)
-                .addGap(18, 18, 18)
-                .addComponent(btnInsertarPedido)
-                .addGap(18, 18, 18)
-                .addComponent(btnotroplatillo)
-                .addGap(8, 8, 8))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/16 Ideas para las que quieren poner un negocio de comida.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,43 +265,44 @@ public class Cafeteria extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Cafeteria().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Cafeteria().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInsertarPedido;
     private javax.swing.JButton btnotroplatillo;
     private javax.swing.JComboBox<String> cmb_Platillos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbPlatillo;
     private javax.swing.JLabel lbcantidad;

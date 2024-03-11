@@ -136,6 +136,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         jMenu1.setText("Productos");
 
+        btnMoPlatillos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200823857.png"))); // NOI18N
         btnMoPlatillos.setText("Mostrar platillos");
         btnMoPlatillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +145,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         });
         jMenu1.add(btnMoPlatillos);
 
+        btnInPlatillos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200758025.png"))); // NOI18N
         btnInPlatillos.setText("Ingresar platillos");
         btnInPlatillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +158,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         jMenu2.setText("Cambiar Contraseña");
 
+        btncambiapas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_201248464.png"))); // NOI18N
         btncambiapas.setText("Cambiar");
         btncambiapas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +172,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenu3.setText("Gestionar Empleados");
 
         btnListaEmpleado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        btnListaEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_195922353.png"))); // NOI18N
         btnListaEmpleado.setText("Lista de Empleados");
         btnListaEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +185,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         jMenu5.setText("Finanzas");
 
+        btnMostarEgresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200245173.png"))); // NOI18N
         btnMostarEgresos.setText("Mostrar Egresos");
         btnMostarEgresos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +194,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         });
         jMenu5.add(btnMostarEgresos);
 
+        btnIngresarIngredientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200615442.png"))); // NOI18N
         btnIngresarIngredientes.setText("Ingresar Ingredientes");
         btnIngresarIngredientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,6 +203,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         });
         jMenu5.add(btnIngresarIngredientes);
 
+        btnIngresos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200412133.png"))); // NOI18N
         btnIngresos.setText("Mostrar Ingresos");
         btnIngresos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +212,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         });
         jMenu5.add(btnIngresos);
 
+        btnRegistroDiario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_201322453.png"))); // NOI18N
         btnRegistroDiario.setText("RegsitroDiario");
         btnRegistroDiario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +225,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
 
         jMenu4.setText("Salir");
 
+        mnCerrarSecion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200334793.png"))); // NOI18N
         mnCerrarSecion.setText("Cerrar Seción");
         mnCerrarSecion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

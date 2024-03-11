@@ -16,6 +16,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="btnCafeteria">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/imagen_2024-03-10_201535903.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ingreso a la cafeteria"/>
               </Properties>
               <Events>
@@ -31,6 +34,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="btncambiapas">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/imagen_2024-03-10_201248464.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cambiar"/>
               </Properties>
               <Events>
@@ -46,6 +52,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnCerrarSecion">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/iconos/imagen_2024-03-10_200334793.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cerrar Seci&#xf3;n"/>
               </Properties>
               <Events>
