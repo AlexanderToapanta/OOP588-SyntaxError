@@ -79,7 +79,6 @@ public class GerenteFormulario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         lbNombre = new javax.swing.JLabel();
         lbFechaNa = new javax.swing.JLabel();
         lbEdad = new javax.swing.JLabel();
@@ -93,6 +92,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         btncambiapas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        btnListaEmpleado = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         btnMostarEgresos = new javax.swing.JMenuItem();
         btnIngresarIngredientes = new javax.swing.JMenuItem();
@@ -104,63 +104,35 @@ public class GerenteFormulario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Swis721 Blk BT", 2, 36)); // NOI18N
-        jLabel7.setText("BIENVENIDO A CAFE MANDANGO");
-
+        lbNombre.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lbNombre.setForeground(new java.awt.Color(255, 204, 51));
         lbNombre.setText("jLabel1");
+        jPanel1.add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 430, -1));
 
+        lbFechaNa.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lbFechaNa.setForeground(new java.awt.Color(255, 204, 51));
         lbFechaNa.setText("jLabel2");
+        jPanel1.add(lbFechaNa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 450, -1));
 
+        lbEdad.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lbEdad.setForeground(new java.awt.Color(255, 204, 51));
         lbEdad.setText("jLabel3");
+        jPanel1.add(lbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 440, -1));
 
+        lbrol.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lbrol.setForeground(new java.awt.Color(255, 204, 51));
         lbrol.setText("jLabel4");
+        jPanel1.add(lbrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 440, -1));
 
+        lbHorario.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        lbHorario.setForeground(new java.awt.Color(255, 204, 51));
         lbHorario.setText("jLabel5");
+        jPanel1.add(lbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 440, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/fotoGerente.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(74, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .addComponent(lbFechaNa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .addComponent(lbrol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(105, 105, 105))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel7)
-                .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbNombre)
-                        .addGap(38, 38, 38)
-                        .addComponent(lbFechaNa)
-                        .addGap(41, 41, 41)
-                        .addComponent(lbEdad)
-                        .addGap(39, 39, 39)
-                        .addComponent(lbrol)
-                        .addGap(48, 48, 48)
-                        .addComponent(lbHorario))
-                    .addComponent(jLabel6))
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/FondoGerente.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jMenu1.setText("Productos");
 
@@ -195,6 +167,16 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Gestionar Empleados");
+
+        btnListaEmpleado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        btnListaEmpleado.setText("Lista de Empleados");
+        btnListaEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListaEmpleadoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btnListaEmpleado);
+
         jMenuBar1.add(jMenu3);
 
         jMenu5.setText("Finanzas");
@@ -310,6 +292,12 @@ public class GerenteFormulario extends javax.swing.JFrame {
         platillos.setVisible(true);
     }//GEN-LAST:event_btnMoPlatillosActionPerformed
 
+    private void btnListaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaEmpleadoActionPerformed
+        ListaEmpleados newframe = new ListaEmpleados();
+        newframe.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btnListaEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,12 +337,12 @@ public class GerenteFormulario extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnInPlatillos;
     private javax.swing.JMenuItem btnIngresarIngredientes;
     private javax.swing.JMenuItem btnIngresos;
+    private javax.swing.JMenuItem btnListaEmpleado;
     private javax.swing.JMenuItem btnMoPlatillos;
     private javax.swing.JMenuItem btnMostarEgresos;
     private javax.swing.JMenuItem btnRegistroDiario;
     private javax.swing.JMenuItem btncambiapas;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
