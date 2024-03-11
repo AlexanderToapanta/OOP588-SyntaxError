@@ -36,7 +36,7 @@ public class Conexion {
 
         try {
             mongo = new MongoClient(uri);
-            dataB = mongo.getDatabase("nombre_de_la_base_de_datos");
+            dataB = mongo.getDatabase("MandangoDBmvc");
             System.out.println("Conexión exitosa a MongoDB.");
         } catch (Exception e) {
             System.err.println("Error al conectar a MongoDB: " + e.getMessage());
