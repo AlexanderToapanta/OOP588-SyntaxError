@@ -4,6 +4,8 @@
  */
 package mandango.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author Usuario
@@ -12,6 +14,7 @@ public class PlatillosPedidos {
    private String nombrePlatillo;
     private int cantidad;
     private double precioun,ganancia;
+    private Date Fganancias;
 
     public String getNombrePlatillo() {
         return nombrePlatillo;
@@ -45,6 +48,14 @@ public class PlatillosPedidos {
         this.ganancia = ganancia;
     }
 
+    public Date getFganancias() {
+        return Fganancias;
+    }
+
+    public void setFganancias(Date Fganancias) {
+        this.Fganancias = Fganancias;
+    }
+
     public PlatillosPedidos(String nombrePlatillo, int cantidad, double ganancia) {
         this.nombrePlatillo = nombrePlatillo;
         this.cantidad = cantidad;
@@ -56,9 +67,19 @@ public class PlatillosPedidos {
     public PlatillosPedidos() {
     }
 
-    @Override
+    public PlatillosPedidos(String nombrePlatillo, int cantidad, double ganancia, Date Fganancias) {
+        this.nombrePlatillo = nombrePlatillo;
+        this.cantidad = cantidad;
+        this.ganancia = ganancia;
+        this.Fganancias = Fganancias;
+    }
+
+    
+
+   
+@Override
     public String toString() {
-        return "Pedidos{" + "nombrePlatillo=" + nombrePlatillo + ", cantidad=" + cantidad + ", precioun=" + precioun + ", ganancia=" + ganancia + '}';
+        return "PlatillosPedidos{" + "nombrePlatillo=" + nombrePlatillo + ", cantidad=" + cantidad + ", precioun=" + precioun + ", ganancia=" + ganancia + ", Fganancias=" + Fganancias + '}';
     }
     
 }

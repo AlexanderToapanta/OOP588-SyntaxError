@@ -10,6 +10,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import mandango.modelo.MateriaPrima;
@@ -52,7 +53,8 @@ public class MateriaPrimaMetodos implements IMateriaPrima{
             String nombreMateria = buscar.getString("nombreMateriaP");
             int cantidad = buscar.getInteger("cantidad");
             double precio = buscar.getDouble("precio");
-            MateriaPrima materia = new MateriaPrima(nombreMateria, cantidad, precio);
+            Date fecha = buscar.getDate("fecha");
+            MateriaPrima materia = new MateriaPrima(nombreMateria, cantidad, precio,fecha);
             listamateriaprima.add(materia);
         }
         
@@ -72,7 +74,8 @@ public class MateriaPrimaMetodos implements IMateriaPrima{
         try{
             documento = new Document ("nombreMateriaP",materia.getNombreMateriPrima())
                     .append("cantidad", materia.getCantidad())
-                    .append("precio", materia.getPrecio());
+                    .append("precio", materia.getPrecio())
+                    .append("fecha", materia.getFgastos());
             coleccionMateriprima.insertOne(documento);
         }catch(MongoException ex){
                     

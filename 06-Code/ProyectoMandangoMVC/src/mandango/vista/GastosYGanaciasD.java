@@ -75,8 +75,14 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
         lbDia = new javax.swing.JLabel();
         btnCerrarCaja = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btnCerrarCaja1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Registro Diario");
@@ -86,21 +92,17 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
 
         lbGastos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbGastos.setForeground(new java.awt.Color(255, 0, 0));
-        lbGastos.setText("jLabel1");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Ingresos diarios:");
 
         lbGancias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbGancias.setForeground(new java.awt.Color(51, 204, 0));
-        lbGancias.setText("jLabel1");
 
         lbTotalDiario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbTotalDiario.setText("jLabel1");
 
         lbDia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbDia.setForeground(new java.awt.Color(0, 0, 204));
-        lbDia.setText("jLabel1");
 
         btnCerrarCaja.setText("Cerrar Caja");
         btnCerrarCaja.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +113,13 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Dia:");
+
+        btnCerrarCaja1.setText("Regresar");
+        btnCerrarCaja1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarCaja1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,13 +139,12 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lbGancias)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lbGastos)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
-                                        .addComponent(btnCerrarCaja))))
+                                    .addComponent(lbGastos)
+                                    .addComponent(lbGancias))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnCerrarCaja1)
+                                    .addComponent(btnCerrarCaja)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(83, 83, 83)
@@ -154,17 +162,22 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(lbGastos)
                     .addComponent(btnCerrarCaja))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lbGancias))
-                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lbGancias)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(btnCerrarCaja1)))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lbDia))
                 .addGap(32, 32, 32)
                 .addComponent(lbTotalDiario)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,7 +186,7 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +216,14 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
                CerrarVentana();
            }
     }//GEN-LAST:event_btnCerrarCajaActionPerformed
+
+    private void btnCerrarCaja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCaja1ActionPerformed
+       CerrarVentana();
+    }//GEN-LAST:event_btnCerrarCaja1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        CerrarVentana();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -241,6 +262,7 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarCaja;
+    private javax.swing.JButton btnCerrarCaja1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

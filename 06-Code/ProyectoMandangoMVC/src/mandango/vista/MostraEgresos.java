@@ -4,6 +4,8 @@
  */
 package mandango.vista;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import mandango.modelo.MateriaPrima;
@@ -31,25 +33,40 @@ public class MostraEgresos extends javax.swing.JFrame {
         dtm.setRowCount(0);
         
         for (MateriaPrima buscar :tabladatosMateriaprima){
-            String nombre = buscar.getNombreMateriPrima();
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+           String date = formatoFecha.format(buscar.getFgastos());
+           String dates = formatoFecha.format(day);
+           if(date.equals(dates)){
+                String nombre = buscar.getNombreMateriPrima();
              int cantidad = buscar.getCantidad();
               double precio = buscar.getPrecio();
               double preciot = cantidad*precio;
               String preciot_s = String.format("%.2f", preciot);
             dtm.addRow(new Object []{nombre,cantidad,precio,preciot_s});
+             
+        }
             
         }
     }
    public void Total (){
+       totalE=0;
      for (MateriaPrima buscar :tabladatosMateriaprima){
-            String nombre = buscar.getNombreMateriPrima();
+             SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+           String date = formatoFecha.format(buscar.getFgastos());
+           String dates = formatoFecha.format(day);
+           if(date.equals(dates)){
+               String nombre = buscar.getNombreMateriPrima();
              int cantidad = buscar.getCantidad();
               double precio = buscar.getPrecio();
               double preciot = cantidad*precio;
               totalE = totalE + preciot;
         }
+        
+     }
           System.out.println(totalE);
-          lbtotal.setText("Total gastado:" + String.format("%.2f", totalE));
+          lbtotal.setText( String.format("%.2f", totalE));
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,9 +79,15 @@ public class MostraEgresos extends javax.swing.JFrame {
         tblDatos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         lbtotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbtotal.setText("jLabel1");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Gastos Diarios:");
@@ -133,6 +156,12 @@ public class MostraEgresos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        tabladatosMateriaprima = MateriaPrimaServicio.ListarMateriaPrima();
+        MostrarDatos();
+        Total();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments

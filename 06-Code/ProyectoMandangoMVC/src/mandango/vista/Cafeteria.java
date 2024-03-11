@@ -6,8 +6,10 @@ package mandango.vista;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import mandango.modelo.PlatillosPedidos;
 import mandango.modelo.ProductosCafeteria;
@@ -57,12 +59,17 @@ public class Cafeteria extends javax.swing.JFrame {
          lbPlatillo.setText(persona.getNombreProducto());
          lbcantidad.setText("El stock disponible es de: "+persona.getCantidad());
          lbprecio.setText("Precio unitario: "+precio_s);
+         SpinnerNumberModel nm = new SpinnerNumberModel();
+      nm.setMaximum(cantidad);
+      nm.setMinimum(0);
+      spnPedidip.setModel(nm);
          }
              
        
       }
   }
   private boolean validar (){
+      
         boolean validar=false;
       int cantidad = (int) spnPedidip.getValue();
         if(cantidad>0&&!cmb_Platillos.getSelectedItem().equals("Seleccione un platillo")){
@@ -81,6 +88,7 @@ public class Cafeteria extends javax.swing.JFrame {
         spnPedidip.setValue(0);
         lbprecio.setText(" ");
         cmb_Platillos.setSelectedIndex(0);
+        lbtotalPagar.setText(" ");
     } 
    public void CalcularGanancia(){
         ganancias = ganancias+totalp;
@@ -232,7 +240,8 @@ public class Cafeteria extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb_PlatillosActionPerformed
 
     private void spnPedidipStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnPedidipStateChanged
-      if(cantidad<1){
+      
+        if(cantidad<1){
           JOptionPane.showMessageDialog(null,"El platillo"+platillo+"no se encuentra disponible");
           btnInsertarPedido.setEnabled(false);
       } else  {
@@ -256,17 +265,21 @@ public class Cafeteria extends javax.swing.JFrame {
     }//GEN-LAST:event_spnPedidipStateChanged
 
     private void btnInsertarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarPedidoActionPerformed
-      if(validar()){
+        Date fechaActual = new Date();
+        if(validar()){
           int cantidades = (int)spnPedidip.getValue();
           cantidad = cantidad-cantidades;
           CalcularGanancia();
-          PlatillosPedidos gananciass = new PlatillosPedidos(platillo, cantidad, ganancias);
+          PlatillosPedidos gananciass = new PlatillosPedidos(platillo, cantidades, ganancias,fechaActual);
           if(PlatillosPedidosServicio.InsertarPlatillosPedidos(gananciass)){
-              JOptionPane.showMessageDialog(null, "Pedido ingresado correctamente");
+             if(ProductoServicio.ActualizarStock(cantidad, platillo)){
+                  JOptionPane.showMessageDialog(null, "Pedido ingresado correctamente");
               Limpiar();
               cmb_Platillos.setEnabled(true);
               btnotroplatillo.setVisible(false);
-              System.err.println(ganancias);
+                 tablaPlatillos = ProductoServicio.ListarProductos();
+             }
+              
           }
           
           
@@ -284,37 +297,37 @@ public class Cafeteria extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Cafeteria().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Cafeteria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Cafeteria().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInsertarPedido;

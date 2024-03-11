@@ -5,6 +5,8 @@
 package mandango.vista;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import mandango.modelo.PlatillosPedidos;
@@ -34,24 +36,39 @@ public void MostrarDatos(){
         dtm.setRowCount(0);
         
         for (PlatillosPedidos buscar :tabladatosGanancias){
-            String nombre = buscar.getNombrePlatillo();
+           SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+           String date = formatoFecha.format(buscar.getFganancias());
+           String dates = formatoFecha.format(day);
+           if(date.equals(dates)){
+                String nombre = buscar.getNombrePlatillo();
              int cantidad = buscar.getCantidad();
               double precio = buscar.getPrecioun();
               double ganancia = buscar.getGanancia();
               String precio_s = String.format("%.2f", precio);
               String ganancia_s = String.format("%.2f", ganancia);
             dtm.addRow(new Object []{cantidad,nombre,precio_s,ganancia_s});
+             
+        }
             
         }
     }
    public void Total (){
+       totalI=0;
      for (PlatillosPedidos buscar :tabladatosGanancias){
-            
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+           String date = formatoFecha.format(buscar.getFganancias());
+           String dates = formatoFecha.format(day);
+           if(date.equals(dates)){
               double precio = buscar.getGanancia();
               totalI = precio + totalI;
+             
+        }
+              
         }
           System.out.println(totalI);
-          lbtotal.setText("Total gastado:" + String.format("%.2f", totalI));
+          lbtotal.setText(String.format("%.2f", totalI));
 }
     
     @SuppressWarnings("unchecked")
@@ -65,12 +82,18 @@ public void MostrarDatos(){
         tblDatos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Ingresos diarios");
 
         lbtotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lbtotal.setText("jLabel1");
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,6 +163,12 @@ public void MostrarDatos(){
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+      tabladatosGanancias = PlatillosPedidosServicio.ListarPlatillosPedidos();
+        MostrarDatos();
+        Total();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments

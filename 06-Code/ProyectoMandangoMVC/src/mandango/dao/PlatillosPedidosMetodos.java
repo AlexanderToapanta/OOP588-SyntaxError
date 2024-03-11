@@ -48,7 +48,8 @@ public class PlatillosPedidosMetodos implements IPlatillosPedidos {
         try{
         document = new Document("nombrePedido",ganacias.getNombrePlatillo())
                 .append("cantidad", ganacias.getCantidad())
-                .append("ganancias", ganacias.getGanancia());
+                .append("ganancias", ganacias.getGanancia())
+                .append("fecha",ganacias.getFganancias());
                 coleccionGanacias.insertOne(document);
         }catch (MongoException ex){
             JOptionPane.showMessageDialog(null,"Error de insercion" +ex.toString());
@@ -70,13 +71,14 @@ public class PlatillosPedidosMetodos implements IPlatillosPedidos {
 
             for (Document temp : documentoPlatillospedidos) {
                 PlatillosPedidos pedido = new PlatillosPedidos();
-                String nombreP = temp.getString("nombrePedido");
-                Document platillos = (Document) collection.find(eq("nombreProducto",nombreP)).first();
+                String nombreP = temp.getString("nombreProducto");
+                Document platillos = (Document) collection.find(eq("nombre_producto",nombreP)).first();
 
-                pedido.setNombrePlatillo(temp.getString("nombrePedido"));
+                pedido.setNombrePlatillo(temp.getString("nombre_producto"));
                 pedido.setCantidad(temp.getInteger("cantidad"));
                 pedido.setGanancia(temp.getDouble("ganancias"));
                 pedido.setPrecioun(platillos.getDouble("precio"));
+                pedido.setFganancias(temp.getDate("fecha"));
                 listaPedidos.add(pedido);
             }
 
