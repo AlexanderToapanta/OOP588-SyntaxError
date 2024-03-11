@@ -7,8 +7,11 @@ package mandango.vista;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import mandango.modelo.GananciasyGastosDiarios;
 import mandango.modelo.MateriaPrima;
+import mandango.servicio.GastosyGananciasServicio;
 import mandango.servicio.MateriaPrimaServicio;
 
 /**
@@ -19,13 +22,16 @@ public class MostraEgresos extends javax.swing.JFrame {
 
     private DefaultTableModel dtm;
     List<MateriaPrima> tabladatosMateriaprima=null;
+      List<GananciasyGastosDiarios> listaregistro;
     double precio;
     static double totalE;
     public MostraEgresos() {
         initComponents();
         tabladatosMateriaprima = MateriaPrimaServicio.ListarMateriaPrima();
+        listaregistro = GastosyGananciasServicio.ListaGanaciasDiarias();
         MostrarDatos();
         Total();
+        limpiarTabla();
         
     }
   public void MostrarDatos(){
@@ -65,9 +71,33 @@ public class MostraEgresos extends javax.swing.JFrame {
         }
         
      }
-          System.out.println(totalE);
+         
           lbtotal.setText( String.format("%.2f", totalE));
 }
+    private boolean ValidarExistencia(){
+          boolean existencia = true;
+           SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            Date day = new Date();
+            for (GananciasyGastosDiarios buscar:listaregistro){
+           String date = formatoFecha.format(buscar.getDia());
+           String dates = formatoFecha.format(day);
+                System.out.println(date);
+                System.out.println(dates);
+           if(date.equals(dates)){
+            existencia=false;
+            break;
+        }
+           
+       }        
+               
+          return existencia;
+      }  
+   public void limpiarTabla(){
+      if(ValidarExistencia()){
+      dtm =(DefaultTableModel)tblDatos.getModel();
+      dtm.setRowCount(0);
+      }
+  }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

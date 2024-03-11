@@ -157,25 +157,28 @@ public class Login extends javax.swing.JFrame {
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         String usuario= txtUsuario.getText(),contrasenia = txtContrasenia.getText();
         Usuarios usuario1 = new Usuarios();
-            String encriptedPassword = LoginServicio.EncriptarClave(contrasenia);
-          usuario1.setContrasenia(encriptedPassword);
+        String encriptedPassword = LoginServicio.EncriptarClave(contrasenia);
+        usuario1.setContrasenia(encriptedPassword);
         LoginServicio.DesencriptarClave(encriptedPassword, gerente.getContrasenia());
-            System.out.println("Clave desencriptada: " + usuario1.getContrasenia());
+        System.out.println("Clave desencriptada: " + usuario1.getContrasenia());
+            
         if(LoginServicio.AutenticarLogin(usuario, usuario1.getContrasenia())){
-             usser= txtUsuario.getText();
-             clave = txtContrasenia.getText();
-                System.out.println(usser);
+            usser= txtUsuario.getText();
+            clave = txtContrasenia.getText();
+            System.out.println(usser);
+            
             for (EmpleadosSuperClase buscar :ListaUsuarios){
             String usuarios = buscar.getUsuario();
             String rol = buscar.getRol();            
             if(usuarios.equals(usuario)&&rol.equals("Gerente")){
-               GerenteFormulario Gerente = new GerenteFormulario();
-            Gerente.setVisible(true);
-            setVisible(false);
+                GerenteFormulario Gerente = new GerenteFormulario();
+                Gerente.setVisible(true);
+                setVisible(false);
+                
             } else if(usuarios.equals(usuario)){
-            EmpleadosFormulario Empleados = new EmpleadosFormulario();
-            Empleados.setVisible(true);
-            setVisible(false);
+                EmpleadosFormulario Empleados = new EmpleadosFormulario();
+                Empleados.setVisible(true);
+                setVisible(false);
             
             }
             
