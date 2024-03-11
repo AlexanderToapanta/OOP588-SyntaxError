@@ -24,6 +24,7 @@ public class MostarPlatillos extends javax.swing.JFrame {
         initComponents();
         tablaPlatillos = ProductoServicio.ListarProductos();
         MostrarDatos();
+        this.setLocationRelativeTo(null);
     }
 
      public void MostrarDatos(){

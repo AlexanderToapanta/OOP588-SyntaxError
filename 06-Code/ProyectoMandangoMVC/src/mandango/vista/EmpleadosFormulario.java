@@ -23,13 +23,14 @@ import mandango.servicio.UsuariosServicio;
 public class EmpleadosFormulario extends javax.swing.JFrame {
 
 
-   EmpleadosSuperClase empleado = new EmpleadosSuperClase();
-List<GananciasyGastosDiarios> listaregistro;
+    EmpleadosSuperClase empleado = new EmpleadosSuperClase();
+    List<GananciasyGastosDiarios> listaregistro;
 
     private  String dato;
     public EmpleadosFormulario() {
         initComponents();
         datosPerfil();
+        this.setLocationRelativeTo(null);
         listaregistro = GastosyGananciasServicio.ListaGanaciasDiarias();
     }
 
@@ -80,7 +81,6 @@ List<GananciasyGastosDiarios> listaregistro;
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel7 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         lbNombre = new javax.swing.JLabel();
         lbEdad = new javax.swing.JLabel();
         lbrol = new javax.swing.JLabel();
@@ -100,77 +100,37 @@ List<GananciasyGastosDiarios> listaregistro;
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel7.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setFont(new java.awt.Font("Swis721 Blk BT", 2, 36)); // NOI18N
-        jLabel13.setText("BIENVENIDO A CAFE MANDANGO");
-
-        lbNombre.setFont(new java.awt.Font("Swis721 LtEx BT", 1, 14)); // NOI18N
+        lbNombre.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbNombre.setForeground(new java.awt.Color(255, 255, 255));
         lbNombre.setText("jLabel1");
+        jPanel7.add(lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 228, -1));
 
-        lbEdad.setFont(new java.awt.Font("Swis721 LtEx BT", 1, 14)); // NOI18N
+        lbEdad.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbEdad.setForeground(new java.awt.Color(255, 255, 255));
         lbEdad.setText("jLabel2");
+        jPanel7.add(lbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 196, -1));
 
-        lbrol.setFont(new java.awt.Font("Swis721 LtEx BT", 1, 14)); // NOI18N
+        lbrol.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbrol.setForeground(new java.awt.Color(255, 255, 255));
         lbrol.setText("jLabel3");
+        jPanel7.add(lbrol, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 196, -1));
 
-        lbHorario.setFont(new java.awt.Font("Swis721 LtEx BT", 1, 14)); // NOI18N
+        lbHorario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbHorario.setForeground(new java.awt.Color(255, 255, 255));
         lbHorario.setText("jLabel4");
+        jPanel7.add(lbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 196, -1));
 
-        lbFechaNa.setFont(new java.awt.Font("Swis721 LtEx BT", 1, 14)); // NOI18N
+        lbFechaNa.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbFechaNa.setForeground(new java.awt.Color(255, 255, 255));
         lbFechaNa.setText("jLabel4");
+        jPanel7.add(lbFechaNa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 196, -1));
 
         lbHorario13.setFont(new java.awt.Font("Swis721 LtEx BT", 1, 14)); // NOI18N
-        lbHorario13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Captura de pantalla 2024-02-05 222729 (1).png"))); // NOI18N
+        lbHorario13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/FondoEmpleado.png"))); // NOI18N
         lbHorario13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel13))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lbFechaNa, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                                .addComponent(lbEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lbHorario, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                                .addComponent(lbrol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbHorario13)
-                .addGap(98, 98, 98))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel13)
-                .addGap(44, 44, 44)
-                .addComponent(lbNombre)
-                .addGap(31, 31, 31)
-                .addComponent(lbFechaNa)
-                .addGap(26, 26, 26)
-                .addComponent(lbEdad)
-                .addGap(31, 31, 31)
-                .addComponent(lbrol)
-                .addGap(33, 33, 33)
-                .addComponent(lbHorario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(lbHorario13, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-        );
+        jPanel7.add(lbHorario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 630));
 
         jMenu1.setText("Cafeteria");
 
@@ -285,7 +245,6 @@ List<GananciasyGastosDiarios> listaregistro;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnCafeteria;
     private javax.swing.JMenuItem btncambiapas;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

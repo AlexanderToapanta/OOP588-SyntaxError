@@ -19,6 +19,7 @@ public class IngresoDeMateriaPrima extends javax.swing.JFrame {
 
     public IngresoDeMateriaPrima() {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         
     }

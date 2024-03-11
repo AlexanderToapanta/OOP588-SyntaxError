@@ -32,6 +32,7 @@ public class MostraEgresos extends javax.swing.JFrame {
         MostrarDatos();
         Total();
         limpiarTabla();
+        this.setLocationRelativeTo(null);
         
     }
   public void MostrarDatos(){

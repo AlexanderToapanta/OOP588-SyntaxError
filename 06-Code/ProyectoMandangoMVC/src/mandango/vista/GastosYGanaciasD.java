@@ -24,16 +24,18 @@ public class GastosYGanaciasD extends javax.swing.JFrame {
     static int dia;
     static boolean cerrado;
     MostraEgresos gastos = new MostraEgresos();
-        private double gastosd = gastos.totalE;
-        MostrarIngresos ganacias = new MostrarIngresos();
-        private double gananciasd = ganacias.totalI;
-        Date fechaActual = new Date();
-        private double total=0;
-    public GastosYGanaciasD() {
-        initComponents();
-        cargarDatos();
-        Total();
-    }
+    private double gastosd = gastos.totalE;
+    MostrarIngresos ganacias = new MostrarIngresos();
+    private double gananciasd = ganacias.totalI;
+    Date fechaActual = new Date();
+    private double total=0;
+    
+        public GastosYGanaciasD() {
+            initComponents();
+            cargarDatos();
+            Total();
+            this.setLocationRelativeTo(null);
+        }
 
     public void cargarDatos() {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");

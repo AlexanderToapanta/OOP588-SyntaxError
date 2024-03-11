@@ -30,6 +30,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         initComponents();
         datosPerfil();
         listaregistro = GastosyGananciasServicio.ListaGanaciasDiarias();
+        this.setLocationRelativeTo(null);
                 
     }
 
@@ -213,7 +214,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenu5.add(btnIngresos);
 
         btnRegistroDiario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_201322453.png"))); // NOI18N
-        btnRegistroDiario.setText("RegsitroDiario");
+        btnRegistroDiario.setText("Registro Diario");
         btnRegistroDiario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroDiarioActionPerformed(evt);
@@ -226,7 +227,7 @@ public class GerenteFormulario extends javax.swing.JFrame {
         jMenu4.setText("Salir");
 
         mnCerrarSecion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imagen_2024-03-10_200334793.png"))); // NOI18N
-        mnCerrarSecion.setText("Cerrar Seción");
+        mnCerrarSecion.setText("Cerrar Sesión");
         mnCerrarSecion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnCerrarSecionActionPerformed(evt);

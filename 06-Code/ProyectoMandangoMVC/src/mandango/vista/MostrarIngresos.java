@@ -35,6 +35,7 @@ public class MostrarIngresos extends javax.swing.JFrame {
         MostrarDatos();
         Total();
         limpiarTabla();
+        this.setLocationRelativeTo(null);
     }
     
 public void MostrarDatos(){

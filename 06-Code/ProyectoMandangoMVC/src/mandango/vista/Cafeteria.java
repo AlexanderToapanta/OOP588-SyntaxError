@@ -32,6 +32,7 @@ public class Cafeteria extends javax.swing.JFrame {
         initComponents();
         cargarPersona();
           btnotroplatillo.setVisible(false);
+          this.setLocationRelativeTo(null);
     }
 
      public void cargarPersona(){

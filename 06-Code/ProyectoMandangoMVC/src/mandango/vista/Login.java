@@ -135,22 +135,24 @@ public class Login extends javax.swing.JFrame {
             System.out.println(usser);
             
             for (EmpleadosSuperClase buscar :ListaUsuarios){
-            String usuarios = buscar.getUsuario();
-            String rol = buscar.getRol();            
-            if(usuarios.equals(usuario)&&rol.equals("Gerente")){
-                GerenteFormulario Gerente = new GerenteFormulario();
-                Gerente.setVisible(true);
-                setVisible(false);
+                String usuarios = buscar.getUsuario();
+                String rol = buscar.getRol();            
+                if(usuarios.equals(usuario)&&rol.equals("Gerente")){
+                    GerenteFormulario Gerente = new GerenteFormulario();
+                    Gerente.setVisible(true);
+                    setVisible(false);
+
+                } else if(usuarios.equals(usuario)){
+                    EmpleadosFormulario Empleados = new EmpleadosFormulario();
+                    Empleados.setVisible(true);
+                    setVisible(false);
+
+                } 
                 
-            } else if(usuarios.equals(usuario)){
-                EmpleadosFormulario Empleados = new EmpleadosFormulario();
-                Empleados.setVisible(true);
-                setVisible(false);
-            
+
             }
-            
-           
-        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Asegurese de la Información sea correcta.");
         }
             
         

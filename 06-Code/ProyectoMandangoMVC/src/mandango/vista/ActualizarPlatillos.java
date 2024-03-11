@@ -22,6 +22,7 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         initComponents();
         ListaPlatillos=ProductoServicio.ListarProductos();
         cargarDatos();
+        this.setLocationRelativeTo(null);
     }
 
    public void cargarDatos() {
@@ -64,7 +65,7 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -73,44 +74,48 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         txtcantidad = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel1.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
+        jLabel1.setText("Actualizar platillos");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre del platillo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 65, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 82, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cantidad");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 121, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Precio");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 93, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 126, -1, -1));
 
         txtPlatillo.setEditable(false);
-        jPanel1.add(txtPlatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 62, 191, -1));
+        getContentPane().add(txtPlatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 77, 191, -1));
 
         txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecioKeyTyped(evt);
             }
         });
-        jPanel1.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 90, 191, -1));
+        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 121, 191, -1));
 
         txtcantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcantidadKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcantidadKeyTyped(evt);
             }
         });
-        jPanel1.add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 118, 191, -1));
+        getContentPane().add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 175, 191, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +123,7 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 259, -1, -1));
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,28 +131,10 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
                 btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Actualizar platillos");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 259, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Food and Travel _ Cafeterías temáticas alrededor del mundo.jpg"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 440));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,8 +169,11 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         if (Character.isLetter(validacionpt2)) {
             getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
-
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        } else if (validacionpt2 == '.' || validacionpt2 == ',') {
+            String textoActual = txtcantidad.getText();
+            String nuevoTexto = textoActual.replace(".", "").replace(",", "");
+            txtcantidad.setText(nuevoTexto);
         }
     }//GEN-LAST:event_txtcantidadKeyTyped
 
@@ -192,10 +182,39 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         if (Character.isLetter(validacionpt2)) {
             getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
-
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        } else if (validacionpt2 == ',') {
+            String textoActual = txtcantidad.getText();
+            String nuevoTexto = textoActual.replace(",", ".");
+            txtcantidad.setText(nuevoTexto);
         }
     }//GEN-LAST:event_txtPrecioKeyTyped
+
+    private void txtcantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcantidadKeyReleased
+        char validacionpt2 = evt.getKeyChar();
+        if (Character.isLetter(validacionpt2)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        } else if (validacionpt2 == '.' || validacionpt2 == ',') {
+            String textoActual = txtcantidad.getText();
+            String nuevoTexto = textoActual.replace(".", "").replace(",", "");
+            txtcantidad.setText(nuevoTexto);
+        }
+    }//GEN-LAST:event_txtcantidadKeyReleased
+
+    private void txtPrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyReleased
+        char validacionpt2 = evt.getKeyChar();
+        if (Character.isLetter(validacionpt2)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        } else if (validacionpt2 == ',') {
+            String textoActual = txtcantidad.getText();
+            String nuevoTexto = textoActual.replace(",", ".");
+            txtcantidad.setText(nuevoTexto);
+        }
+    }//GEN-LAST:event_txtPrecioKeyReleased
 
 //    /**
 //     * @param args the command line arguments
@@ -240,7 +259,6 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtPlatillo;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtcantidad;

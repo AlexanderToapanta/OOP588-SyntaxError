@@ -21,6 +21,7 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
     public IngresoDePlatillos() {
         initComponents();
         tablaPlatillos=ProductoServicio.ListarProductos();
+        this.setLocationRelativeTo(null);
     }
 
     private boolean validar (){

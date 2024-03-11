@@ -31,7 +31,7 @@ public class Conexion {
 
     public Conexion crearConexion() {
 
-        String connectionString = "mongodb+srv://avillacres:1234AZ@cluster0.ppg8sv5.mongodb.net/";
+        String connectionString = "mongodb+srv://atoapanta:123BY@cluster0.ppg8sv5.mongodb.net/";
         MongoClientURI uri = new MongoClientURI(connectionString);
 
         try {
