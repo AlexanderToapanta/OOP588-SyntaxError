@@ -5,16 +5,11 @@
 package mandango.dao;
 
 import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author DELL
- */
 public class Conexion {
-    
+
     private MongoClient mongo;
     private MongoDatabase dataB;
 
@@ -33,17 +28,20 @@ public class Conexion {
         this.mongo = mongo;
         this.dataB = dataB;
     }
-    
-    public Conexion crearConexion(){
-        String servidor = "localhost";
-        int puerto = 27017;
-        try{
-            mongo= new MongoClient(servidor, puerto);
-            dataB= mongo.getDatabase("MandangoMVC");
-        } catch(MongoException ex){
-            JOptionPane.showMessageDialog(null, "Error en la conexion a MongoDB error: "+ ex.toString(),"Mensaje",JOptionPane.ERROR_MESSAGE);
+
+    public Conexion crearConexion() {
+
+        String connectionString = "mongodb+srv://avillacres:1234AZ@cluster0.ppg8sv5.mongodb.net/";
+        MongoClientURI uri = new MongoClientURI(connectionString);
+
+        try {
+            mongo = new MongoClient(uri);
+            dataB = mongo.getDatabase("nombre_de_la_base_de_datos");
+            System.out.println("Conexión exitosa a MongoDB.");
+        } catch (Exception e) {
+            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
         }
         return new Conexion(mongo, dataB);
     }
-    
 }
+
