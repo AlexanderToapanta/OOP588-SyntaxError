@@ -36,7 +36,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
         modeloTabla.setRowCount(0);     
         for (EmpleadosSuperClase buscar : usuarios) {
             
-            modeloTabla.addRow(new Object[]{buscar.getCedula(),buscar.getNombre(),buscar.getRol()});
+            modeloTabla.addRow(new Object[]{buscar.getCedula(),buscar.getNombre()+"-"+buscar.getApellido(),buscar.getRol()});
         }
 
     }

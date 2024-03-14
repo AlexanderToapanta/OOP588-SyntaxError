@@ -113,7 +113,15 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
         });
         jPanel1.add(txtPlatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 201, -1));
 
+        txtPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecioFocusLost(evt);
+            }
+        });
         txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecioKeyTyped(evt);
             }
@@ -186,10 +194,33 @@ public class IngresoDePlatillos extends javax.swing.JFrame {
         if (Character.isLetter(validacionpt2)) {
             getToolkit().beep();
             evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros");
-
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        } else if (validacionpt2 == ',') {
+            String textoActual = txtPrecio.getText();
+            String nuevoTexto = textoActual.replace(",", ".");
+            txtPrecio.setText(nuevoTexto);
         }
     }//GEN-LAST:event_txtPrecioKeyTyped
+
+    private void txtPrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyReleased
+        char validacionpt2 = evt.getKeyChar();
+        if (Character.isLetter(validacionpt2)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo números");
+        } else if (validacionpt2 == ',') {
+            String textoActual = txtPrecio.getText();
+            String nuevoTexto = textoActual.replace(",", ".");
+            txtPrecio.setText(nuevoTexto);
+        }
+    }//GEN-LAST:event_txtPrecioKeyReleased
+
+    private void txtPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioFocusLost
+        String salario=txtPrecio.getText().trim();
+        if (salario.isEmpty() || !salario.matches("^[0-9]{1,4}+.[0-9]{0,2}$")) {
+            JOptionPane.showMessageDialog(this, "Verificar el ingreso a otros valores.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtPrecioFocusLost
 
     /**
      * @param args the command line arguments

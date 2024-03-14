@@ -115,13 +115,9 @@ public class Cafeteria extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cafeteria");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 140, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 14, -1, -1));
 
-        cmb_Platillos.setBackground(new java.awt.Color(0, 102, 102));
-        cmb_Platillos.setForeground(new java.awt.Color(0, 0, 204));
         cmb_Platillos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un platillo" }));
         cmb_Platillos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,22 +129,10 @@ public class Cafeteria extends javax.swing.JFrame {
                 cmb_PlatillosActionPerformed(evt);
             }
         });
-        jPanel1.add(cmb_Platillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 460, -1));
-
-        lbPlatillo.setBackground(new java.awt.Color(51, 51, 51));
-        lbPlatillo.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        lbPlatillo.setForeground(new java.awt.Color(102, 0, 0));
-        jPanel1.add(lbPlatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 380, 20));
-
-        lbcantidad.setBackground(new java.awt.Color(102, 102, 102));
-        lbcantidad.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        lbcantidad.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(lbcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 350, 20));
-
-        lbprecio.setBackground(new java.awt.Color(102, 102, 102));
-        lbprecio.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        lbprecio.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(lbprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 340, 20));
+        jPanel1.add(cmb_Platillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 48, 518, -1));
+        jPanel1.add(lbPlatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 106, 380, -1));
+        jPanel1.add(lbcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 159, 166, -1));
+        jPanel1.add(lbprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 159, 119, -1));
 
         spnPedidip.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         spnPedidip.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -156,7 +140,7 @@ public class Cafeteria extends javax.swing.JFrame {
                 spnPedidipStateChanged(evt);
             }
         });
-        jPanel1.add(spnPedidip, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 89, -1));
+        jPanel1.add(spnPedidip, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 258, 89, -1));
 
         btnInsertarPedido.setText("Insertar Pedido");
         btnInsertarPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -164,8 +148,8 @@ public class Cafeteria extends javax.swing.JFrame {
                 btnInsertarPedidoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
-        jPanel1.add(lbtotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 316, 231, -1));
+        jPanel1.add(btnInsertarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 342, -1, -1));
+        jPanel1.add(lbtotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 324, 231, -1));
 
         btnotroplatillo.setText("Seleccionar otro platillo");
         btnotroplatillo.addActionListener(new java.awt.event.ActionListener() {
@@ -173,24 +157,22 @@ public class Cafeteria extends javax.swing.JFrame {
                 btnotroplatilloActionPerformed(evt);
             }
         });
-        jPanel1.add(btnotroplatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
+        jPanel1.add(btnotroplatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 387, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/16 Ideas para las que quieren poner un negocio de comida.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Fondo1.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

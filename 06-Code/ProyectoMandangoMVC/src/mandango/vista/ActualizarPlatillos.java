@@ -9,43 +9,41 @@ import javax.swing.JOptionPane;
 import mandango.modelo.ProductosCafeteria;
 import mandango.servicio.ProductoServicio;
 
-
-
 /**
  *
  * @author Usuario
  */
 public class ActualizarPlatillos extends javax.swing.JFrame {
 
-    List<ProductosCafeteria> ListaPlatillos =null;
+    List<ProductosCafeteria> ListaPlatillos = null;
+
     public ActualizarPlatillos() {
         initComponents();
-        ListaPlatillos=ProductoServicio.ListarProductos();
+        ListaPlatillos = ProductoServicio.ListarProductos();
         cargarDatos();
         this.setLocationRelativeTo(null);
     }
 
-   public void cargarDatos() {
+    public void cargarDatos() {
         MostarPlatillos platillos = new MostarPlatillos();
         String palto = platillos.platillos;
         System.out.println(palto);
         txtPlatillo.setText(palto);
-        for (ProductosCafeteria bus : ListaPlatillos){
+        for (ProductosCafeteria bus : ListaPlatillos) {
             String platillo = bus.getNombreProducto();
-            if(platillo.equals(palto)){
+            if (platillo.equals(palto)) {
                 txtPrecio.setText(String.valueOf(bus.getPrecio()));
-                txtcantidad.setText(String.valueOf(bus.getCantidad()));
-               break;
+                spnCantidad.setValue(bus.getCantidad());
+                break;
             }
-             
+
         }
-        
-       
-        
+
     }
+
     private boolean validar() {
         boolean validar = false;
-        if (txtPrecio.getText().length()>0&&txtcantidad.getText().length()>0) {
+        if (txtPrecio.getText().length() > 0 && (int) spnCantidad.getValue() > 0) {
 
             validar = true;
 
@@ -56,11 +54,14 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
 
         return validar;
     }
-    public void limpiarDatos(){
-       txtPrecio.setText(" ");
-       txtcantidad.setText(" ");
-       
+
+   public void regresar(){
+   MostarPlatillos platillos = new MostarPlatillos();
+        platillos.setVisible(true);
+        setVisible(false);
    }
+   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,9 +72,9 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtPlatillo = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
-        txtcantidad = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
+        spnCantidad = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -97,6 +98,11 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         txtPlatillo.setEditable(false);
         getContentPane().add(txtPlatillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 77, 191, -1));
 
+        txtPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecioFocusLost(evt);
+            }
+        });
         txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPrecioKeyReleased(evt);
@@ -106,16 +112,6 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 121, 191, -1));
-
-        txtcantidad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtcantidadKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtcantidadKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 175, 191, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +129,9 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
         });
         getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 259, -1, -1));
 
+        spnCantidad.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        getContentPane().add(spnCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 170, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Food and Travel _ Cafeterías temáticas alrededor del mundo.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 340));
 
@@ -140,42 +139,27 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        MostarPlatillos platillos = new MostarPlatillos();
-        platillos.setVisible(true);
-        setVisible(false);
+        regresar();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if(validar()){
-            int confirmacion = JOptionPane.showConfirmDialog(null,"Seguro en actualizar la cantidad y precio?", "Confirmacion",JOptionPane.YES_NO_OPTION);
-            if(confirmacion == JOptionPane.YES_OPTION){
+        if (validar()) {
+            int confirmacion = JOptionPane.showConfirmDialog(null, "Seguro en actualizar la cantidad y precio?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+            if (confirmacion == JOptionPane.YES_OPTION) {
                 ProductosCafeteria actualizar = new ProductosCafeteria(
-                    txtPlatillo.getText(),
-                    Integer.parseInt(txtcantidad.getText())
-                    , Double.parseDouble(txtPrecio.getText()));
-                if(ProductoServicio.ActulizarStockyPrecio(actualizar)){
+                        txtPlatillo.getText(),
+                        (int) spnCantidad.getValue(),
+                         Double.parseDouble(txtPrecio.getText()));
+                if (ProductoServicio.ActulizarStockyPrecio(actualizar)) {
                     JOptionPane.showMessageDialog(null, "Datos actualizados");
 
-                }else {
+                } else {
                     JOptionPane.showMessageDialog(null, "No se actualizaron los datos");
                 }
-                limpiarDatos();
+                regresar();
             }
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
-
-    private void txtcantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcantidadKeyTyped
-        char validacionpt2 = evt.getKeyChar();
-        if (Character.isLetter(validacionpt2)) {
-            getToolkit().beep();
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese solo números");
-        } else if (validacionpt2 == '.' || validacionpt2 == ',') {
-            String textoActual = txtcantidad.getText();
-            String nuevoTexto = textoActual.replace(".", "").replace(",", "");
-            txtcantidad.setText(nuevoTexto);
-        }
-    }//GEN-LAST:event_txtcantidadKeyTyped
 
     private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
         char validacionpt2 = evt.getKeyChar();
@@ -184,24 +168,11 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Ingrese solo números");
         } else if (validacionpt2 == ',') {
-            String textoActual = txtcantidad.getText();
+            String textoActual = txtPrecio.getText();
             String nuevoTexto = textoActual.replace(",", ".");
-            txtcantidad.setText(nuevoTexto);
+            txtPrecio.setText(nuevoTexto);
         }
     }//GEN-LAST:event_txtPrecioKeyTyped
-
-    private void txtcantidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcantidadKeyReleased
-        char validacionpt2 = evt.getKeyChar();
-        if (Character.isLetter(validacionpt2)) {
-            getToolkit().beep();
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Ingrese solo números");
-        } else if (validacionpt2 == '.' || validacionpt2 == ',') {
-            String textoActual = txtcantidad.getText();
-            String nuevoTexto = textoActual.replace(".", "").replace(",", "");
-            txtcantidad.setText(nuevoTexto);
-        }
-    }//GEN-LAST:event_txtcantidadKeyReleased
 
     private void txtPrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyReleased
         char validacionpt2 = evt.getKeyChar();
@@ -210,11 +181,18 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Ingrese solo números");
         } else if (validacionpt2 == ',') {
-            String textoActual = txtcantidad.getText();
+            String textoActual = txtPrecio.getText();
             String nuevoTexto = textoActual.replace(",", ".");
-            txtcantidad.setText(nuevoTexto);
+            txtPrecio.setText(nuevoTexto);
         }
     }//GEN-LAST:event_txtPrecioKeyReleased
+
+    private void txtPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioFocusLost
+        String salario=txtPrecio.getText().trim();
+        if (salario.isEmpty() || !salario.matches("^[0-9]{1,4}+.[0-9]{0,2}$")) {
+            JOptionPane.showMessageDialog(this, "Verificar el ingreso a otros valores.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_txtPrecioFocusLost
 
 //    /**
 //     * @param args the command line arguments
@@ -259,8 +237,8 @@ public class ActualizarPlatillos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JSpinner spnCantidad;
     private javax.swing.JTextField txtPlatillo;
     private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtcantidad;
     // End of variables declaration//GEN-END:variables
 }

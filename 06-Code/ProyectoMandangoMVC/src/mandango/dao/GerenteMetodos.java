@@ -64,9 +64,10 @@ public class GerenteMetodos implements IGerente{
             for (Document buscar : documento) {
                String cedula = buscar.getString("cedula");
                String nombre = buscar.getString("nombre");
+               String apellido = buscar.getString("apellido");
                String rol = buscar.getString("rol");
                
-               EmpleadosSuperClase empleado = new EmpleadosSuperClase(cedula, nombre, rol);
+               EmpleadosSuperClase empleado = new EmpleadosSuperClase(cedula, nombre,apellido, rol);
                ListaEmpleados.add(empleado);
             }
 

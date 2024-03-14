@@ -92,9 +92,10 @@ public class EmpleadosSuperClase {
         this.cedula = cedula;
     }
     
-    public EmpleadosSuperClase(String cedula, String nombre, String rol) {
+    public EmpleadosSuperClase(String cedula, String nombre,String apellido, String rol) {
         this.cedula = cedula;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.rol = rol;
     }
 
