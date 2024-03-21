@@ -183,6 +183,7 @@ public class ActualizacionEmpleados extends javax.swing.JFrame {
 
         jLabel6.setText("Cedula");
 
+        txtCedula.setEditable(false);
         txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCedulaKeyPressed(evt);

@@ -273,7 +273,7 @@ public class IngresoEmpleados extends javax.swing.JFrame {
                         txtApellido.getText(),
                         clFNacimiento.getDate(),
                         cmbRol.getSelectedItem().toString(),
-                        txtCedula.getText()+"xd",
+                        txtCedula.getText(),
                         claveencriptada
                         );
                 if(GerenteServicio.InsertarEmpleado(insertarEmpleado)){
